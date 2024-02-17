@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="topnav" id="myTopnav">
+        <!-- <a><img src="../../assets/logo3.png" height="40" width="40"></a> -->
+        <a style="margin-left: 4; font-size:x-large;"><STRONG>HOTBYTE</STRONG></a>
+        <a href="#home" class="home">
+           <i class="fa fa-house"></i>
+            <!-- <strong>Home</strong></a> -->
+        <a href="#about" class="about"><strong>About</strong></a>
+        <a href="#cart" class="cart-icon">
+            <i class="fa fa-shopping-cart" style="font-size: 20px;"></i></a>
+
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+
+    <img src="../../assets/homepage.jpg" height="724" width="1536">
+
+    <div class="form-box">
+        <div class="header-text">
+            Login
+        </div>
+        <form>
+            <input placeholder="Your Username" type="text">
+            <input placeholder="Your Password" type="password">
+            <button>login</button>
+
+            <div class="signup"> Don't have account? <a href="#">Sign up Now</a> </div>
+
+
+        </form>
+    </div>
+
+    <footer>
+        <div>
+            <p>About Us:</p>
+            <p>We are a cozy restaurant located in the heart of the city, serving delicious and authentic cuisine made with the freshest ingredients. Our warm and inviting atmosphere is perfect for gatherings with friends and family.</p>
+        </div>
+        <div class="contact-info">
+            <a href="mailto:info@example.com">
+                <i class="fa fa-envelope"></i>
+                Email Us
+            </a>
+            <a href="tel:+1234567890">
+                <i class="fa fa-phone"></i>
+                Call Us
+            </a>
+        </div>
+        &copy; 2024 Food Application. All rights reserved.
+    </footer>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
+</body>
+
+</html>
