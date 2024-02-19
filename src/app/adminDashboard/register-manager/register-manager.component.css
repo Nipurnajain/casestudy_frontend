@@ -1,0 +1,29 @@
+.container {
+    margin-top: 10px;
+    max-width: 800px; /* Limit form width */
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  .invalid-feedback {
+    color: red;
+    font-size: small;
+  }
+  
+  /* Style form controls for responsiveness */
+  @media (max-width: 576px) {
+    .container {
+      max-width: 100%;
+    }
+  }
+  

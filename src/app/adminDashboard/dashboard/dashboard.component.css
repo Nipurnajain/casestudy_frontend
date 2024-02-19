@@ -121,16 +121,23 @@
   }
   
   
-  
-  
   .frame {
+    width: calc(100% - 240px); 
+    /* height: 100%; */
+    margin-left: 240px; /* Ensure content starts after the sidebar */
+    text-align: center;
+    padding: 20px; /* Add padding for content */
+    box-sizing: border-box; /* Include padding in the width calculation */
+}
+  
+  /* .frame {
     width: 50%;
-    height: 30%;
+    height: 100%;
     margin: auto;
     text-align: center;
   }
-  
-  h2 {
+   */
+  /* h2 {
     position: relative;
     text-align: center;
     color: #353535;
@@ -147,5 +154,5 @@
     font-size: 30px;
     color: #fdfbff;
     margin: 0;
-  }
+  } */
   

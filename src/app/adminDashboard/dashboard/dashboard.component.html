@@ -1,49 +1,40 @@
 <head>
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> -->
-   </head>
-  
-   <body>
-   
-     <input type="checkbox" id="check">
-     <label for="check">
-       <i class="fa fa-bars" id="btn"></i>
-       <i class="fa fa-times" id="cancel"></i>
-     </label>
-     <div class="sidebar">
-       <header>Dashboard</header>
-       <a href="#" class="active">
-         <i class="fa fa-cutlery"></i>
-         <span>Restaurants</span>
-       </a>
-       <a routerLink="/register-manager">
-         <i class="fa fa-user-plus"></i>
-         <span>Managers</span>
-       </a>
-       <a href="#">
-         <i class="fa fa-users"></i>
-         <span>Customers</span>
-       </a>
-       <a href="#">
-          <i class="fa fa-sign-out"></i>
-         <span>Logout</span>
-       </a>
-       
-     </div>
-    
-     <div class="frame">
-      
-      
-        
-      </div> 
-      <router-outlet></router-outlet>
-        
- </body>
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> -->
+</head>
 
- 
+<body>
 
- 
-     
- 
-     
- 
- 
+  <input type="checkbox" id="check">
+  <label for="check">
+    <i class="fa fa-bars" id="btn"></i>
+    <i class="fa fa-times" id="cancel"></i>
+  </label>
+  <div class="sidebar">
+    <header>Admin Dashboard</header>
+    <a href="#" class="active">
+      <i class="fa fa-cutlery"></i>
+      <span>Restaurants</span>
+    </a>
+    <a routerLink="/register-manager">
+      <i class="fa fa-user-plus"></i>
+      <span>Managers</span>
+    </a>
+    <a href="#">
+      <i class="fa fa-users"></i>
+      <span>Customers</span>
+    </a>
+    <a href="#">
+      <i class="fa fa-sign-out"></i>
+      <span>Logout</span>
+    </a>
+
+  </div>
+
+  <div class="frame">
+
+    <!-- <router-outlet></router-outlet> -->
+
+  </div>
+  <router-outlet></router-outlet> 
+
+</body>
