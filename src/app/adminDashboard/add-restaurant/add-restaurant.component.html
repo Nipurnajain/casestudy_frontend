@@ -1,3 +1,4 @@
+
 <!-- <p>register-manager works!</p> -->
 <!DOCTYPE html>
 <html lang="en">
@@ -9,14 +10,14 @@
 </head>
 
 <body>
-  <form [formGroup]="registerRestaurantForm" class="container col-md-5 border p-4 rounded"  (ngSubmit)="onSubmit()" style="margin-top: 20px;">
+  <form [formGroup]="registerRestaurantForm" class="container col-md-5 border p-4 rounded"  (ngSubmit)="insertRestaurant(registerRestaurantForm.value)"  method="post" style="margin-top: 20px;">
 
     <div class="form-group ">
-        <label for="restaurantName">Restaurant Name</label>
-        <input type="text" formControlName="restaurantName" class="form-control"  [ngClass]="{ 'is-invalid': submitted 
-        && f['restaurantName'].errors }">
-        <div *ngIf="submitted && f['restaurantName'].errors" class="invalid-feedback">Invalid restaurant name</div>
-        <div *ngIf="f['restaurantName'].errors?.['required']" style="color: red; font-size: small;">Restaurant name is required</div>
+        <label for="name">Restaurant Name</label>
+        <input type="text" formControlName="name" class="form-control"  [ngClass]="{ 'is-invalid': submitted 
+        && f['name'].errors }">
+        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">Invalid restaurant name</div>
+        <div *ngIf="f['name'].errors?.['required']" style="color: red; font-size: small;">Restaurant name is required</div>
     </div>
   
     
@@ -31,11 +32,11 @@
    
   
     <div class="form-group ">
-        <label for="contact">Contact Number</label>
-        <input type="number" formControlName="contact" class="form-control"  [ngClass]="{ 'is-invalid': submitted 
-        && f['contact'].errors }">
-        <div *ngIf="submitted && f['contact'].errors" class="invalid-feedback">Invalid contact number</div>
-        <div *ngIf="f['contact'].errors?.['required']" style="color: red;font-size: small;">Contact number is required</div>
+        <label for="contactNumber">Contact Number</label>
+        <input type="number" formControlName="contactNumber" class="form-control"  [ngClass]="{ 'is-invalid': submitted 
+        && f['contactNumber'].errors }">
+        <div *ngIf="submitted && f['contactNumber'].errors" class="invalid-feedback">Invalid contactNumber number</div>
+        <div *ngIf="f['contactNumber'].errors?.['required']" style="color: red;font-size: small;">Contact number is required</div>
     </div>
   
     <div class="form-group ">

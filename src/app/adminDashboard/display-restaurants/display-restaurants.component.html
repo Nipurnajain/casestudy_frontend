@@ -1,0 +1,34 @@
+<!-- <p>display-restaurants works!</p> -->
+<div class="d-flex justify-content-between align-items-center">
+    <h3>Restaurants List</h3>
+    <button type="button" class="btn btn-primary" [routerLink]="['/add-restaurant']">Add</button>
+  </div>
+
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Restaurant Id</th>
+                <th>Restaurant Name</th>
+                <th>Location</th>
+                <th>Contact</th>
+                <th>Rating</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let restaurant of restaurantList">
+                <td>{{ restaurant.restaurantId }}</td>
+                <td>{{ restaurant.name }}</td>
+                <td>{{ restaurant.location }}</td>
+                <td>{{ restaurant.contactNumber }}</td>
+                <td>{{ restaurant.rating }}</td>
+                <td>
+                    <button type="button" (click)="removeRestaurant(restaurant.restaurantId)"
+                        class="btn btn-danger">Remove</button>
+                </td>
+               
+            </tr>
+        </tbody>
+    </table>
+</div>

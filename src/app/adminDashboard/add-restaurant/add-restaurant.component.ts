@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AdminService } from '../admin.service';
+import { Restaurant } from '../Restaurant';
 
 @Component({
   selector: 'app-add-restaurant',
@@ -10,15 +12,15 @@ export class AddRestaurantComponent {
 
   registerRestaurantForm!:FormGroup;
   submitted = false;
-  constructor(private formBuilder:FormBuilder) { 
+  constructor(private formBuilder:FormBuilder,private adminService: AdminService) { 
 
   }
 
   ngOnInit(){
     this.registerRestaurantForm= this.formBuilder.group({
-      restaurantName : ['',[Validators.required,Validators.pattern('^[a-zA-Z\\s]+$')]],
+      name : ['',[Validators.required,Validators.pattern('^[a-zA-Z\\s]+$')]],
       location : ['',[Validators.required,Validators.pattern('^[a-zA-Z\\s]+$')]],
-      contact : ['',[Validators.required,Validators.pattern('[0-9]{10}')]],
+      contactNumber : ['',[Validators.required,Validators.pattern('[0-9]{10}')]],
       rating :['',[Validators.required,Validators.pattern('[0-5]')]]
     });
   }
@@ -27,11 +29,15 @@ export class AddRestaurantComponent {
     return this.registerRestaurantForm.controls;
   }
 
-  onSubmit(){
-    this.submitted = true;
-    if(this.registerRestaurantForm.invalid){
-      return
-    }
-    alert('SUCCESS!! :-)')
+  
+
+  insertRestaurant(data:Restaurant){
+    this.adminService.addRestaurant(data)
+    .subscribe(
+            (res)=>{console.log('Added restaurant is: '+res);}
+            );;
+
   }
+
+
 }

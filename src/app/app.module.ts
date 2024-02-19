@@ -12,6 +12,8 @@ import { DisplayManagersComponent } from './adminDashboard/display-managers/disp
 import { DisplayDiscountComponent } from './adminDashboard/display-discount/display-discount.component';
 import { AddDiscountComponent } from './adminDashboard/add-discount/add-discount.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule}  from '@angular/common/http';
+import { DisplayRestaurantsComponent } from './adminDashboard/display-restaurants/display-restaurants.component'
 
 @NgModule({
   declarations: [
@@ -23,13 +25,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DisplayCustomersComponent,
     DisplayManagersComponent,
     DisplayDiscountComponent,
-    AddDiscountComponent
+    AddDiscountComponent,
+    DisplayRestaurantsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

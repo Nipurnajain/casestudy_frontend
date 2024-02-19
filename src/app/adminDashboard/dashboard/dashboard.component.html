@@ -1,40 +1,36 @@
 <head>
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> -->
-</head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<body>
+   </head>
+  
+  
 
-  <input type="checkbox" id="check">
-  <label for="check">
-    <i class="fa fa-bars" id="btn"></i>
-    <i class="fa fa-times" id="cancel"></i>
-  </label>
-  <div class="sidebar">
-    <header>Admin Dashboard</header>
-    <a href="#" class="active">
-      <i class="fa fa-cutlery"></i>
-      <span>Restaurants</span>
-    </a>
-    <a routerLink="/register-manager">
-      <i class="fa fa-user-plus"></i>
-      <span>Managers</span>
-    </a>
-    <a href="#">
-      <i class="fa fa-users"></i>
-      <span>Customers</span>
-    </a>
-    <a href="#">
-      <i class="fa fa-sign-out"></i>
-      <span>Logout</span>
-    </a>
-
+ 
+ <body>
+  <div class="menu-wrapper">
+      <div class="sidebar-header">
+          <div class="sideBar">
+              <ul>
+                  <li class="selected"><i class="fa fa-home"></i><label>Dashboard</label></li>
+                  <li><a routerLink="/display-restaurant" ><i class="fa fa-cutlery"></i><label>Restaurants</label></a></li>
+                  <li><a routerLink="/register-manager"><i class="fa fa-user-plus"></i><label>Managers</label></a></li>
+                  <li><i class="fa fa-percent"></i><label>Discount/offers</label></li>
+                  <li><i class="fa fa-users"></i><label>Customers</label></li>
+                  <li><i class="fa fa-sign-out"></i><label>Log out</label></li>
+                  
+              </ul> <span class="cross-icon"><i class="fas fa-times"></i></span>
+          </div>
+          <div class="content">              
+              <div class="content-data"> 
+                <router-outlet></router-outlet>
+              </div>
+          </div>
+      </div>
   </div>
-
-  <div class="frame">
-
-    <!-- <router-outlet></router-outlet> -->
-
-  </div>
-  <router-outlet></router-outlet> 
-
 </body>
+ 
+     
+ 
+     
+ 
+ 

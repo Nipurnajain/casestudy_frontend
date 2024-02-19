@@ -1,0 +1,29 @@
+.container {
+    
+    max-width: 600px; /* Limit form width */
+    height: 100vh;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+
+  }
+  
+ 
+  
+  label {
+    font-weight: bold;
+  }
+  
+  .invalid-feedback {
+    color: red;
+    font-size: small;
+  }
+  
+  /* Style form controls for responsiveness */
+@media (max-width: 576px) {
+    .container {
+        max-width: calc(100% - 40px); /* Adjust maximum width for smaller screens */
+    }
+}
+  
