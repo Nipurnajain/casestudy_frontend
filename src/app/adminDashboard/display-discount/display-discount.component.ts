@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+
 import { Discount } from '../Discount';
 import { AdminService } from '../admin.service';
+
 
 @Component({
   selector: 'app-display-discount',
@@ -8,6 +10,7 @@ import { AdminService } from '../admin.service';
   styleUrls: ['./display-discount.component.css']
 })
 export class DisplayDiscountComponent {
+
 
   discountList:Discount[] = [];
 
@@ -33,7 +36,6 @@ export class DisplayDiscountComponent {
     this.getAllDiscounts();
 
   }
-
 
 
 }

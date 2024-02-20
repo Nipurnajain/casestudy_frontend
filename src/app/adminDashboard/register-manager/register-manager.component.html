@@ -9,14 +9,15 @@
 </head>
 
 <body>
-  <form [formGroup]="registerForm" class="container col-md-5 border p-4 rounded"  (ngSubmit)="onSubmit()" style="margin-top: 20px;">
+
+  <form [formGroup]="registerManagerForm" class="container col-md-5 border p-4 rounded"  (ngSubmit)="registerManager(registerManagerForm.value)" style="margin-top: 20px;">
 
     <div class="form-group ">
-        <label for="fullName"> Enter Name</label>
-        <input type="text" formControlName="fullName" class="form-control"  [ngClass]="{ 'is-invalid': submitted 
-        && f['fullName'].errors }">
-        <div *ngIf="submitted && f['fullName'].errors" class="invalid-feedback">Invalid name</div>
-        <div *ngIf="f['fullName'].errors?.['required']" style="color: red; font-size: small;">Name is required</div>
+        <label for="name"> Enter Name</label>
+        <input type="text" formControlName="name" class="form-control"  [ngClass]="{ 'is-invalid': submitted 
+        && f['name'].errors }">
+        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">Invalid name</div>
+        <div *ngIf="f['name'].errors?.['required']" style="color: red; font-size: small;">Name is required</div>
     </div>
   
     
@@ -31,11 +32,12 @@
    
   
     <div class="form-group ">
-        <label for="username">Enter username</label>
-        <input type="" formControlName="username" class="form-control"  [ngClass]="{ 'is-invalid': submitted 
-        && f['username'].errors }">
-        <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">Invalid username</div>
-        <div *ngIf="f['username'].errors?.['required']" style="color: red;font-size: small;">Username is required</div>
+
+        <label for="userName">Enter username</label>
+        <input type="" formControlName="userName" class="form-control"  [ngClass]="{ 'is-invalid': submitted 
+        && f['userName'].errors }">
+        <div *ngIf="submitted && f['userName'].errors" class="invalid-feedback">Invalid username</div>
+        <div *ngIf="f['userName'].errors?.['required']" style="color: red;font-size: small;">Username is required</div>
     </div>
   
     <div class="form-group ">
@@ -47,7 +49,8 @@
   </div>
   
     <br>
-    <button type="submit" [disabled]="!registerForm.valid"  class="btn btn-primary">Register</button>
+
+    <button type="submit" [disabled]="!registerManagerForm.valid"  class="btn btn-primary">Register</button>
   
   
   </form>

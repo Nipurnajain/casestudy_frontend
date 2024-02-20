@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AdminService } from '../admin.service';
 import { Discount } from '../Discount';
+
 
 @Component({
   selector: 'app-add-discount',
@@ -9,6 +11,7 @@ import { Discount } from '../Discount';
   styleUrls: ['./add-discount.component.css']
 })
 export class AddDiscountComponent {
+
 
   registerDiscountForm!:FormGroup;
   submitted = false;
@@ -38,6 +41,7 @@ export class AddDiscountComponent {
             );;
 
   }
+
 
 
 }

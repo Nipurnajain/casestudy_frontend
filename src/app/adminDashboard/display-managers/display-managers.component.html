@@ -1,1 +1,32 @@
-<p>display-managers works!</p>
+
+<div class="d-flex justify-content-between align-items-center">
+    <h3>Managers </h3>
+    <button type="button" class="btn btn-primary" [routerLink]="['/register-manager']">Add</button>
+  </div>
+
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Manager Id</th>
+                <th>Manager Name</th>
+                <th>Email</th>
+                <th>username</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let manager of managerList">
+                <td>{{ manager.admin_id}}</td>
+                <td>{{ manager.name }}</td>
+                <td>{{ manager.email }}</td>
+                <td>{{ manager.userName }}</td>
+                <td>
+                    <button type="button" (click)="removeManager(manager.admin_id)"
+                        class="btn btn-danger">Remove</button>
+                </td>
+               
+            </tr>
+        </tbody>
+    </table>
+</div>
+

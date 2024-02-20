@@ -7,12 +7,17 @@ import { DisplayRestaurantsComponent } from './adminDashboard/display-restaurant
 import { AddDiscountComponent } from './adminDashboard/add-discount/add-discount.component';
 import { DisplayDiscountComponent } from './adminDashboard/display-discount/display-discount.component';
 
+import { DisplayCustomersComponent } from './adminDashboard/display-customers/display-customers.component';
+import { DisplayManagersComponent } from './adminDashboard/display-managers/display-managers.component';
+
 const routes: Routes = [
   { path: 'register-manager', component: RegisterManagerComponent },
   {path:'add-restaurant',component:AddRestaurantComponent},
   {path:'display-restaurant',component:DisplayRestaurantsComponent},
   {path:'add-discounts',component:AddDiscountComponent},
-  {path:'display-discounts',component:DisplayDiscountComponent}
+  {path:'display-discounts',component:DisplayDiscountComponent},
+  {path:'display-customers',component:DisplayCustomersComponent},
+  {path:'display-managers',component:DisplayManagersComponent}
   
 ];
 

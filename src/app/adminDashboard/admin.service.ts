@@ -3,13 +3,17 @@ import { Injectable } from '@angular/core';
 import { Restaurant } from './Restaurant';
 import { Observable } from 'rxjs';
 import { Discount } from './Discount';
+import { Manager } from './Manager';
+import { Customer } from './Customer';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
 
-  constructor(private http: HttpClient) {
+
+  constructor(private http:HttpClient) { 
 
   }
 
@@ -48,5 +52,29 @@ export class AdminService {
   getDiscounts(): Observable<Discount[]> {
     return this.http.get<Discount[]>("http://localhost:8080/api/v1/admin/getAllDiscounts");
   }
+
+
+
+  addManager(body:Manager):Observable<Manager>{
+    console.log(body);
+    return this.http.post<Manager>("http://localhost:8080/api/v1/admin/register",body);
+
+  }
+  getManagers():Observable<Manager[]>{
+    return this.http.get<Manager[]>("http://localhost:8080/api/v1/admin/getAllManagers");
+  }
+
+  deleteManager(mid:number):Observable<string>{
+    return this.http.delete<string>("http://localhost:8080/api/v1/admin/removeManager"+`/${mid}`);
+  }
+
+  getCustomers():Observable<Customer[]>{
+    return this.http.get<Customer[]>("http://localhost:8080/api/v1/admin/getAllCustomers");
+  }
+
+  deleteCustomer(custid:number):Observable<string>{
+    return this.http.delete<string>("http://localhost:8080/api/v1/admin/removeCustomer"+`/${custid}`);
+  }
+
 
 }

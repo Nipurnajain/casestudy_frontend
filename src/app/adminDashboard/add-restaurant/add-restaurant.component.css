@@ -1,12 +1,14 @@
 .container {
     
     max-width: 600px; /* Limit form width */
+
     height: 550px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 20px;
     box-sizing: border-box; /* Include padding and border in the width calculation */
     box-shadow: 0 0 20px #042b47;
+
   }
   
  
