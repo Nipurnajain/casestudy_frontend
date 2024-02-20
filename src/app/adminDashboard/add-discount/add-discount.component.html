@@ -1,1 +1,57 @@
-<p>add-discount works!</p>
+<!-- <p>add-discount works!</p> -->
+
+<!-- <p>register-manager works!</p> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form [formGroup]="registerDiscountForm" class="container col-md-5 border p-4 rounded"
+        (ngSubmit)="insertDiscount(registerDiscountForm.value)" method="post" style="margin-top: 20px;">
+
+        <div class="form-group ">
+            <label for="discountPercentage">Discount percentage</label>
+            <input type="number" formControlName="discountPercentage" class="form-control" [ngClass]="{ 'is-invalid': submitted 
+        && f['discountPercentage'].errors }">
+            <div *ngIf="submitted && f['discountPercentage'].errors" class="invalid-feedback">invalid percentage value
+            </div>
+            <div *ngIf="f['discountPercentage'].errors?.['required']" style="color: red; font-size: small;">Percentage
+                is required</div>
+        </div>
+
+
+        <div class="form-group ">
+            <label for="startDate">Start Date</label>
+            <input type="date" formControlName="startDate" class="form-control" [ngClass]="{ 'is-invalid': submitted 
+        && f['startDate'].errors }">
+            <div *ngIf="submitted && f['startDate'].errors" class="invalid-feedback">Invalid date</div>
+            <div *ngIf="f['startDate'].errors?.['required']" style="color: red;font-size: small;">Start date is required
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label for="endDate">End Date</label>
+            <input type="date" formControlName="endDate" class="form-control" [ngClass]="{ 'is-invalid': submitted 
+        && f['endDate'].errors }">
+            <div *ngIf="submitted && f['endDate'].errors" class="invalid-feedback">Invalid date</div>
+            <div *ngIf="f['endDate'].errors?.['required']" style="color: red;font-size: small;">End date is required
+            </div>
+        </div>
+
+
+
+
+
+        <br>
+        <button type="submit" [disabled]="!registerDiscountForm.valid" class="btn btn-primary">Add Discount</button>
+
+
+    </form>
+</body>
+
+</html>

@@ -19,8 +19,9 @@ body {
     height: 100vh;
     width: 25%;
     color: white;
-    background-color: #001629;
+    background-color: #000F1A;
     transition: 0.3s ease-in-out;
+    justify-content: center;
 }
 
 .sideBar.widthChange {
@@ -56,11 +57,11 @@ li label.hideMenuList {
 }
 
 .sideBar li:hover {
-    background-color: #0092ff;
+    background-color: #5299cc;
 }
 
 .selected {
-    background-color: #0092ff;
+    background-color: #d26ed6;
 }
 
 .sideBar span {
@@ -72,7 +73,7 @@ li label.hideMenuList {
 
 .sideBar .cross-icon {
     display: none;
-    color: #001629;
+    color: rgb(20, 50, 78);
 }
 
 .sidebar-header {

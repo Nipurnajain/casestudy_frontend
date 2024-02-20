@@ -1,3 +1,30 @@
-<p>display-discount works!</p>
+<div class="d-flex justify-content-between align-items-center">
+    <h3>Discounts List</h3>
+    <button type="button" class="btn btn-primary" [routerLink]="['/add-discounts']">Add</button>
+</div>
 
-<h3>display discount table</h3>
+<div> 
+    <table style="text-align: center;"  class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Discount Id</th>
+                <th>discount Percentage(%)</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let discount of discountList">
+                <td>{{discount.discountId }}</td>
+                <td>{{ discount.discountPercentage }}</td>
+                <td>{{ discount.startDate }}</td>
+                <td>{{ discount.endDate }}</td>
+                <td>
+                    <button type="button" (click)="removeDiscount(discount.discountId)"
+                        class="btn btn-danger">Remove</button>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
