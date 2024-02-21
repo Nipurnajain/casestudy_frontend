@@ -13,7 +13,12 @@ import { DisplayDiscountComponent } from './adminDashboard/display-discount/disp
 import { AddDiscountComponent } from './adminDashboard/add-discount/add-discount.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule}  from '@angular/common/http';
-import { DisplayRestaurantsComponent } from './adminDashboard/display-restaurants/display-restaurants.component'
+import { DisplayRestaurantsComponent } from './adminDashboard/display-restaurants/display-restaurants.component';
+import { ManagerDashboardComponent } from './managerDashboard/manager-dashboard/manager-dashboard.component';
+import { DisplayOrdersComponent } from './managerDashboard/display-orders/display-orders.component';
+import { DisplayMenuItemsComponent } from './managerDashboard/display-menu-items/display-menu-items.component';
+import { AddMenuItemsComponent } from './managerDashboard/add-menu-items/add-menu-items.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component'
 
 @NgModule({
   declarations: [
@@ -26,7 +31,12 @@ import { DisplayRestaurantsComponent } from './adminDashboard/display-restaurant
     DisplayManagersComponent,
     DisplayDiscountComponent,
     AddDiscountComponent,
-    DisplayRestaurantsComponent
+    DisplayRestaurantsComponent,
+    ManagerDashboardComponent,
+    DisplayOrdersComponent,
+    DisplayMenuItemsComponent,
+    AddMenuItemsComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,

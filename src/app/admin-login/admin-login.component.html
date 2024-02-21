@@ -11,10 +11,7 @@
     <div class="topnav" id="myTopnav">
         <!-- <a><img src="../../assets/logo3.png" height="40" width="40"></a> -->
         <a style="margin-left: 4; font-size:x-large;"><STRONG>HOTBYTE</STRONG></a>
-        <a href="#home" class="home"><strong>Home</strong></a>
-            <a href="#about" class="about"><strong>About</strong></a>
-            <a href="#cart" class="cart-icon">
-                <i class="fa fa-shopping-cart" style="font-size: 20px;"></i></a>
+       
 
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i>
@@ -28,15 +25,7 @@
             <div class="header-text">
                 Login
             </div>
-            <!-- <form>
-                <input placeholder="Your Username" type="text">
-                <input placeholder="Your Password" type="password">
-                <button>login</button>
-
-                <div class="signup"> Don't have account? <a href="#">Sign up Now</a> </div>
-
-
-            </form> -->
+            
             <form   #formData=ngForm  (ngSubmit)="readFormData(formData)" >
                 <div >
                   <label for="exampleInputEmail1">UserName</label>
@@ -51,7 +40,6 @@
                 </div>
                
                 <button type="submit"  [disabled]="formData.invalid"  >Submit</button>
-                <div class="signup"> Don't have account? <a href="#">Sign up Now</a> </div>
 
               </form>
         </div>

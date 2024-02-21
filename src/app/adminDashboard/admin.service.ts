@@ -17,13 +17,7 @@ export class AdminService {
 
   }
 
-  // register manager
 
-  // add restaurant , remove and display all,
-
-  // get all customers/users
-
-  // add & remove discount
   addRestaurant(body: Restaurant): Observable<Restaurant> {
 
     console.log(body);

@@ -9,15 +9,31 @@ import { DisplayDiscountComponent } from './adminDashboard/display-discount/disp
 
 import { DisplayCustomersComponent } from './adminDashboard/display-customers/display-customers.component';
 import { DisplayManagersComponent } from './adminDashboard/display-managers/display-managers.component';
+import { LandingComponent } from './landing/landing.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AuthGuardService } from './auth-guard.service';
 
 const routes: Routes = [
-  { path: 'register-manager', component: RegisterManagerComponent },
-  {path:'add-restaurant',component:AddRestaurantComponent},
-  {path:'display-restaurant',component:DisplayRestaurantsComponent},
-  {path:'add-discounts',component:AddDiscountComponent},
-  {path:'display-discounts',component:DisplayDiscountComponent},
-  {path:'display-customers',component:DisplayCustomersComponent},
-  {path:'display-managers',component:DisplayManagersComponent}
+  {
+    path: 'admin-dashboard',
+    component: DashboardComponent,
+    canActivate: [AuthGuardService],
+    data: { expectedRole: 'admin' },
+    children: [
+      { path: 'register-manager', component: RegisterManagerComponent },
+      { path: 'add-restaurant', component: AddRestaurantComponent },
+      { path: 'display-restaurant', component: DisplayRestaurantsComponent },
+      { path: 'add-discounts', component: AddDiscountComponent },
+      { path: 'display-discounts', component: DisplayDiscountComponent },
+      { path: 'display-customers', component: DisplayCustomersComponent },
+      { path: 'display-managers', component: DisplayManagersComponent },
+    ],
+  },
+  { path: '', pathMatch: 'full', redirectTo: 'admin-login' }, // Redirect to admin-login by default
+
+  {path:'admin-login',component:AdminLoginComponent},
+  {path:'login',component:LandingComponent},
+  
   
 ];
 
