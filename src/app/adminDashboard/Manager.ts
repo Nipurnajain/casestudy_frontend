@@ -1,5 +1,5 @@
 export interface Manager {
-    admin_id:number;
+    adminId:number;
     userName: string;
     password: string;
     name: string;

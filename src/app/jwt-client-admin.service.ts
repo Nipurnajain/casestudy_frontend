@@ -22,12 +22,12 @@ export class JwtClientAdminService {
     const decodedToken = this.decodeToken(token);
 
 
-    let tokenString = "Bearer " + token;
+    // let tokenString = "Bearer " + token;
 
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'http://localhost:4200'
-    }).set("Authorization", tokenString);
+    // const headers = new HttpHeaders({
+    //   'Content-Type': 'application/json',
+    //   'Access-Control-Allow-Origin': 'http://localhost:4200'
+    // }).set("Authorization", tokenString);
 
 
     if (decodedToken) {
@@ -41,6 +41,9 @@ export class JwtClientAdminService {
     }
 
   }
+
+  
+  
 
 
   decodeToken(token: string): any {
