@@ -34,7 +34,7 @@ export class AdminService {
 
     console.log(body);
 
-    return this.http.post<Restaurant>("http://localhost:8080/api/v1/restaurant/register", body,{ headers: this.getHeaders() });
+    return this.http.post<Restaurant>("http://localhost:8080/api/v1/restaurant/register", body,{ headers: this.getHeaders(), responseType: 'text' as 'json' });
 
   }
 
@@ -43,16 +43,16 @@ export class AdminService {
   }
 
   deleteRestaurant(resid: number): Observable<string> {
-    return this.http.delete<string>("http://localhost:8080/api/v1/admin/removeRestaurant" + `/${resid}`,{ headers: this.getHeaders() });
+    return this.http.delete<string>("http://localhost:8080/api/v1/admin/removeRestaurant" + `/${resid}`,{ headers: this.getHeaders(), responseType: 'text' as 'json' });
   }
 
   addDiscount(body: Discount): Observable<Discount> {
     console.log(body);
-    return this.http.post<Discount>("http://localhost:8080/api/v1/admin/add-discount", body,{ headers: this.getHeaders() });
+    return this.http.post<Discount>("http://localhost:8080/api/v1/admin/add-discount", body,{ headers: this.getHeaders() , responseType: 'text' as 'json'});
   }
 
   removeDiscount(discountid: number): Observable<String> {
-    return this.http.delete<String>("http://localhost:8080/api/v1/admin/removeDiscount" + `/${discountid}`,{ headers: this.getHeaders() });
+    return this.http.delete<String>("http://localhost:8080/api/v1/admin/removeDiscount" + `/${discountid}`,{ headers: this.getHeaders() , responseType: 'text' as 'json'});
   }
 
   getDiscounts(): Observable<Discount[]> {
@@ -63,7 +63,7 @@ export class AdminService {
 
   addManager(body:Manager):Observable<Manager>{
     console.log(body);
-    return this.http.post<Manager>("http://localhost:8080/api/v1/admin/register",body,{ headers: this.getHeaders() });
+    return this.http.post<Manager>("http://localhost:8080/api/v1/admin/register",body,{ headers: this.getHeaders(), responseType: 'text' as 'json' });
 
   }
   getManagers():Observable<Manager[]>{
@@ -79,7 +79,7 @@ export class AdminService {
   }
 
   deleteCustomer(custid:number):Observable<string>{
-    return this.http.delete<string>("http://localhost:8080/api/v1/admin/removeCustomer"+`/${custid}`,{ headers: this.getHeaders() });
+    return this.http.delete<string>("http://localhost:8080/api/v1/admin/removeCustomer"+`/${custid}`,{ headers: this.getHeaders(), responseType: 'text' as 'json' });
   }
 
 

@@ -62,8 +62,15 @@ constructor(private jwtServiceAdmin: JwtClientAdminService,private router: Route
       if (role === 'admin') {
         console.log('Navigating to admin-dashboard...');
         this.router.navigate(['/admin-dashboard']);
-      } else {
-        console.log('Role is not admin. No navigation.');
+      } 
+      else if(role === 'manager'){
+        console.log('Navigating to manager-dashboard...');
+        this.router.navigate(['/manager-dashboard']);
+
+
+      }
+      else {
+        console.log('Permission denied. No navigation.');
       }
   
     } else {
