@@ -23,7 +23,7 @@ export class AuthGuardService implements CanActivate {
       return true;
     } else {
       // Navigate to the login page or a forbidden page
-      this.router.navigate(['/admin-login']); // Update with your desired route
+      this.router.navigate(['/admin-login']); // navigate back to the admin login page
       return false;
     }
   }
