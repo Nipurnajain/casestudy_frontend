@@ -32,7 +32,7 @@ export class DisplayDiscountComponent {
   }
 
   removeDiscount(discountid:number){
-    this.adminService.deleteRestaurant(discountid).subscribe((msg)=>{ console.log("Deleted "+msg);});
+    this.adminService.removeDiscount(discountid).subscribe((msg)=>{ console.log("Deleted "+msg);});
     this.getAllDiscounts();
 
   }

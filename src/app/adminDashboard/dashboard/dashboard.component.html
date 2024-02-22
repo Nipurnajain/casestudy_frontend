@@ -1,37 +1,43 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-   </head>
-  
-  
+</head>
 
- 
- <body>
+
+
+
+<body>
   <div class="menu-wrapper">
-      <div class="sidebar-header">
-          <div class="sideBar">
-              <ul>
-                  <li class="selected"><i class="fa fa-home"></i><label>Dashboard</label></li>
-                  <li><a routerLink="/admin-dashboard/display-restaurant" ><i class="fa fa-cutlery"></i><label>Restaurants</label></a></li>
-                  <li><a routerLink="/admin-dashboard/display-discounts"><i class="fa fa-percent"></i><label>Discount/offers</label></a></li>
-                  <li><a routerLink="/admin-dashboard/display-managers"><i class="fa fa-user-plus"></i><label>Managers</label></a></li>
-                  <li><a routerLink="/admin-dashboard/display-customers"><i class="fa fa-users"></i><label>Customers</label></a></li>
+    <div class="sidebar-header">
+      <div class="sideBar">
+        <ul>
+          <li style="font-size:x-large; text-align:justify; margin-top: 6px;"><i class="fa fa-home"></i><label> Admin
+              Dashboard</label></li><br>
 
-                  <li (click)="logout()"><i class="fa fa-sign-out"></i><label>Log out</label></li>
-                  
-              </ul> <span class="cross-icon"><i class="fas fa-times"></i></span>
-          </div>
-          <div class="content">              
-              <div class="content-data"> 
-                <router-outlet></router-outlet>
-              </div>
-          </div>
+          <li style="text-align:justify; font-size: large; margin-bottom: 2px;"><a
+              routerLink="/admin-dashboard/display-restaurant"><i
+                class="fa fa-cutlery"></i><label>Restaurants</label></a></li>
+          <li style="text-align:justify; font-size: large; margin-bottom: 2px;"><a
+              routerLink="/admin-dashboard/display-discounts"><i
+                class="fa fa-percent"></i><label>Discount/offers</label></a></li>
+          <li style="text-align: justify; font-size: large; margin-bottom: 2px;"><a
+              routerLink="/admin-dashboard/display-managers"><i class="fa fa-user-plus"></i><label>Managers</label></a>
+          </li>
+          <li style="text-align: justify; font-size: large; margin-bottom: 2px;"><a
+              routerLink="/admin-dashboard/display-customers"><i class="fa fa-users"></i><label>Customers</label></a>
+          </li>
+
+          <li style="text-align: justify; font-size: large; margin-bottom: 2px;" (click)="logout()"><a><i
+                class="fa fa-sign-out"></i><label>Log out</label></a></li>
+
+        </ul>
+
       </div>
+      <div class="content">
+        <div class="content-data">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
- 
-     
- 
-     
- 
- 

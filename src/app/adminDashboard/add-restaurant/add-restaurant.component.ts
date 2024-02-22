@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AdminService } from '../admin.service';
 import { Restaurant } from '../Restaurant';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-restaurant',
@@ -10,32 +11,34 @@ import { Restaurant } from '../Restaurant';
 })
 export class AddRestaurantComponent {
 
-  registerRestaurantForm!:FormGroup;
+  registerRestaurantForm!: FormGroup;
   submitted = false;
-  constructor(private formBuilder:FormBuilder,private adminService: AdminService) { 
+  constructor(private formBuilder: FormBuilder, private adminService: AdminService, private router: Router) {
 
   }
 
-  ngOnInit(){
-    this.registerRestaurantForm= this.formBuilder.group({
-      name : ['',[Validators.required,Validators.pattern('^[a-zA-Z\\s]+$')]],
-      location : ['',[Validators.required,Validators.pattern('^[a-zA-Z\\s]+$')]],
-      contactNumber : ['',[Validators.required,Validators.pattern('[0-9]{10}')]],
-      rating :['',[Validators.required,Validators.pattern('[0-5]')]]
+  ngOnInit() {
+    this.registerRestaurantForm = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.pattern('^[a-zA-Z\\s]+$')]],
+      location: ['', [Validators.required, Validators.pattern('^[a-zA-Z\\s]+$')]],
+      contactNumber: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
+      rating: ['', [Validators.required, Validators.pattern('[0-5]')]]
     });
   }
 
-  get f(){
+  get f() {
     return this.registerRestaurantForm.controls;
   }
 
-  
 
-  insertRestaurant(data:Restaurant){
+
+  insertRestaurant(data: Restaurant) {
     this.adminService.addRestaurant(data)
-    .subscribe(
-            (res)=>{console.log('Added restaurant is: '+res);}
-            );;
+      .subscribe(
+        (res) => { console.log('Added restaurant is: ' + res);
+        this.router.navigate(['/admin-dashboard/display-restaurant']); }
+      );
+
 
   }
 

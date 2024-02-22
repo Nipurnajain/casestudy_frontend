@@ -64,7 +64,7 @@ li label.hideMenuList {
 }
 
 .selected {
-    background-color: #d26ed6;
+    /* background-color: #d26ed6; */
 
     background-color: #0092ff;
 }
@@ -78,12 +78,6 @@ li label.hideMenuList {
     right: 20px;
 }
 
-.sideBar .cross-icon {
-    display: none;
-
-    color: rgb(20, 50, 78);
-
-}
 
 .sidebar-header {
     display: flex;

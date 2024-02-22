@@ -3,6 +3,7 @@ import { FormBuilder,FormGroup, Validators } from '@angular/forms';
 
 import { AdminService } from '../admin.service';
 import { Manager } from '../Manager';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-manager',
@@ -13,7 +14,7 @@ export class RegisterManagerComponent {
 
   registerManagerForm!:FormGroup;
   submitted = false;
-  constructor(private formBuilder:FormBuilder,private adminService: AdminService) { 
+  constructor(private formBuilder:FormBuilder,private adminService: AdminService,private router:Router) { 
 
   }
 
@@ -36,8 +37,10 @@ export class RegisterManagerComponent {
   registerManager(data:Manager){
     this.adminService.addManager(data)
     .subscribe(
-            (res)=>{console.log('Added manager is: '+res);}
-            );;
+            (res)=>{console.log('Added manager is: '+res);
+            this.router.navigate(['/admin-dashboard/display-managers']);
+          }
+            );
 
   }
 
