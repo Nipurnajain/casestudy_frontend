@@ -15,7 +15,7 @@ export class AuthGuardService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const expectedRole = route.data['expectedRole'];
 
-    // Get the user's role from the decoded token (assuming you have a method to get the decoded token)
+    // Get the user's role from the decoded token 
     const userRole = this.jwtClientAdminService.getUserRole();
 
     // Check if the user's role matches the expected role
