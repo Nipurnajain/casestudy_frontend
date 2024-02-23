@@ -14,7 +14,7 @@
 
         <div class="form-group ">
             <label for="discountPercentage">Discount percentage</label>
-            <input type="number" formControlName="discountPercentage" class="form-control" [ngClass]="{ 'is-invalid': submitted 
+            <input type="number" formControlName="discountPercentage" placeholder="Enter the discount percentage here" class="form-control" [ngClass]="{ 'is-invalid': submitted 
         && f['discountPercentage'].errors }">
             <div *ngIf="submitted && f['discountPercentage'].errors" class="invalid-feedback">invalid percentage value
             </div>

@@ -14,7 +14,7 @@
 
     <div class="form-group ">
         <label for="name"> Enter Name</label>
-        <input type="text" formControlName="name" class="form-control"  [ngClass]="{ 'is-invalid': submitted 
+        <input type="text" formControlName="name" class="form-control" placeholder="Enter name here" [ngClass]="{ 'is-invalid': submitted 
         && f['name'].errors }">
         <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">Invalid name</div>
         <div *ngIf="f['name'].errors?.['required']" style="color: red; font-size: small;">Name is required</div>
@@ -23,7 +23,7 @@
     
     <div class="form-group ">
         <label for="email">Email</label>
-        <input type="text" formControlName="email" class="form-control"  [ngClass]="{ 'is-invalid': submitted 
+        <input type="text" formControlName="email" class="form-control" placeholder="Enter a valid email here" [ngClass]="{ 'is-invalid': submitted 
         && f['email'].errors }">
         <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">Invalid email</div>
         <div *ngIf="f['email'].errors?.['required']" style="color: red;font-size: small;">Email is required</div>
@@ -34,7 +34,7 @@
     <div class="form-group ">
 
         <label for="userName">Enter username</label>
-        <input type="" formControlName="userName" class="form-control"  [ngClass]="{ 'is-invalid': submitted 
+        <input type="" formControlName="userName" class="form-control" placeholder="Enter username here" [ngClass]="{ 'is-invalid': submitted 
         && f['userName'].errors }">
         <div *ngIf="submitted && f['userName'].errors" class="invalid-feedback">Invalid username</div>
         <div *ngIf="f['userName'].errors?.['required']" style="color: red;font-size: small;">Username is required</div>
@@ -42,7 +42,7 @@
   
     <div class="form-group ">
       <label for="password">Enter Password</label>
-      <input type="" formControlName="password" class="form-control"  [ngClass]="{ 'is-invalid': submitted 
+      <input type="password" formControlName="password" class="form-control" placeholder="Enter password here" [ngClass]="{ 'is-invalid': submitted 
       && f['password'].errors }">
       <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">Invalid password</div>
       <div *ngIf="f['password'].errors?.['required']" style="color: red;font-size: small;">password is required</div>

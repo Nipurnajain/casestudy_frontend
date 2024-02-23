@@ -28,14 +28,14 @@
             
             <form   #formData=ngForm  (ngSubmit)="readFormData(formData)" >
                 <div >
-                  <label for="exampleInputEmail1">UserName</label>
-                  <input type="username"  name="username"  required  #username="ngModel"  ngModel       >
+                  <label for="exampleInputEmail1">Username</label>
+                  <input type="username"  name="username"  required  #username="ngModel" placeholder="Enter your username" ngModel       >
                   <!-- <small id="userHelp" class="form-text text-muted">We'll never share your user details with anyone else.</small><br> -->
-                  <span style="color:red"  *ngIf="username.touched && username.invalid" >UserName is required</span>
+                  <span style="color:red"  *ngIf="username.touched && username.invalid" >Username is required</span>
                 </div>
                 <div >
                   <label for="exampleInputPassword1">Password</label>
-                  <input type="password"  name="password"  required  #pwd="ngModel"   ngModel>
+                  <input type="password"  name="password"  required  #pwd="ngModel" placeholder="Enter your password"  ngModel>
                   <span style="color:red"   *ngIf="pwd.touched && pwd.invalid" >Password is mandartory</span>
                 </div>
                
