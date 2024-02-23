@@ -39,6 +39,11 @@ export class AddMenuItemsComponent {
     return this.registerMenuItemForm.controls;
   }
 
+<<<<<<< HEAD
+  // onFileSelected(event) {
+  //   this.selectedFile = event.target.files[0] as File;
+  // }
+=======
   
   onFileSelected(event: Event) {
     const inputElement = event.target as HTMLInputElement;
@@ -49,6 +54,7 @@ export class AddMenuItemsComponent {
       });
     }
   }
+>>>>>>> d8ed546c9ca9d3a4f0f9a0efdb69c22902582e96
 
   insertMenuItem() {
     this.submitted = true;
