@@ -37,9 +37,9 @@ export class AddMenuItemsComponent {
     return this.registerMenuItemForm.controls;
   }
 
-  onFileSelected(event: { target: { files: File[]; }; }) {
-    this.selectedFile = event.target.files[0] as File;
-  }
+  // onFileSelected(event) {
+  //   this.selectedFile = event.target.files[0] as File;
+  // }
 
 
   insertMenuItem(data: MenuItem) {
