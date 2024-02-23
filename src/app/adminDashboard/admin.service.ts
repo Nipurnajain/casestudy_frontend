@@ -71,7 +71,7 @@ export class AdminService {
   }
 
   deleteManager(mid:number):Observable<string>{
-    return this.http.delete<string>("http://localhost:8080/api/v1/admin/removeManager"+`/${mid}`,{ headers: this.getHeaders() });
+    return this.http.delete<string>("http://localhost:8080/api/v1/admin/removeManager"+`/${mid}`,{ headers: this.getHeaders(), responseType: 'text' as 'json' });
   }
 
   getCustomers():Observable<Customer[]>{

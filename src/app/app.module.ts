@@ -22,6 +22,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
+
 @NgModule({
   declarations: [
     AppComponent,

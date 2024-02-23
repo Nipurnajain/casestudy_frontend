@@ -46,8 +46,6 @@ constructor(private jwtServiceAdmin: JwtClientAdminService,private router: Route
 
   }
 
-
-
   public accessApi(token: any): void {
     const decodedToken = this.jwtServiceAdmin.authorizationTest(token);
   

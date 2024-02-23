@@ -1,6 +1,6 @@
 
 <div class="d-flex justify-content-between align-items-center">
-    <h3>Managers </h3>
+    <h2><strong>Managers</strong>  </h2>
     <button type="button" class="btn btn-primary" [routerLink]="['/admin-dashboard/register-manager']">Add</button>
   </div>
 
@@ -23,7 +23,7 @@
                 <td>{{ manager.userName }}</td>
                 <td>
                     <button type="button" (click)="removeManager(manager.adminId)"
-                        class="btn btn-danger">Remove</button>
+                        class="btn btn-danger"><i class="fa fa-trash"></i></button>
                 </td>
                
             </tr>

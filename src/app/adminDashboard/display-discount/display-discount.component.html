@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between align-items-center">
-    <h3>Discounts List</h3>
+    <h2><strong> Discounts List</strong> </h2>
     <button type="button" class="btn btn-primary" [routerLink]="['/admin-dashboard/add-discounts']">Add</button>
 </div>
 
@@ -22,7 +22,7 @@
                 <td>{{ discount.endDate }}</td>
                 <td>
                     <button type="button" (click)="removeDiscount(discount.discountId)"
-                        class="btn btn-danger">Remove</button>
+                        class="btn btn-danger"><i class="fa fa-trash"></i></button>
                 </td>
 
             </tr>

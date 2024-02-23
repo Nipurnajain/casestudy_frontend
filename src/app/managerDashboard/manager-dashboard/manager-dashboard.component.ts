@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { JwtClientAdminService } from 'src/app/jwt-client-admin.service';
 
 @Component({
   selector: 'app-manager-dashboard',
@@ -6,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./manager-dashboard.component.css']
 })
 export class ManagerDashboardComponent {
+
+  constructor(private router: Router,private jwtAdminService:JwtClientAdminService) {}
+
+  logout(): void {
+
+    this.jwtAdminService.clearStoredToken();
+    // Redirect to the login page
+    this.router.navigate(['/admin-login']);
+  }
 
 }

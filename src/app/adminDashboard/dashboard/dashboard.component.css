@@ -14,22 +14,37 @@ body {
 }
 
 .sideBar {
-    position: relative;
+    position: relative; 
     z-index: 20;
     height: 100vh;
     width: 25%;
-    color: white;
+    color: white;   
 
     background-color: #000F1A;
     transition: 0.3s ease-in-out;
     justify-content: center;
 
+  
 }
+
+
+
+
 
 /* .sideBar.widthChange {
     width: 8%;
     text-align: center;
 } */
+
+.sideBar a {
+    text-decoration: none;
+    color: white;
+}
+
+
+.sideBar a:hover {
+    color: white; /* Set the hover color if needed */
+}
 
 .sideBar img {
     position: absolute;
@@ -47,7 +62,7 @@ body {
 
 .sideBar li {
     padding: 20px 20px 20px 10px;
-    transition: 0.3s ease-in-out;
+    /* transition: 0.3s ease-in-out; */
 }
 
 li label.hideMenuList {
@@ -60,13 +75,13 @@ li label.hideMenuList {
 
 .sideBar li:hover {
 
-    background-color: #5299cc;
+    background-color: #7ba5c3;
 }
 
 .selected {
     /* background-color: #d26ed6; */
 
-    background-color: #0092ff;
+    background-color: #fcfeff;
 }
 
 
@@ -86,6 +101,7 @@ li label.hideMenuList {
 .content {
     width: 100%;
     height: 100vh;
+
 }
 
 header {
@@ -118,6 +134,7 @@ header h1 {
     padding: 20px;
     height: 100vh;
     overflow-y: auto;
+
 }
 
 .sideBar.showMenu {

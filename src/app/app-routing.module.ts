@@ -14,6 +14,8 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AuthGuardService } from './auth-guard.service';
 import { ManagerDashboardComponent } from './managerDashboard/manager-dashboard/manager-dashboard.component';
 import { AddMenuItemsComponent } from './managerDashboard/add-menu-items/add-menu-items.component';
+import { DisplayMenuItemsComponent } from './managerDashboard/display-menu-items/display-menu-items.component';
+import { DisplayOrdersComponent } from './managerDashboard/display-orders/display-orders.component';
 
 const routes: Routes = [
   {
@@ -38,6 +40,12 @@ const routes: Routes = [
     data: { expectedRole: 'manager' },
     children: [
       { path: 'add-menu', component: AddMenuItemsComponent },
+      {path:'display-menuitems',component:DisplayMenuItemsComponent},
+      {path:'display-orders',component:DisplayOrdersComponent},
+      { path: 'add-discounts', component: AddDiscountComponent },
+      { path: 'display-discounts', component: DisplayDiscountComponent },
+      // { path: 'add-discounts', component: AddDiscountComponent },
+
      
     ],
   },
