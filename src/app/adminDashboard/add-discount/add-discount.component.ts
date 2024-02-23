@@ -18,30 +18,34 @@ export class AddDiscountComponent implements OnInit {
   ngOnInit() {
     this.registerDiscountForm = this.formBuilder.group({
       discountPercentage: ['', [Validators.required]],
-      startDate: ['', [Validators.required ]],
+      startDate: ['', [Validators.required,this.startDateValidator]],
       endDate: ['', [Validators.required]]
+    }, {
+      validator: this.dateValidator
     });
   }
+  
+  dateValidator(group: FormGroup) {
+    const startDate = group.get('startDate')?.value;
+    const endDate = group.get('endDate')?.value;
 
-  // private startDateValidator(control: AbstractControl) {
-  //   const startDate = new Date(control.value);
-  //   const currentDate = new Date();
-  //   if (startDate <= currentDate) {
-  //     return { 'startDateInvalid': true };
-  //   }
-  //   return null;
-  // }
+    if (startDate && endDate && startDate > endDate) {
+      return { endDateBeforeStartDate: true };
+    }
 
-  // private endDateValidator(control: AbstractControl) {
-  //   const startDateControl = this.registerDiscountForm.get('startDate');
-  //   if (!startDateControl || !startDateControl.value) return null; // Check if startDateControl or its value is undefined
-  //   const startDate = new Date(startDateControl.value);
-  //   const endDate = new Date(control.value);
-  //   if (endDate <= startDate) {
-  //     return { 'endDateInvalid': true };
-  //   }
-  //   return null;
-  // }
+    return null;
+  }
+
+  startDateValidator(control: AbstractControl) {
+    const startDate = new Date(control.value);
+    const currentDate = new Date();
+
+    if (startDate < currentDate) {
+      return { startDateBeforeCurrentDate: true };
+    }
+
+    return null;
+  }
 
   get f() {
     return this.registerDiscountForm.controls;
