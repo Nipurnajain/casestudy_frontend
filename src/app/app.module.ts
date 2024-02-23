@@ -18,7 +18,9 @@ import { ManagerDashboardComponent } from './managerDashboard/manager-dashboard/
 import { DisplayOrdersComponent } from './managerDashboard/display-orders/display-orders.component';
 import { DisplayMenuItemsComponent } from './managerDashboard/display-menu-items/display-menu-items.component';
 import { AddMenuItemsComponent } from './managerDashboard/add-menu-items/add-menu-items.component';
-import { AdminLoginComponent } from './admin-login/admin-login.component'
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { AdminLoginComponent } from './admin-login/admin-login.component'
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NoopAnimationsModule,
+    MatPaginatorModule
     
   ],
   providers: [],

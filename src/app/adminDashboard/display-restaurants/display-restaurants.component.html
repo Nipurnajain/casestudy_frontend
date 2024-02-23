@@ -17,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let restaurant of restaurantList">
+            <tr *ngFor="let restaurant of pagedRestaurantList">
                 <td>{{ restaurant.restaurantId }}</td>
                 <td>{{ restaurant.name }}</td>
                 <td>{{ restaurant.location }}</td>
@@ -31,4 +31,8 @@
             </tr>
         </tbody>
     </table>
+    <!-- Pagination controls -->
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="pageSize" [length]="totalItems"
+        (page)="onPageChange($event)">
+    </mat-paginator>
 </div>

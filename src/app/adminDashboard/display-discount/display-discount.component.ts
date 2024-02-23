@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 import { Discount } from '../Discount';
 import { AdminService } from '../admin.service';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 
 @Component({
@@ -12,30 +13,42 @@ import { AdminService } from '../admin.service';
 export class DisplayDiscountComponent {
 
 
-  discountList:Discount[] = [];
+  discountList: Discount[] = [];
+  pagedDiscountList: Discount[] = [];
+  pageSize: number = 5; // Number of items per page
+  currentPage: number = 0; // Current page index
+  totalItems: number = 0; // Total number of items
 
-  constructor(private adminService: AdminService) { 
-    
-  }
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  constructor(private adminService: AdminService) {}
 
   ngOnInit(): void {
     this.getAllDiscounts();
   }
 
-  getAllDiscounts(){
-    this.adminService.getDiscounts().subscribe( 
-                                    (list)=>{ this. discountList = list;  
-                                      console.log(list)}
-                                    
-                                      );
-
+  getAllDiscounts() {
+    this.adminService.getDiscounts().subscribe((list) => {
+      this.discountList = list;
+      this.totalItems = this.discountList.length;
+      this.onPageChange({
+        pageIndex: this.currentPage, pageSize: this.pageSize,
+        length: 0
+      }); // Trigger pagination
+    });
   }
 
-  removeDiscount(discountid:number){
-    this.adminService.removeDiscount(discountid).subscribe((msg)=>{ console.log("Deleted "+msg);});
-    this.getAllDiscounts();
-
+  onPageChange(event: PageEvent) {
+    const startIndex = event.pageIndex * event.pageSize;
+    const endIndex = startIndex + event.pageSize;
+    this.pagedDiscountList = this.discountList.slice(startIndex, endIndex);
   }
 
+  removeDiscount(discountId: number) {
+    this.adminService.removeDiscount(discountId).subscribe((msg) => {
+      console.log("Deleted " + msg);
+      this.getAllDiscounts(); // Reload data after deletion
+    });
+  }
 
 }

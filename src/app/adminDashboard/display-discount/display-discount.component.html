@@ -15,7 +15,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let discount of discountList">
+            <tr *ngFor="let discount of pagedDiscountList">
                 <td>{{discount.discountId }}</td>
                 <td>{{ discount.discountPercentage }}</td>
                 <td>{{ discount.startDate }}</td>
@@ -28,4 +28,8 @@
             </tr>
         </tbody>
     </table>
+    <!-- Pagination controls -->
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="pageSize" [length]="totalItems"
+        (page)="onPageChange($event)">
+    </mat-paginator>
 </div>

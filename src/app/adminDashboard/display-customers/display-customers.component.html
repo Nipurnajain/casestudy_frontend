@@ -22,7 +22,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let customer of customerList">
+            <tr *ngFor="let customer of pagedCustomerList">
                 <td>{{ customer.custId}}</td>
                 <td>{{ customer.custName }}</td>
                 <td>{{ customer.email }}</td>
@@ -36,5 +36,8 @@
             </tr>
         </tbody>
     </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="pageSize" [length]="totalItems"
+        (page)="onPageChange($event)">
+    </mat-paginator>
 </div>
 
