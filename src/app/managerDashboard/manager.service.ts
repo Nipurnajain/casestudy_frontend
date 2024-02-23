@@ -16,7 +16,7 @@ export class ManagerService {
   private getHeaders(): HttpHeaders {
     const token = localStorage.getItem('jwtToken');
     return new HttpHeaders({
-      'Content-Type': 'application/json',
+      // 'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
   }
@@ -25,11 +25,17 @@ export class ManagerService {
 
 
 
-  addMenuItem(body: MenuItem): Observable<MenuItem> {
+  addMenuItem(menuDTO: object, imageFile: File): Observable<MenuItem> {
+    const formData = new FormData();
+    formData.append('menuDTOJson', JSON.stringify(menuDTO));
+    formData.append('imageFile', imageFile);
 
-    console.log(body);
-
-    return this.http.post<MenuItem>("http://localhost:8080/api/v1/restaurant/addMenu/+ `/${restaurantId}`", body,{ headers: this.getHeaders(), responseType: 'text' as 'json' });
-
+    return this.http.post<MenuItem>("http://localhost:8080/api/v1/restaurant/addMenu", formData, {
+      headers: this.getHeaders(),
+      // Note: responseType is not necessary unless you have specific requirements
+      // responseType: 'text' as 'json',
+    });
   }
+
+  
 }
