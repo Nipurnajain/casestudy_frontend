@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Customer } from '../adminDashboard/Customer';
+import { CustomerService } from '../customer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer-registeration',
@@ -7,6 +9,10 @@ import { Customer } from '../adminDashboard/Customer';
   styleUrls: ['./customer-registeration.component.css']
 })
 export class CustomerRegisterationComponent {
+
+
+  constructor (private customerService : CustomerService, private router: Router){}
+
   customer: Customer = {
     custId:0,
     custName: '',
@@ -23,12 +29,19 @@ export class CustomerRegisterationComponent {
         pincode: 0
     }
 };
+
 registerCustomer(formData:any) {
   if (formData.invalid) {
-      // Form is invalid, do something (e.g., display error message)
       return;
   }
+
+  this.customerService.addCustomer(this.customer).subscribe(
+    (response) => {
+      console.log('Customer added successfully:', response);
+      this.router.navigate(['/customer-login']);      
+    }
+  );
+
   
-  // Form is valid, proceed with registration logic (e.g., call service to register customer)
 }
 }

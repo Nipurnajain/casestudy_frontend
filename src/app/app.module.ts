@@ -23,6 +23,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CustomerLoginComponent } from './customer-login/customer-login.component';
 import { CustomerRegisterationComponent } from './customer-registeration/customer-registeration.component';
+import { CustomerDashboardComponent } from './customer-dashboard/customer-dashboard.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { CustomerRegisterationComponent } from './customer-registeration/custome
     AddMenuItemsComponent,
     AdminLoginComponent,
     CustomerLoginComponent,
-    CustomerRegisterationComponent
+    CustomerRegisterationComponent,
+    CustomerDashboardComponent
   ],
   imports: [
     BrowserModule,
