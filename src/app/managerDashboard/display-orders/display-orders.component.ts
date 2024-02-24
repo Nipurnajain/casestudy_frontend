@@ -11,7 +11,7 @@ import { Order } from '../Order';
 })
 export class DisplayOrdersComponent {
 
-  OrderList: Order[] = [];
+  OrderList: any[] = [];            //ordersWithInfo: any[] = [];
   pagedOrderList: Order[] = [];
   pageSize: number = 5; // Number of items per page
   currentPage: number = 0; // Current page index
@@ -33,7 +33,9 @@ export class DisplayOrdersComponent {
       this.onPageChange({
         pageIndex: this.currentPage, pageSize: this.pageSize,
         length: 0
+        
       }); // Trigger pagination
+      console.log(this.OrderList);
     });
   }
 

@@ -3,7 +3,8 @@ export interface Order{
     orderDate:string;
     status:string;
     totalCost:number;
-    customerId:number;
+    customerId:string;
+    customerName :string ;
     restaurantId:number;
     restaurantName:string;
 }

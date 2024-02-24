@@ -45,7 +45,7 @@ export class ManagerService {
   }
 
   deleteMenuItem(menuid: number): Observable<string> {
-    return this.http.delete<string>("http://localhost:8080/api/v1/restaurant/deleteMenu" + `/${menuid}`,{ headers: this.getHeaders(), responseType: 'text' as 'json' });
+    return this.http.delete<string>("http://localhost:8080/api/v1/menuItem/deleteMenu" + `/${menuid}`,{ headers: this.getHeaders(), responseType: 'text' as 'json' });
   }
 
   getOrders(): Observable<Order[]> {

@@ -12,20 +12,20 @@
                 <th>Order Date</th>
                 <th>Status</th>
                 <th>Total cost</th>
-                <th>Customer Id</th>
-                <th>Restaurant Id</th>
-                <th>Restaurant name</th>
+                <th>Customer Name</th>
+                
+                <th>Restaurant Name</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let order of OrderList">
-                <td>{{order.orderId}}</td>
-                <td>{{ order.orderDate }}</td>
-                <td>{{ order.status}}</td>
-                <td>{{ order.totalCost }}</td>
-                <td>{{ order.customerId }}</td>
-                <td>{{ order.restaurantId }}</td>
-                <td>{{ order.restaurantName }}</td>
+                <td>{{order[0]}}</td>
+                <td>{{ order[1] }}</td>
+                <td>{{ order[2]}}</td>
+                <td>{{ order[3]}}</td>
+                
+                <td>{{ order[6] }}</td>
+                <td>{{ order[7] }}</td>
                 
 
             </tr>

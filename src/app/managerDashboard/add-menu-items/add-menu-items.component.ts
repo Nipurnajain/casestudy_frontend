@@ -94,10 +94,8 @@ export class AddMenuItemsComponent {
       (menu) => {
         console.log('Added menu item is: ', menu);
         this.router.navigate(['/manager-dashboard/display-menuitems']);
-      },
-      (error) => {
-        console.error('Error adding menu item:', error);
       }
+      
     );
   }
 
