@@ -1,12 +1,9 @@
-<<<<<<< HEAD
-import { Component } from '@angular/core';
-=======
+
 import { Component, ViewChild } from '@angular/core';
 import { MenuItem } from '../MenuItem';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { AdminService } from 'src/app/adminDashboard/admin.service';
 import { ManagerService } from '../manager.service';
->>>>>>> 4287ac6cd73aef0e1acd01540451c9b80797ba7c
 
 @Component({
   selector: 'app-display-menu-items',
@@ -14,9 +11,7 @@ import { ManagerService } from '../manager.service';
   styleUrls: ['./display-menu-items.component.css']
 })
 export class DisplayMenuItemsComponent {
-<<<<<<< HEAD
 
-=======
   MenuItemList: MenuItem[] = [];
   pagedMenuItemList: MenuItem[] = [];
   pageSize: number = 5; // Number of items per page
@@ -54,5 +49,4 @@ export class DisplayMenuItemsComponent {
       this.getAllMenuItems(); // Reload data after deletion
     });
   }
->>>>>>> 4287ac6cd73aef0e1acd01540451c9b80797ba7c
 }

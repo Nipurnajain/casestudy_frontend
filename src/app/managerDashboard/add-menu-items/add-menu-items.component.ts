@@ -4,10 +4,8 @@ import { ManagerService } from '../manager.service';
 import { Router } from '@angular/router';
 import { Restaurant } from 'src/app/adminDashboard/Restaurant';
 import { MenuItem } from '../MenuItem';
-<<<<<<< HEAD
-=======
+
 import { AdminService } from 'src/app/adminDashboard/admin.service';
->>>>>>> 4287ac6cd73aef0e1acd01540451c9b80797ba7c
 
 @Component({
   selector: 'app-add-menu-items',
@@ -18,12 +16,9 @@ export class AddMenuItemsComponent {
   registerMenuItemForm!: FormGroup;
   selectedFile!: File;
   submitted = false;
-<<<<<<< HEAD
-  constructor(private formBuilder: FormBuilder, private managerService: ManagerService, private router: Router) {
-=======
+
   restaurants: Restaurant[] = []; // Array to hold the list of restaurants
   constructor(private formBuilder: FormBuilder, private managerService: ManagerService, private router: Router,private adminService: AdminService) {
->>>>>>> 4287ac6cd73aef0e1acd01540451c9b80797ba7c
 
   }
 
@@ -42,9 +37,9 @@ export class AddMenuItemsComponent {
       // Add a new form control for the file
       image: [null, [Validators.required]],
     });
-<<<<<<< HEAD
-  }
-=======
+
+  
+
 
     this.adminService.getRestaurants().subscribe(
       (restaurants: Restaurant[]) => {
@@ -58,7 +53,6 @@ export class AddMenuItemsComponent {
   
 
   
->>>>>>> 4287ac6cd73aef0e1acd01540451c9b80797ba7c
 
   get f() {
     return this.registerMenuItemForm.controls;
