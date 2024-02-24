@@ -44,7 +44,8 @@ const routes: Routes = [
       {path:'display-orders',component:DisplayOrdersComponent},
       { path: 'add-discounts', component: AddDiscountComponent },
       { path: 'display-discounts', component: DisplayDiscountComponent },
-      // { path: 'add-discounts', component: AddDiscountComponent },
+
+       { path: 'add-discounts', component: AddDiscountComponent },
 
      
     ],

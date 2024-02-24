@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { Restaurant } from '../adminDashboard/Restaurant';
 import { MenuItem } from './MenuItem';
 
+import { Order } from './Order';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -37,5 +39,16 @@ export class ManagerService {
     });
   }
 
-  
+
+  getMenuItems(): Observable<MenuItem[]> {
+    return this.http.get<MenuItem[]>("http://localhost:8080/api/v1/admin/getAllMenus",{ headers: this.getHeaders() });
+  }
+
+  deleteMenuItem(menuid: number): Observable<string> {
+    return this.http.delete<string>("http://localhost:8080/api/v1/restaurant/deleteMenu" + `/${menuid}`,{ headers: this.getHeaders(), responseType: 'text' as 'json' });
+  }
+
+  getOrders(): Observable<Order[]> {
+    return this.http.get<Order[]>("http://localhost:8080/api/v1/admin/getAllOrders",{ headers: this.getHeaders() });
+  }
 }
