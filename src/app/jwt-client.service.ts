@@ -52,7 +52,10 @@ export class JwtClientService {
       return null;
     }
   }
-
+  storeToken(token: string): void {
+    localStorage.setItem('jwtToken', token);
+  }
+  
   getStoredToken(): string | null {
     return localStorage.getItem('jwtToken');
   }
@@ -60,4 +63,5 @@ export class JwtClientService {
   clearStoredToken(): void {
     localStorage.removeItem('jwtToken');
   }
+
 }

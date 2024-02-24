@@ -16,6 +16,8 @@ import { ManagerDashboardComponent } from './managerDashboard/manager-dashboard/
 import { AddMenuItemsComponent } from './managerDashboard/add-menu-items/add-menu-items.component';
 import { DisplayMenuItemsComponent } from './managerDashboard/display-menu-items/display-menu-items.component';
 import { DisplayOrdersComponent } from './managerDashboard/display-orders/display-orders.component';
+import { CustomerLoginComponent } from './customer-login/customer-login.component';
+import { CustomerRegisterationComponent } from './customer-registeration/customer-registeration.component';
 
 const routes: Routes = [
   {
@@ -50,11 +52,12 @@ const routes: Routes = [
      
     ],
   },
-  { path: '', pathMatch: 'full', redirectTo: 'admin-login' }, // Redirect to admin-login by default
+  { path: '', pathMatch: 'full', redirectTo: 'landing-page' }, // Redirect to admin-login by default
 
   {path:'admin-login',component:AdminLoginComponent},
-  {path:'login',component:LandingComponent},
-  
+  {path:'landing-page',component:LandingComponent},
+  {path:'customer-login',component:CustomerLoginComponent},
+  {path:'customer-register',component:CustomerRegisterationComponent},
   
 ];
 

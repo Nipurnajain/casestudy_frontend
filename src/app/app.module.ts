@@ -21,6 +21,8 @@ import { AddMenuItemsComponent } from './managerDashboard/add-menu-items/add-men
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { CustomerLoginComponent } from './customer-login/customer-login.component';
+import { CustomerRegisterationComponent } from './customer-registeration/customer-registeration.component';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     DisplayOrdersComponent,
     DisplayMenuItemsComponent,
     AddMenuItemsComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    CustomerLoginComponent,
+    CustomerRegisterationComponent
   ],
   imports: [
     BrowserModule,
