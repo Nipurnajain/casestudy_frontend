@@ -24,6 +24,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { CustomerLoginComponent } from './customer-login/customer-login.component';
 import { CustomerRegisterationComponent } from './customer-registeration/customer-registeration.component';
 import { CustomerDashboardComponent } from './customer-dashboard/customer-dashboard.component';
+import { DisplayMenuItemsListComponent } from './display-menu-items-list/display-menu-items-list.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { CustomerDashboardComponent } from './customer-dashboard/customer-dashbo
     AdminLoginComponent,
     CustomerLoginComponent,
     CustomerRegisterationComponent,
-    CustomerDashboardComponent
+    CustomerDashboardComponent,
+    DisplayMenuItemsListComponent
   ],
   imports: [
     BrowserModule,

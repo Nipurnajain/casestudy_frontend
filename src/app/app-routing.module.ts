@@ -19,6 +19,7 @@ import { DisplayOrdersComponent } from './managerDashboard/display-orders/displa
 import { CustomerLoginComponent } from './customer-login/customer-login.component';
 import { CustomerRegisterationComponent } from './customer-registeration/customer-registeration.component';
 import { CustomerDashboardComponent } from './customer-dashboard/customer-dashboard.component';
+import { DisplayMenuItemsListComponent } from './display-menu-items-list/display-menu-items-list.component';
 
 const routes: Routes = [
   {
@@ -59,7 +60,8 @@ const routes: Routes = [
   {path:'landing-page',component:LandingComponent},
   {path:'customer-login',component:CustomerLoginComponent},
   {path:'customer-register',component:CustomerRegisterationComponent},
-  {path:'customer-dashboard',component:CustomerDashboardComponent}
+  {path:'customer-dashboard',component:CustomerDashboardComponent},
+  { path: 'menu-items/:restaurantId', component: DisplayMenuItemsListComponent }
   
 ];
 

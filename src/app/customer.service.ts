@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Customer } from './adminDashboard/Customer';
 import { Observable } from 'rxjs';
 import { Restaurant } from './adminDashboard/Restaurant';
+import { MenuItem } from './managerDashboard/MenuItem';
 
 @Injectable({
   providedIn: 'root'
@@ -33,4 +34,12 @@ export class CustomerService {
     
 }
 
+getMenuItemsByRestaurantId(restaurantId:number):Observable<any[]>{
+  return this.http.get<any[]>("http://localhost:8080/api/v1/menuItem/getByRestaurant"+`/${restaurantId}`,{ headers: this.getHeaders() });
+}
+
+searchMenuByKeyword(keyword:string):Observable<MenuItem[]>{
+  return this.http.get<MenuItem[]>("http://localhost:8080/api/v1/menuItem/getByKeyword"+`/${keyword}`,{ headers: this.getHeaders() });
+  
+}
 }

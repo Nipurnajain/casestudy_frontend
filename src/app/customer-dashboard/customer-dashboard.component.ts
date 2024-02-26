@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Restaurant } from '../adminDashboard/Restaurant';
 import { AdminService } from '../adminDashboard/admin.service';
 import { CustomerService } from '../customer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer-dashboard',
@@ -13,7 +14,7 @@ export class CustomerDashboardComponent {
   searchLocation: string = '';
   
 
-  constructor(private adminService: AdminService,private customerService:CustomerService) { }
+  constructor(private adminService: AdminService,private customerService:CustomerService,private router:Router) { }
 
   ngOnInit(): void {
     this.getAllRestaurants();
@@ -22,7 +23,7 @@ export class CustomerDashboardComponent {
   getAllRestaurants() {
     this.adminService.getRestaurants().subscribe((list) => {
       this.restaurantList = list;
-      
+      console.log(list);
       }); // Trigger pagination
     }
 
@@ -31,11 +32,18 @@ export class CustomerDashboardComponent {
       this.customerService.getRestaurantByLocation(location).subscribe(
         (response) => {
           this.restaurantList = response; // Update the restaurantList with search results by location
+          console.log(response);
         },
         (error) => {
           console.error('Error fetching search results by location:', error);
         }
       );
     }
+
+    showMenuItems(restaurantId: number) {
+      // Navigate to the MenuItemsComponent with the restaurantId as a parameter
+      this.router.navigate(['/menu-items', restaurantId]);
+    }
+  
   }
 

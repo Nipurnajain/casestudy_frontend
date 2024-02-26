@@ -19,4 +19,5 @@ export interface MenuItem {
     cookingTime: number;
 
     restaurantId: number;
+    image:string;
 }
