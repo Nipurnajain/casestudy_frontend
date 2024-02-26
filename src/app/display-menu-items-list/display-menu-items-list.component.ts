@@ -39,8 +39,13 @@ export class DisplayMenuItemsListComponent {
 
   getMenuByKeyword(){
     const keyword = this.searchMenu;
-    this.customerService.searchMenuByKeyword(keyword).subscribe((list) => {
+    this.customerService.searchMenuByKeyword(this.restaurantId,keyword)
+    .subscribe((list) => {
       this.menuItems= list;
+
+      this.menuItems.forEach(item => {
+        item.decodedImage = 'data:image/jpeg;base64,' + item.image; // Assuming default format is JPEG
+      });
       console.log(list);
       });
   }

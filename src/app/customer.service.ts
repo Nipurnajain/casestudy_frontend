@@ -38,8 +38,8 @@ getMenuItemsByRestaurantId(restaurantId:number):Observable<any[]>{
   return this.http.get<any[]>("http://localhost:8080/api/v1/menuItem/getByRestaurant"+`/${restaurantId}`,{ headers: this.getHeaders() });
 }
 
-searchMenuByKeyword(keyword:string):Observable<MenuItem[]>{
-  return this.http.get<MenuItem[]>("http://localhost:8080/api/v1/menuItem/getByKeyword"+`/${keyword}`,{ headers: this.getHeaders() });
+searchMenuByKeyword( restaurantId: number,keyword:string):Observable<MenuItem[]>{
+  return this.http.get<MenuItem[]>("http://localhost:8080/api/v1/menuItem/getByKeyword"+`/${restaurantId}`+`/${keyword}`,{ headers: this.getHeaders() });
   
 }
 }
