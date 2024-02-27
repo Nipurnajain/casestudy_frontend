@@ -59,7 +59,7 @@ export class CustomerDashboardComponent {
       
       if (firstMenuItem && firstMenuItem.image) {
         // Assuming firstMenuItem.image is a base64-encoded string
-        return 'data:image/jpeg;base64,' + firstMenuItem.image; // Adjust the MIME type accordingly
+        return 'data:image/jpeg;base64,' + firstMenuItem.image; 
       } else {
         return 'default-image-url.jpg';
       }
