@@ -25,6 +25,9 @@ import { CustomerLoginComponent } from './customer-login/customer-login.componen
 import { CustomerRegisterationComponent } from './customer-registeration/customer-registeration.component';
 import { CustomerDashboardComponent } from './customer-dashboard/customer-dashboard.component';
 import { DisplayMenuItemsListComponent } from './display-menu-items-list/display-menu-items-list.component';
+import { AddDiscountByManagerComponent } from './managerDashboard/add-discount-by-manager/add-discount-by-manager.component';
+import { RouterModule } from '@angular/router';
+import { DisplayDiscountManagerComponent } from './managerDashboard/display-discount-manager/display-discount-manager.component';
 
 
 @NgModule({
@@ -47,7 +50,9 @@ import { DisplayMenuItemsListComponent } from './display-menu-items-list/display
     CustomerLoginComponent,
     CustomerRegisterationComponent,
     CustomerDashboardComponent,
-    DisplayMenuItemsListComponent
+    DisplayMenuItemsListComponent,
+    AddDiscountByManagerComponent,
+    DisplayDiscountManagerComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +61,8 @@ import { DisplayMenuItemsListComponent } from './display-menu-items-list/display
     ReactiveFormsModule,
     HttpClientModule,
     NoopAnimationsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    RouterModule
     
   ],
   providers: [],

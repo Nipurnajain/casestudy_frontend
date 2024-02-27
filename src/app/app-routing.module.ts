@@ -20,6 +20,8 @@ import { CustomerLoginComponent } from './customer-login/customer-login.componen
 import { CustomerRegisterationComponent } from './customer-registeration/customer-registeration.component';
 import { CustomerDashboardComponent } from './customer-dashboard/customer-dashboard.component';
 import { DisplayMenuItemsListComponent } from './display-menu-items-list/display-menu-items-list.component';
+import { AddDiscountByManagerComponent } from './managerDashboard/add-discount-by-manager/add-discount-by-manager.component';
+import { DisplayDiscountManagerComponent } from './managerDashboard/display-discount-manager/display-discount-manager.component';
 
 const routes: Routes = [
   {
@@ -47,9 +49,9 @@ const routes: Routes = [
       {path:'display-menuitems',component:DisplayMenuItemsComponent},
       {path:'display-orders',component:DisplayOrdersComponent},
       { path: 'add-discounts', component: AddDiscountComponent },
-      { path: 'display-discounts', component: DisplayDiscountComponent },
+      { path: 'display-discount', component: DisplayDiscountManagerComponent },
 
-       { path: 'add-discounts', component: AddDiscountComponent },
+       { path: 'add-discount-bymanager', component: AddDiscountByManagerComponent },
 
      
     ],
