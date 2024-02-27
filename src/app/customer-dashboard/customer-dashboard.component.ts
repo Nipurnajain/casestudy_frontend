@@ -3,6 +3,7 @@ import { Restaurant } from '../adminDashboard/Restaurant';
 import { AdminService } from '../adminDashboard/admin.service';
 import { CustomerService } from '../customer.service';
 import { Router } from '@angular/router';
+import { JwtClientService } from '../jwt-client.service';
 
 @Component({
   selector: 'app-customer-dashboard',
@@ -14,7 +15,8 @@ export class CustomerDashboardComponent {
   searchLocation: string = '';
   
 
-  constructor(private adminService: AdminService,private customerService:CustomerService,private router:Router) { }
+  constructor(private adminService: AdminService,private customerService:CustomerService,private router:Router
+    ,private jwtClientService :JwtClientService) { }
 
   ngOnInit(): void {
     this.getAllRestaurants();
@@ -44,6 +46,14 @@ export class CustomerDashboardComponent {
       // Navigate to the MenuItemsComponent with the restaurantId as a parameter
       this.router.navigate(['/menu-items', restaurantId]);
     }
+
+    logout(): void {
+
+      this.jwtClientService.clearStoredToken();
+      // Redirect to the login page
+      this.router.navigate(['/landing-page']);
+    }
+    
   
   }
 

@@ -54,7 +54,7 @@ const routes: Routes = [
      
     ],
   },
-  { path: '', pathMatch: 'full', redirectTo: 'landing-page' }, // Redirect to admin-login by default
+  { path: '', pathMatch: 'full', redirectTo: 'landing-page' }, // Redirect to landing-page by default
 
   {path:'admin-login',component:AdminLoginComponent},
   {path:'landing-page',component:LandingComponent},

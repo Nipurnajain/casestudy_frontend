@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from '../customer.service';
+import { JwtClientService } from '../jwt-client.service';
 
 @Component({
   selector: 'app-display-menu-items-list',
@@ -12,7 +13,8 @@ export class DisplayMenuItemsListComponent {
   menuItems: any[] = [];
   searchMenu: string = '';
 
-  constructor(private route: ActivatedRoute, private customerService: CustomerService) { }
+  constructor(private route: ActivatedRoute, private customerService: CustomerService,private jwtClientService :JwtClientService
+    ,private router:Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -48,5 +50,12 @@ export class DisplayMenuItemsListComponent {
       });
       console.log(list);
       });
+  }
+
+  logout(): void {
+
+    this.jwtClientService.clearStoredToken();
+    // Redirect to the login page
+    this.router.navigate(['/landing-page']);
   }
 }
