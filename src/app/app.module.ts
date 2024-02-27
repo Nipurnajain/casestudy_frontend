@@ -28,6 +28,7 @@ import { DisplayMenuItemsListComponent } from './display-menu-items-list/display
 import { AddDiscountByManagerComponent } from './managerDashboard/add-discount-by-manager/add-discount-by-manager.component';
 import { RouterModule } from '@angular/router';
 import { DisplayDiscountManagerComponent } from './managerDashboard/display-discount-manager/display-discount-manager.component';
+import { UpdateMenuItemsComponent } from './managerDashboard/update-menu-items/update-menu-items.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { DisplayDiscountManagerComponent } from './managerDashboard/display-disc
     CustomerDashboardComponent,
     DisplayMenuItemsListComponent,
     AddDiscountByManagerComponent,
-    DisplayDiscountManagerComponent
+    DisplayDiscountManagerComponent,
+    UpdateMenuItemsComponent
   ],
   imports: [
     BrowserModule,

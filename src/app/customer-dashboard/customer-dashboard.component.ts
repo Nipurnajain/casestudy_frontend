@@ -53,6 +53,18 @@ export class CustomerDashboardComponent {
       // Redirect to the login page
       this.router.navigate(['/landing-page']);
     }
+
+    getFirstMenuItemImage(menuItems: any[]): string {
+      const firstMenuItem = menuItems[0];
+      
+      if (firstMenuItem && firstMenuItem.image) {
+        // Assuming firstMenuItem.image is a base64-encoded string
+        return 'data:image/jpeg;base64,' + firstMenuItem.image; // Adjust the MIME type accordingly
+      } else {
+        return 'default-image-url.jpg';
+      }
+    }
+    
     
   
   }

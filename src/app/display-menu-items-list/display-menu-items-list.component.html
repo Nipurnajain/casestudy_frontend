@@ -69,7 +69,8 @@
         </div>
       </div>
       
-    <ng-template #noItems>
-        <p>No menu items available.</p>
+      <ng-template #noItems>
+        <p *ngIf="!searchMenu">No menu items available.</p>
+        <p *ngIf="searchMenu && menuItems.length === 0">No such menu item available.</p>
     </ng-template>
 </div>
