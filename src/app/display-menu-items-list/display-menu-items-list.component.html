@@ -56,7 +56,7 @@
                     <h2 class="card-title">{{ menuItem.itemName }}</h2>
                     <p class="card-text">Description: {{ menuItem.description }}</p>
                     <p class="card-text">Category: {{ menuItem.category }}</p>
-                    <p class="card-text">Price: {{ menuItem.price }}</p>
+                    <p class="card-text">Price: {{ menuItem.price | currency:'INR'}}</p>
                     <button class="btn btn-primary">Add to Cart</button> 
                   </div>
                 </div>

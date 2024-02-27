@@ -32,6 +32,8 @@ export class JwtClientService {
 
 
     if (decodedToken) {
+      localStorage.setItem('customerId', decodedToken.customerId);
+
       return {
         role: decodedToken.role,
         customerId: decodedToken.customerId
