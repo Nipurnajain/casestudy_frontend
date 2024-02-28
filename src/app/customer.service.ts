@@ -55,8 +55,8 @@ export class CustomerService {
     return this.http.get<any[]>("http://localhost:8080/api/v1/cart/details"+ `/${customerId}`,{ headers: this.getHeaders() });
   }
 
-  removeFromCart(cartItem: any,customerId:number): Observable<any> {
+  removeFromCart(menuItemId: number, customerId:number): Observable<any> {
     
-    return this.http.post<any>("https://localhost:8080/api/v1/cart/removeFromCart" + `/${customerId}`, cartItem,{ headers: this.getHeaders() });
+    return this.http.delete<any>("http://localhost:8080/api/v1/cart/removeFromCart" + `/${customerId}`+ `/${menuItemId}`, { headers: this.getHeaders(),responseType: 'text' as 'json' });
   }
 }

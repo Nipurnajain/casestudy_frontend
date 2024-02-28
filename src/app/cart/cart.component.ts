@@ -67,20 +67,15 @@ export class CartComponent {
   }
 
   decrementQuantity(item: any): void {
-    const cartItem = {
-      menuItemId: item.menuItemId,
-      quantity: item.quantity,
-      price: item.price,
-    };
-    this.customerService.removeFromCart(cartItem, this.getCustomerIdFromLocalStorage()).subscribe(
-      (response) => {
-        console.log('Item removed from cart:', response);
-        this.refreshCartDetails(); // Reload the page after adding to cart
-      },
-      (error) => {
-        console.error('Error removing from cart:', error);
-      }
+    this.customerService.removeFromCart(item.menuItemId, this.getCustomerIdFromLocalStorage()).subscribe(
+        (response) => {
+            console.log('Item removed from cart:', response);
+            this.refreshCartDetails(); // Reload the page after removing from cart
+        },
+        (error) => {
+            console.error('Error removing from cart:', error);
+        }
     );
-  }
+}
 
 }
