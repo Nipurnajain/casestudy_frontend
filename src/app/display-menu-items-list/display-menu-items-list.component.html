@@ -50,7 +50,7 @@
     <input type="checkbox" [(ngModel)]="showOnlyVegetarian" (change)="toggleVegNonVeg()">          
     <span class="slider round"></span>
   </label>
-  <span>{{ showOnlyVegetarian ? 'Veg' : 'Non-Veg' }}</span>
+  <span>{{ showOnlyVegetarian ? 'Veg' : '' }}</span>
 
 
   <div *ngIf="menuItems.length > 0; else noItems">
