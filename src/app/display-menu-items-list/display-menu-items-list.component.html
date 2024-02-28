@@ -16,7 +16,7 @@
 
                 <li class="nav-item">
                     <!-- <i class="fa fa-shopping-cart" style="font-size: 20px; color: white;"></i> -->
-                    <a class="nav-link" href="#">Cart</a>
+                    <a class="nav-link" [routerLink]="'/cart/'+getCustomerIdFromLocalStorage()">Cart</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Offers</a>
@@ -57,7 +57,9 @@
                     <p class="card-text">Description: {{ menuItem.description }}</p>
                     <p class="card-text">Category: {{ menuItem.category }}</p>
                     <p class="card-text">Price: {{ menuItem.price | currency:'INR'}}</p>
-                    <button class="btn btn-primary">Add to Cart</button> 
+                    <button class="btn btn-primary" (click)="addToCart(menuItem.menuItemId, menuItem.price)">Add to Cart</button>
+                    <!-- <button class="btn btn-danger ml-2" (click)="removeFromCart()" [disabled]="isRemoveButtonDisabled">Remove</button> -->
+
                   </div>
                 </div>
                 <div class="col-md-4">

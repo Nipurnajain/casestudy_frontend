@@ -29,6 +29,7 @@ import { AddDiscountByManagerComponent } from './managerDashboard/add-discount-b
 import { RouterModule } from '@angular/router';
 import { DisplayDiscountManagerComponent } from './managerDashboard/display-discount-manager/display-discount-manager.component';
 import { UpdateMenuItemsComponent } from './managerDashboard/update-menu-items/update-menu-items.component';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { UpdateMenuItemsComponent } from './managerDashboard/update-menu-items/u
     DisplayMenuItemsListComponent,
     AddDiscountByManagerComponent,
     DisplayDiscountManagerComponent,
-    UpdateMenuItemsComponent
+    UpdateMenuItemsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from '../customer.service';
 import { JwtClientService } from '../jwt-client.service';
+import { MenuItem } from '../managerDashboard/MenuItem';
 
 @Component({
   selector: 'app-display-menu-items-list',
@@ -12,6 +13,8 @@ export class DisplayMenuItemsListComponent {
   restaurantId!: number;
   menuItems: any[] = [];
   searchMenu: string = '';
+  isRemoveButtonDisabled = true;
+
 
   constructor(private route: ActivatedRoute, private customerService: CustomerService,private jwtClientService :JwtClientService
     ,private router:Router) { }
@@ -58,4 +61,50 @@ export class DisplayMenuItemsListComponent {
     // Redirect to the login page
     this.router.navigate(['/landing-page']);
   }
+
+
+  addToCart(menuItemId: number, price: number) {
+    const customerId = Number(localStorage.getItem('customerId'));
+
+    if (customerId) {
+      // Set default quantity to 1
+      const defaultQuantity = 1;
+
+      // Create an object with the required properties
+      const cartItem = {
+        menuItemId,
+        quantity: defaultQuantity,
+        price
+      };
+
+      this.customerService.addToCart(cartItem, customerId).subscribe(
+        response => {
+          // Handle successful response (if needed)
+          console.log(response);
+        },
+        error => {
+          // Handle error (if needed)
+          console.error(error);
+        }
+      );
+    } else {
+      console.error('customerId is not available in localStorage');
+    }
+  }
+
+  getCustomerIdFromLocalStorage(): string | null {
+    // Retrieve customer ID from localStorage
+    const customerId = localStorage.getItem('customerId');
+
+    // Return the customer ID or a default value if not found
+    return customerId ;
+  }
+
+  // removeFromCart() {
+  //   // Your logic to remove the item from the cart
+  //   // ...
+
+  //   // Enable Add to Cart button and disable Remove button
+  //   this.isRemoveButtonDisabled = true;
+  // }
 }

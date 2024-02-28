@@ -22,6 +22,7 @@ import { CustomerDashboardComponent } from './customer-dashboard/customer-dashbo
 import { DisplayMenuItemsListComponent } from './display-menu-items-list/display-menu-items-list.component';
 import { AddDiscountByManagerComponent } from './managerDashboard/add-discount-by-manager/add-discount-by-manager.component';
 import { DisplayDiscountManagerComponent } from './managerDashboard/display-discount-manager/display-discount-manager.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,8 @@ const routes: Routes = [
      
     ],
   },
+
+
   { path: '', pathMatch: 'full', redirectTo: 'landing-page' }, // Redirect to landing-page by default
 
   {path:'admin-login',component:AdminLoginComponent},
@@ -63,7 +66,8 @@ const routes: Routes = [
   {path:'customer-login',component:CustomerLoginComponent},
   {path:'customer-register',component:CustomerRegisterationComponent},
   {path:'customer-dashboard',component:CustomerDashboardComponent},
-  { path: 'menu-items/:restaurantId', component: DisplayMenuItemsListComponent }
+  { path: 'menu-items/:restaurantId', component: DisplayMenuItemsListComponent },
+  {path:'cart/:customerId',component:CartComponent}
   
 ];
 
