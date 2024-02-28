@@ -14,7 +14,8 @@ export class DisplayMenuItemsListComponent {
   menuItems: any[] = [];
   searchMenu: string = '';
   isRemoveButtonDisabled = true;
-
+  showOnlyVegetarian: boolean = false; 
+  
 
   constructor(private route: ActivatedRoute, private customerService: CustomerService,private jwtClientService :JwtClientService
     ,private router:Router) { }
@@ -28,10 +29,16 @@ export class DisplayMenuItemsListComponent {
 
   fetchMenuItems() {
     // Fetch menu items based on the restaurantId
-    this.customerService.getMenuItemsByRestaurantId(this.restaurantId).subscribe(
+    this.customerService.getMenuItemsByRestaurantId(this.restaurantId, this.showOnlyVegetarian).subscribe(
       (response) => {
-        this.menuItems = response;
-
+        // Filter menu items based on showOnlyVegetarian flag
+        if (this.showOnlyVegetarian) {
+          // Filter only vegetarian items
+          this.menuItems = response.filter(item => item.specialDietaryInfo && item.specialDietaryInfo.toLowerCase() === 'veg');
+        } else {
+          // Display all menu items
+          this.menuItems = response;
+        }
         this.menuItems.forEach(item => {
           item.decodedImage = 'data:image/jpeg;base64,' + item.image; // Assuming default format is JPEG
         });
@@ -41,7 +48,7 @@ export class DisplayMenuItemsListComponent {
       }
     );
   }
-
+  
   getMenuByKeyword(){
     const keyword = this.searchMenu;
     this.customerService.searchMenuByKeyword(this.restaurantId,keyword)
@@ -107,4 +114,11 @@ export class DisplayMenuItemsListComponent {
   //   // Enable Add to Cart button and disable Remove button
   //   this.isRemoveButtonDisabled = true;
   // }
+
+
+
+  toggleVegNonVeg(): void {
+    // Fetch menu items based on the updated showOnlyVegetarian value
+    this.fetchMenuItems();
+  }
 }

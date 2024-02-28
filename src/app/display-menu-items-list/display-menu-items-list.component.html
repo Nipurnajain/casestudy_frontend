@@ -1,78 +1,86 @@
 <!-- menu-items.component.html -->
 <div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 80px;">
-        <a class="navbar-brand" routerLink="/customer-dashboard" style="font-size: x-large;"><strong>HOTBYTE</strong></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 80px;">
+    <a class="navbar-brand" routerLink="/customer-dashboard" style="font-size: x-large;"><strong>HOTBYTE</strong></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item ">
-                    <!-- <i class="fa fa-user" style="font-size: 20px; color: white;"></i> -->
-                    <a class="nav-link" href="#">Profile </a>
-                </li>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <!-- <i class="fa fa-user" style="font-size: 20px; color: white;"></i> -->
+          <a class="nav-link" href="#">Profile </a>
+        </li>
 
-                <li class="nav-item">
-                    <!-- <i class="fa fa-shopping-cart" style="font-size: 20px; color: white;"></i> -->
-                    <a class="nav-link" [routerLink]="'/cart/'+getCustomerIdFromLocalStorage()">Cart</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Offers</a>
-                </li>
-                <li class="nav-item" >
-                  <a class="nav-link" (click)="logout()">Log out</a>
-              </li>
+        <li class="nav-item">
+          <!-- <i class="fa fa-shopping-cart" style="font-size: 20px; color: white;"></i> -->
+          <a class="nav-link" [routerLink]="'/cart/'+getCustomerIdFromLocalStorage()">Cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Offers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="logout()">Log out</a>
+        </li>
 
-
-            </ul>
-            <form class="form-inline my-2 my-lg-0" (submit)="getMenuByKeyword()" >
-                <div class="input-group">
-                    <input id="searchInput" [(ngModel)]="searchMenu" name="searchMenu" class="form-control mr-sm-2" type="search"
-                        placeholder="Search" aria-label="Search" style="width: 300px;">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
+      </ul>
+      <form class="form-inline my-2 my-lg-0" (submit)="getMenuByKeyword()">
+        <div class="input-group">
+          <input id="searchInput" [(ngModel)]="searchMenu" name="searchMenu" class="form-control mr-sm-2" type="search"
+            placeholder="Search" aria-label="Search" style="width: 300px;">
+          <div class="input-group-append">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
         </div>
-    </nav>
+      </form>
+    </div>
+  </nav>
 </div>
 
 
 <!--card-->
 <div class="container">
-    <h2>Menu Items</h2>
-    <div *ngIf="menuItems.length > 0; else noItems">
-        <div class="row" >
-          <div class="col-md-12"  *ngFor="let menuItem of menuItems">
-            <div class="card mb-4" style="max-height: 210px;">
-              <div class="row no-gutters">
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h2 class="card-title">{{ menuItem.itemName }}</h2>
-                    <p class="card-text">Description: {{ menuItem.description }}</p>
-                    <p class="card-text">Category: {{ menuItem.category }}</p>
-                    <p class="card-text">Price: {{ menuItem.price | currency:'INR'}}</p>
-                    <button class="btn btn-primary" (click)="addToCart(menuItem.menuItemId, menuItem.price)">Add to Cart</button>
-                    <!-- <button class="btn btn-danger ml-2" (click)="removeFromCart()" [disabled]="isRemoveButtonDisabled">Remove</button> -->
+  <h2>Menu Items</h2>
 
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <img [src]="menuItem.decodedImage" class="card-img" alt="..." style="max-height: 210px;" > 
-                </div>
+  <label class="switch mr-3">
+    <input type="checkbox" [(ngModel)]="showOnlyVegetarian" (change)="toggleVegNonVeg()">          
+    <span class="slider round"></span>
+  </label>
+  <span>{{ showOnlyVegetarian ? 'Veg' : 'Non-Veg' }}</span>
+
+
+  <div *ngIf="menuItems.length > 0; else noItems">
+    <div class="row">
+      <div class="col-md-12" *ngFor="let menuItem of menuItems">
+        <div class="card mb-4" style="max-height: 210px;">
+          <div class="row no-gutters">
+            <div class="col-md-8">
+              <div class="card-body">
+                <h2 class="card-title">{{ menuItem.itemName }}</h2>
+                <p class="card-text">Description: {{ menuItem.description }}</p>
+                <p class="card-text">Category: {{ menuItem.category }}</p>
+                <p class="card-text">Price: {{ menuItem.price | currency:'INR'}}</p>
+                <button class="btn btn-primary" (click)="addToCart(menuItem.menuItemId, menuItem.price)">Add to
+                  Cart</button>
+                <!-- <button class="btn btn-danger ml-2" (click)="removeFromCart()" [disabled]="isRemoveButtonDisabled">Remove</button> -->
+
               </div>
+            </div>
+            <div class="col-md-4">
+              <img [src]="menuItem.decodedImage" class="card-img" alt="..." style="max-height: 210px;">
             </div>
           </div>
         </div>
       </div>
-      
-      <ng-template #noItems>
-        <p *ngIf="!searchMenu">No menu items available.</p>
-        <p *ngIf="searchMenu && menuItems.length === 0">No such menu item available.</p>
-    </ng-template>
+    </div>
+  </div>
+
+  <ng-template #noItems>
+    <p *ngIf="!searchMenu">No menu items available.</p>
+    <p *ngIf="searchMenu && menuItems.length === 0">No such menu item available.</p>
+  </ng-template>
 </div>

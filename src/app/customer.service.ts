@@ -34,7 +34,7 @@ export class CustomerService {
 
   }
 
-  getMenuItemsByRestaurantId(restaurantId: number): Observable<any[]> {
+  getMenuItemsByRestaurantId(restaurantId: number, showOnlyVegetarian: boolean): Observable<any[]> {
     return this.http.get<any[]>("http://localhost:8080/api/v1/menuItem/getByRestaurant" + `/${restaurantId}`, { headers: this.getHeaders() });
   }
 
