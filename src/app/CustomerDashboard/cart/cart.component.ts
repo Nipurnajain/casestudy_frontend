@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CustomerService } from '../customer.service';
-import { JwtClientService } from '../jwt-client.service';
+import { CustomerService } from '../../customer.service';
+import { JwtClientService } from '../../jwt-client.service';
 
 @Component({
   selector: 'app-cart',
@@ -11,26 +11,28 @@ import { JwtClientService } from '../jwt-client.service';
 export class CartComponent {
   cartDetails: any[] = [];
 
-  constructor(private route: ActivatedRoute, private customerService: CustomerService,private jwtClientService :JwtClientService
-    ,private router:Router) { }
 
-    ngOnInit() {
-      this.refreshCartDetails();
-    }
 
-    refreshCartDetails() {
-      const customerId = this.getCustomerIdFromLocalStorage();
-      this.customerService.getCartDetails(customerId).subscribe(
-        (data) => {
-          this.cartDetails = data;
-        },
-        (error) => {
-          console.error('Error fetching cart details:', error);
-        }
-      );
-    }
+  constructor(private route: ActivatedRoute, private customerService: CustomerService, private jwtClientService: JwtClientService
+    , private router: Router) { }
 
-  getCustomerIdFromLocalStorage(): number{
+  ngOnInit() {
+    this.refreshCartDetails();
+  }
+
+  refreshCartDetails() {
+    const customerId = this.getCustomerIdFromLocalStorage();
+    this.customerService.getCartDetails(customerId).subscribe(
+      (data) => {
+        this.cartDetails = data;
+      },
+      (error) => {
+        console.error('Error fetching cart details:', error);
+      }
+    );
+  }
+
+  getCustomerIdFromLocalStorage(): number {
     // Retrieve customer ID from localStorage
     const customerId = localStorage.getItem('customerId');
 
@@ -68,14 +70,26 @@ export class CartComponent {
 
   decrementQuantity(item: any): void {
     this.customerService.removeFromCart(item.menuItemId, this.getCustomerIdFromLocalStorage()).subscribe(
-        (response) => {
-            console.log('Item removed from cart:', response);
-            this.refreshCartDetails(); // Reload the page after removing from cart
-        },
-        (error) => {
-            console.error('Error removing from cart:', error);
-        }
+      (response) => {
+        console.log('Item removed from cart:', response);
+        this.refreshCartDetails(); // Reload the page after removing from cart
+      },
+      (error) => {
+        console.error('Error removing from cart:', error);
+      }
     );
-}
+  }
 
+  
+
+  checkout() {
+    const totalCost = this.cartDetails.length > 0 ? this.cartDetails[0].total : 0;
+
+    this.router.navigate(['/checkout'], { 
+      queryParams: { 
+        cartItems: JSON.stringify(this.cartDetails),
+        totalCost: totalCost
+      } 
+    });
+  }
 }

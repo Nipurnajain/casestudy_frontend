@@ -59,4 +59,9 @@ export class CustomerService {
     
     return this.http.delete<any>("http://localhost:8080/api/v1/cart/removeFromCart" + `/${customerId}`+ `/${menuItemId}`, { headers: this.getHeaders(),responseType: 'text' as 'json' });
   }
+
+  placeOrder(customerId: number,requestBody:any): Observable<any> {
+   
+    return this.http.post<any>("http://localhost:8080/api/v1/order/placeOrder"+`/${customerId}`, requestBody,{ headers: this.getHeaders() });
+  }
 }

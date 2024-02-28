@@ -18,11 +18,14 @@ import { DisplayMenuItemsComponent } from './managerDashboard/display-menu-items
 import { DisplayOrdersComponent } from './managerDashboard/display-orders/display-orders.component';
 import { CustomerLoginComponent } from './customer-login/customer-login.component';
 import { CustomerRegisterationComponent } from './customer-registeration/customer-registeration.component';
-import { CustomerDashboardComponent } from './customer-dashboard/customer-dashboard.component';
-import { DisplayMenuItemsListComponent } from './display-menu-items-list/display-menu-items-list.component';
+import { CustomerDashboardComponent } from './CustomerDashboard/customer-dashboard/customer-dashboard.component';
+
 import { AddDiscountByManagerComponent } from './managerDashboard/add-discount-by-manager/add-discount-by-manager.component';
 import { DisplayDiscountManagerComponent } from './managerDashboard/display-discount-manager/display-discount-manager.component';
-import { CartComponent } from './cart/cart.component';
+import { CartComponent } from './CustomerDashboard/cart/cart.component';
+import { CheckoutComponent } from './CustomerDashboard/checkout/checkout.component';
+import { DisplayMenuItemsListComponent } from './CustomerDashboard/display-menu-items-list/display-menu-items-list.component';
+
 
 const routes: Routes = [
   {
@@ -59,6 +62,9 @@ const routes: Routes = [
   },
 
 
+ 
+
+
   { path: '', pathMatch: 'full', redirectTo: 'landing-page' }, // Redirect to landing-page by default
 
   {path:'admin-login',component:AdminLoginComponent},
@@ -66,9 +72,9 @@ const routes: Routes = [
   {path:'customer-login',component:CustomerLoginComponent},
   {path:'customer-register',component:CustomerRegisterationComponent},
   {path:'customer-dashboard',component:CustomerDashboardComponent},
-  { path: 'menu-items/:restaurantId', component: DisplayMenuItemsListComponent },
-  {path:'cart/:customerId',component:CartComponent}
-  
+  { path: 'menu-items/:restaurantId', component: DisplayMenuItemsListComponent},
+  {path:'cart/:customerId',component:CartComponent},
+  { path: 'checkout', component: CheckoutComponent }
 ];
 
 @NgModule({
@@ -76,3 +82,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+

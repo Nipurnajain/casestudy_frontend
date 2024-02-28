@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Restaurant } from '../adminDashboard/Restaurant';
-import { AdminService } from '../adminDashboard/admin.service';
-import { CustomerService } from '../customer.service';
+import { Restaurant } from '../../adminDashboard/Restaurant';
+import { AdminService } from '../../adminDashboard/admin.service';
+import { CustomerService } from '../../customer.service';
 import { Router } from '@angular/router';
-import { JwtClientService } from '../jwt-client.service';
+import { JwtClientService } from '../../jwt-client.service';
 
 @Component({
   selector: 'app-customer-dashboard',

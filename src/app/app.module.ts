@@ -23,13 +23,15 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CustomerLoginComponent } from './customer-login/customer-login.component';
 import { CustomerRegisterationComponent } from './customer-registeration/customer-registeration.component';
-import { CustomerDashboardComponent } from './customer-dashboard/customer-dashboard.component';
-import { DisplayMenuItemsListComponent } from './display-menu-items-list/display-menu-items-list.component';
+import { CustomerDashboardComponent } from './CustomerDashboard/customer-dashboard/customer-dashboard.component';
+
 import { AddDiscountByManagerComponent } from './managerDashboard/add-discount-by-manager/add-discount-by-manager.component';
 import { RouterModule } from '@angular/router';
 import { DisplayDiscountManagerComponent } from './managerDashboard/display-discount-manager/display-discount-manager.component';
 import { UpdateMenuItemsComponent } from './managerDashboard/update-menu-items/update-menu-items.component';
-import { CartComponent } from './cart/cart.component';
+import { CartComponent } from './CustomerDashboard/cart/cart.component';
+import { CheckoutComponent } from './CustomerDashboard/checkout/checkout.component';
+import { DisplayMenuItemsListComponent } from './CustomerDashboard/display-menu-items-list/display-menu-items-list.component';
 
 
 @NgModule({
@@ -52,11 +54,13 @@ import { CartComponent } from './cart/cart.component';
     CustomerLoginComponent,
     CustomerRegisterationComponent,
     CustomerDashboardComponent,
-    DisplayMenuItemsListComponent,
+    
     AddDiscountByManagerComponent,
     DisplayDiscountManagerComponent,
     UpdateMenuItemsComponent,
-    CartComponent
+    CartComponent,
+    CheckoutComponent,
+    DisplayMenuItemsListComponent
   ],
   imports: [
     BrowserModule,

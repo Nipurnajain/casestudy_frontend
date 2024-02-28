@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CustomerService } from '../customer.service';
-import { JwtClientService } from '../jwt-client.service';
-import { MenuItem } from '../managerDashboard/MenuItem';
+import { CustomerService } from '../../customer.service';
+import { JwtClientService } from '../../jwt-client.service';
+import { MenuItem } from '../../managerDashboard/MenuItem';
 
 @Component({
   selector: 'app-display-menu-items-list',
