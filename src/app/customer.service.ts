@@ -56,10 +56,7 @@ export class CustomerService {
   }
 
   removeFromCart(cartItem: any,customerId:number): Observable<any> {
-    const options = {
-      headers: this.getHeaders(),
-      body: cartItem
-    };
-    return this.http.post<any>("https://localhost:8080/api/v1/cart/removeFromCart" + `/${customerId}`, options);
+    
+    return this.http.post<any>("https://localhost:8080/api/v1/cart/removeFromCart" + `/${customerId}`, cartItem,{ headers: this.getHeaders() });
   }
 }

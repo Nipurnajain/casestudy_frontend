@@ -65,7 +65,13 @@ export class CustomerDashboardComponent {
       }
     }
     
-    
+    getCustomerIdFromLocalStorage(): string | null {
+      // Retrieve customer ID from localStorage
+      const customerId = localStorage.getItem('customerId');
+  
+      // Return the customer ID or a default value if not found
+      return customerId ;
+    }
   
   }
 
