@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthRequest } from '../AuthRequest';
-import { JwtClientService } from '../jwt-client.service';
+import { AuthRequest } from '../Security/AuthRequest';
+import { JwtClientService } from '../Security/jwt-client.service';
 
 @Component({
   selector: 'app-landing',

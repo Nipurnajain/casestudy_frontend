@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { JwtClientService } from '../jwt-client.service';
+import { JwtClientService } from '../Security/jwt-client.service';
 import { Router } from '@angular/router';
-import { AuthRequest } from '../AuthRequest';
+import { AuthRequest } from '../Security/AuthRequest';
 
 @Component({
   selector: 'app-customer-login',

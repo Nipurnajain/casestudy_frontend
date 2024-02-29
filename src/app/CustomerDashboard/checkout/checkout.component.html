@@ -32,7 +32,7 @@
     </nav>
 </div>
 
-
+<!-- 
 <div class="container mt-4">
     <div class="form-check">
         <input class="form-check-input" type="radio" name="paymentOption" id="codOption" (change)="togglePlaceOrderButton()" value="cod">
@@ -43,7 +43,7 @@
     <div class="form-check">
         <input class="form-check-input" type="radio" name="paymentOption" id="netbankingOption" (change)="togglePlaceOrderButton()" value="netbanking">
         <label class="form-check-label" for="netbankingOption">
-            Net Banking
+            Card Payment
         </label>
     </div>
 </div>
@@ -51,4 +51,47 @@
 <div class="container mt-2">
     <button class="btn btn-primary ml-2" (click)="placeOrder()" [disabled]="!isPlaceOrderEnabled">Place Order</button>
 </div>
+ -->
 
+ <div class="container mt-4">
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="paymentOption" id="codOption" [(ngModel)]="selectedPaymentOption" (change)="togglePlaceOrderButton()" value="cod">
+      <label class="form-check-label" for="codOption">
+        Cash on Delivery
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="paymentOption" id="netbankingOption" [(ngModel)]="selectedPaymentOption" (change)="togglePlaceOrderButton()" value="card-payment">
+      <label class="form-check-label" for="netbankingOption">
+        Card Payment
+      </label>
+    </div>
+  </div>
+  
+  <div class="container mt-2">
+    <button class="btn btn-primary ml-2" (click)="placeOrder()" [disabled]="!isPlaceOrderEnabled">Place Order</button>
+  </div>
+  <div class="container mt-2" *ngIf="selectedPaymentOption === 'card-payment'">
+    <form>
+      <div class="form-group">
+        <label for="cardNumber">Card Number</label>
+        <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="Enter card number" [(ngModel)]="cardPaymentDetails.cardNumber">
+      </div>
+      <div class="form-group">
+        <label for="expiryDate">Expiry Date</label>
+        <input type="text" class="form-control" id="expiryDate" name="expiryDate" placeholder="MM/YYYY" [(ngModel)]="cardPaymentDetails.expiryDate">
+      </div>
+      <div class="form-group">
+        <label for="cvv">CVV</label>
+        <input type="text" class="form-control" id="cvv" name="cvv" placeholder="Enter CVV" [(ngModel)]="cardPaymentDetails.cvv">
+      </div>
+      <div class="form-group">
+        <label for="customerName">Customer Name</label>
+        <input type="text" class="form-control" id="customerName" name="cardHolder" placeholder="Enter customer name" [(ngModel)]="cardPaymentDetails.cardHolder">
+      </div>
+      <!-- You can add more fields as needed -->
+  
+      <!-- Button to submit the form (you may adjust this as needed) -->
+      <button type="button" class="btn btn-primary" (click)="placeOrder()">Submit</button>
+    </form>
+  </div>

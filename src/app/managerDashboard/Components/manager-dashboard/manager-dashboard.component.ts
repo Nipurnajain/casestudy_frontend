@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { JwtClientAdminService } from 'src/app/jwt-client-admin.service';
+import { JwtClientAdminService } from 'src/app/Security/jwt-client-admin.service';
 
 @Component({
   selector: 'app-manager-dashboard',

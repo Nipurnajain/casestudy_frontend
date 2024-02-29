@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { JwtClientService } from '../jwt-client.service';
-import { AuthRequest } from '../AuthRequest';
-import { JwtClientAdminService } from '../jwt-client-admin.service';
+import { JwtClientService } from '../Security/jwt-client.service';
+import { AuthRequest } from '../Security/AuthRequest';
+import { JwtClientAdminService } from '../Security/jwt-client-admin.service';
 import { Router } from '@angular/router';
 
 

@@ -11,7 +11,7 @@ import { DisplayCustomersComponent } from './adminDashboard/Components/display-c
 import { DisplayManagersComponent } from './adminDashboard/Components/display-managers/display-managers.component';
 import { LandingComponent } from './landing/landing.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
-import { AuthGuardService } from './auth-guard.service';
+import { AuthGuardService } from './Security/auth-guard.service';
 import { ManagerDashboardComponent } from './managerDashboard/Components/manager-dashboard/manager-dashboard.component';
 import { AddMenuItemsComponent } from './managerDashboard/Components/add-menu-items/add-menu-items.component';
 import { DisplayMenuItemsComponent } from './managerDashboard/Components/display-menu-items/display-menu-items.component';

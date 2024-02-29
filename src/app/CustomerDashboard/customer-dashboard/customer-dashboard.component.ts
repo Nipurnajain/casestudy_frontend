@@ -3,7 +3,7 @@ import { Restaurant } from '../../adminDashboard/Model/Restaurant';
 import { AdminService } from '../../adminDashboard/admin.service';
 import { CustomerService } from '../customer.service';
 import { Router } from '@angular/router';
-import { JwtClientService } from '../../jwt-client.service';
+import { JwtClientService } from '../../Security/jwt-client.service';
 
 @Component({
   selector: 'app-customer-dashboard',

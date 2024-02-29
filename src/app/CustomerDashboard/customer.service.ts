@@ -81,6 +81,12 @@ getMenuByPriceRange( restaurantId: number,minPrice:number,maxPrice:number): Obse
   return this.http.get<MenuItem[]>("http://localhost:8080/api/v1/menuItem/getByPriceRange" + `/${restaurantId}` + `/${minPrice}`+ `/${maxPrice}`, { headers: this.getHeaders() });
 
 }
+
+makePaymentRequest(customerId: number,requestBody:any): Observable<any>{
+  return this.http.post<any>("http://localhost:8080/api/v1/payment/processPayment"+`/${customerId}`, requestBody,{ headers: this.getHeaders(),responseType: 'text' as 'json'  });
+
+
+}
 }
 
 

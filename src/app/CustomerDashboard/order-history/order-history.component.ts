@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { JwtClientService } from 'src/app/jwt-client.service';
+import { JwtClientService } from 'src/app/Security/jwt-client.service';
 import { CustomerService } from '../customer.service';
 
 @Component({

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { Discount } from './Model/Discount';
 import { Manager } from './Model/Manager';
 import { Customer } from './Model/Customer';
-import { JwtClientAdminService } from '../jwt-client-admin.service';
+import { JwtClientAdminService } from '../Security/jwt-client-admin.service';
 
 
 @Injectable({

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from '../customer.service';
-import { JwtClientService } from '../../jwt-client.service';
+import { JwtClientService } from '../../Security/jwt-client.service';
 import { MenuItem } from '../../managerDashboard/Model/MenuItem';
 
 @Component({
