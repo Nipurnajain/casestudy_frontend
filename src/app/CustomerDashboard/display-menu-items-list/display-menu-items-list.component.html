@@ -45,33 +45,48 @@
 <!--card-->
 <div class="container">
   <h2>Menu Items</h2>
-<br>
-<div class="row">
-  <!-- Toggle -->
-  <div class="col-md-3">
-    <label class="switch" style="margin-bottom: 0;">
-      <input type="checkbox" [(ngModel)]="showOnlyVegetarian" (change)="toggleVegNonVeg()">          
-      <span class="slider round"></span>
-    </label>
-    <span style="margin-left: 5px;">{{ showOnlyVegetarian ? 'Veg' : '' }}</span>
-  </div>
+  <br>
+  <div class="row">
+    <!-- Toggle -->
+    <div class="col-md-3">
+      <label class="switch" style="margin-bottom: 0;">
+        <input type="checkbox" [(ngModel)]="showOnlyVegetarian" (change)="toggleVegNonVeg()">
+        <span class="slider round"></span>
+      </label>
+      <span style="margin-left: 5px;">{{ showOnlyVegetarian ? 'Veg' : '' }}</span>
+    </div>
 
-  <!-- Dropdown -->
-  <div class="col-md-3" style="margin-top: 5px;">
-    <div class="form-group" style="margin-bottom: 3px;">
-      <label for="categoryDropdown"></label>
-      <select class="form-control" id="categoryDropdown" [(ngModel)]="selectedCategory" (change)="filterByCategory()">
-        <option value="">Categories</option>
-        <option value="appetizer">Appetizers</option>
-        <option value="desserts">Desserts</option>
-        <option value="main course">Main Course</option>
-        <option value="beverages">Beverages</option>
-        <option value="side_dishes">Side Dishes</option>
-        <option value="entrees">Entrees</option>
-      </select>
+    <!-- Dropdown -->
+    <div class="col-md-3" style="margin-top: 5px;">
+      <div class="form-group" style="margin-bottom: 3px;">
+        <label for="categoryDropdown"></label>
+        <select class="form-control" id="categoryDropdown" [(ngModel)]="selectedCategory" (change)="filterByCategory()" style="width: 150px;">
+          <option value="">Categories</option>
+          <option value="appetizer">Appetizers</option>
+          <option value="desserts">Desserts</option>
+          <option value="main course">Main Course</option>
+          <option value="beverages">Beverages</option>
+          <option value="side_dishes">Side Dishes</option>
+          <option value="entrees">Entrees</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Dropdown for sorting by price range -->
+    <div class="col-md-5" style="margin-top: 5px; ">
+      <div class="form-group" style="margin-bottom: 3px;">
+        <label for="priceRangeDropdown"></label>
+        <select class="form-control" id="priceRangeDropdown" [(ngModel)]="selectedPriceRange"
+          (change)="sortByPriceRange()"  style="width: 150px;">
+          <option value="">Price Range</option>
+          <option value="0-99">0 - 99</option>
+          <option value="100 - 299">100 - 299</option>
+          <option value="300 - 499">300 - 499</option>
+
+        </select>
+      </div>
     </div>
   </div>
-</div>
 
 
 

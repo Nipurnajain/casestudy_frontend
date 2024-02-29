@@ -16,7 +16,7 @@ export class DisplayMenuItemsListComponent {
   isRemoveButtonDisabled = true;
   showOnlyVegetarian: boolean = false; 
   selectedCategory: string = '';
-
+  selectedPriceRange: string = ''; 
 
 
   constructor(private route: ActivatedRoute, private customerService: CustomerService,private jwtClientService :JwtClientService
@@ -51,6 +51,13 @@ export class DisplayMenuItemsListComponent {
     );
   }
   
+  
+
+
+
+
+
+
   getMenuByKeyword(){
     const keyword = this.searchMenu;
     this.customerService.searchMenuByKeyword(this.restaurantId,keyword)
@@ -153,5 +160,31 @@ export class DisplayMenuItemsListComponent {
           console.error('Error fetching menu items:', error);
         }
       );
+  }
+
+  sortByPriceRange() {
+    console.log('Sorting by price range...');
+    const [minPrice, maxPrice] = this.selectedPriceRange.split('-').map(Number);
+    
+    // Call the service method to get menu items by price range
+    this.customerService.getMenuByPriceRange(this.restaurantId, minPrice, maxPrice)
+    .subscribe(
+      (response) => {
+        this.menuItems = response;
+       
+        this.menuItems.forEach(item => {
+          item.decodedImage = 'data:image/jpeg;base64,' + item.image;
+          console.log('Response from getMenuByPriceRange:', response);
+        });
+      },
+      (error) => {
+        console.error('Error fetching menu items:', error);
+      }
+    );
+  }
+
+  applyFilters() {
+    // Fetch menu items based on the updated filters
+    this.fetchMenuItems();
   }
 }
