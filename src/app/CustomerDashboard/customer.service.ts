@@ -69,4 +69,10 @@ export class CustomerService {
     return this.http.get<MenuItem[]>("http://localhost:8080/api/v1/menuItem/getByCategory" + `/${restaurantId}` + `/${category}`, { headers: this.getHeaders() });
 
   }
+
+  getOrderHistory(customerId: number): Observable<any[]> {
+  
+
+    return this.http.get<any[]>("http://localhost:8080/api/v1/order/viewHistory"+ `/${customerId}`,{ headers: this.getHeaders() });
+  }
 }

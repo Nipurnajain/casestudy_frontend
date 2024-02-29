@@ -32,6 +32,7 @@ import { UpdateMenuItemsComponent } from './managerDashboard/Components/update-m
 import { CartComponent } from './CustomerDashboard/cart/cart.component';
 import { CheckoutComponent } from './CustomerDashboard/checkout/checkout.component';
 import { DisplayMenuItemsListComponent } from './CustomerDashboard/display-menu-items-list/display-menu-items-list.component';
+import { OrderHistoryComponent } from './CustomerDashboard/order-history/order-history.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { DisplayMenuItemsListComponent } from './CustomerDashboard/display-menu-
     UpdateMenuItemsComponent,
     CartComponent,
     CheckoutComponent,
-    DisplayMenuItemsListComponent
+    DisplayMenuItemsListComponent,
+    OrderHistoryComponent
   ],
   imports: [
     BrowserModule,

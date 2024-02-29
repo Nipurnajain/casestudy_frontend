@@ -25,6 +25,7 @@ import { DisplayDiscountManagerComponent } from './managerDashboard/Components/d
 import { CartComponent } from './CustomerDashboard/cart/cart.component';
 import { CheckoutComponent } from './CustomerDashboard/checkout/checkout.component';
 import { DisplayMenuItemsListComponent } from './CustomerDashboard/display-menu-items-list/display-menu-items-list.component';
+import { OrderHistoryComponent } from './CustomerDashboard/order-history/order-history.component';
 
 
 const routes: Routes = [
@@ -59,10 +60,7 @@ const routes: Routes = [
 
      
     ],
-  },
-
-
- 
+  }, 
 
 
   { path: '', pathMatch: 'full', redirectTo: 'landing-page' }, // Redirect to landing-page by default
@@ -74,7 +72,8 @@ const routes: Routes = [
   {path:'customer-dashboard',component:CustomerDashboardComponent},
   { path: 'menu-items/:restaurantId', component: DisplayMenuItemsListComponent},
   {path:'cart/:customerId',component:CartComponent},
-  { path: 'checkout', component: CheckoutComponent }
+  { path: 'checkout', component: CheckoutComponent },
+  {path:'orders/:customerId', component:OrderHistoryComponent}
 ];
 
 @NgModule({

@@ -10,23 +10,23 @@ import { JwtClientService } from '../../jwt-client.service';
 })
 export class CheckoutComponent {
 
-  totalCost: number=0;
+  totalCost: number = 0;
   cartItems: any[] = [];
   isPlaceOrderEnabled: boolean = false;
 
   constructor(private route: ActivatedRoute, private customerService: CustomerService, private jwtClientService: JwtClientService,
-     private router: Router) { }
+    private router: Router) { }
 
-     ngOnInit(): void {
-      this.route.queryParams.subscribe(params => {
-        if (params['cartItems']) {
-          this.cartItems = JSON.parse(params['cartItems']);
-        }
-        if (params['totalCost']) {
-          this.totalCost = +params['totalCost']; // Convert to number
-        }
-      });
-    }
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      if (params['cartItems']) {
+        this.cartItems = JSON.parse(params['cartItems']);
+      }
+      if (params['totalCost']) {
+        this.totalCost = +params['totalCost']; // Convert to number
+      }
+    });
+  }
 
   getCustomerIdFromLocalStorage(): number {
     // Retrieve customer ID from localStorage
@@ -50,19 +50,24 @@ export class CheckoutComponent {
         quantity: item.quantity
       };
     });
-  
+
     const requestBody = {
       totalCost: totalCostDouble,
       menuItems: menuItems
     };
-  
-    console.log('Request Body:', requestBody); 
+
+    console.log('Request Body:', requestBody);
     this.customerService.placeOrder(
       this.getCustomerIdFromLocalStorage(),
       requestBody
     ).subscribe(
       (response) => {
         console.log('Order placed successfully:', response);
+        // Redirect to the order details page after placing the order
+        const customerId = this.getCustomerIdFromLocalStorage();
+        console.log('Before navigation');
+        this.router.navigate(['/orders/', customerId]);
+        console.log('After navigation');
       },
       (error) => {
         console.error('Error placing order:', error);
@@ -70,11 +75,11 @@ export class CheckoutComponent {
     );
   }
 
- 
 
-    togglePlaceOrderButton() {
-        const codOption = document.getElementById('codOption') as HTMLInputElement;
-        this.isPlaceOrderEnabled = codOption.checked;
-    }
+
+  togglePlaceOrderButton() {
+    const codOption = document.getElementById('codOption') as HTMLInputElement;
+    this.isPlaceOrderEnabled = codOption.checked;
+  }
 
 }
