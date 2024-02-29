@@ -1,10 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Restaurant } from './Restaurant';
+import { Restaurant } from './Model/Restaurant';
 import { Observable } from 'rxjs';
-import { Discount } from './Discount';
-import { Manager } from './Manager';
-import { Customer } from './Customer';
+import { Discount } from './Model/Discount';
+import { Manager } from './Model/Manager';
+import { Customer } from './Model/Customer';
 import { JwtClientAdminService } from '../jwt-client-admin.service';
 
 

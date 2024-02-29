@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder,FormGroup, Validators } from '@angular/forms';
 
-import { AdminService } from '../admin.service';
-import { Manager } from '../Manager';
+import { AdminService } from '../../admin.service';
+import { Manager } from '../../Model/Manager';
 import { Router } from '@angular/router';
 
 @Component({

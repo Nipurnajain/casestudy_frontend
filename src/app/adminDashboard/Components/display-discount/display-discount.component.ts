@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { Discount } from '../Discount';
-import { AdminService } from '../admin.service';
+import { Discount } from '../../Model/Discount';
+import { AdminService } from '../../admin.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 

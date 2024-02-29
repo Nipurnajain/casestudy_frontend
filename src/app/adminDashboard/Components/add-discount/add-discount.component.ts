@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import { AdminService } from '../admin.service';
-import { Discount } from '../Discount';
+import { AdminService } from '../../admin.service';
+import { Discount } from '../../Model/Discount';
 import { Router } from '@angular/router';
 
 @Component({

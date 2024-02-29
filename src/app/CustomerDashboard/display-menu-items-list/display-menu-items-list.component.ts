@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CustomerService } from '../../customer.service';
+import { CustomerService } from '../customer.service';
 import { JwtClientService } from '../../jwt-client.service';
-import { MenuItem } from '../../managerDashboard/MenuItem';
+import { MenuItem } from '../../managerDashboard/Model/MenuItem';
 
 @Component({
   selector: 'app-display-menu-items-list',
@@ -15,7 +15,9 @@ export class DisplayMenuItemsListComponent {
   searchMenu: string = '';
   isRemoveButtonDisabled = true;
   showOnlyVegetarian: boolean = false; 
-  
+  selectedCategory: string = '';
+
+
 
   constructor(private route: ActivatedRoute, private customerService: CustomerService,private jwtClientService :JwtClientService
     ,private router:Router) { }
@@ -120,5 +122,36 @@ export class DisplayMenuItemsListComponent {
   toggleVegNonVeg(): void {
     // Fetch menu items based on the updated showOnlyVegetarian value
     this.fetchMenuItems();
+  }
+
+  // filterByCategory() {
+  //   // Make a copy of the original menu items
+  //   const originalMenuItemsCopy = [...this.menuItems];
+  
+  //   // If no category is selected, reset the filtered menu items to all menu items
+  //   if (!this.selectedCategory) {
+  //     this.menuItems = originalMenuItemsCopy;
+  //   } else {
+  //     // Filter menu items by the selected category
+  //     this.menuItems = originalMenuItemsCopy.filter(item => item.category === this.selectedCategory);
+  //   }
+  // }
+
+
+   
+  filterByCategory() {
+    this.customerService.searchMenuByCategory(this.restaurantId, this.selectedCategory)
+      .subscribe(
+        (response) => {
+          this.menuItems = response;
+          // Assuming you need to decode image data here
+          this.menuItems.forEach(item => {
+            item.decodedImage = 'data:image/jpeg;base64,' + item.image;
+          });
+        },
+        (error) => {
+          console.error('Error fetching menu items:', error);
+        }
+      );
   }
 }

@@ -34,14 +34,20 @@
 
 
 
-        <div class="form-group ">
+        <div class="form-group">
             <label for="category">Category</label>
-            <input type="text" formControlName="category" class="form-control" placeholder="Enter a category here"
-                [ngClass]="{ 'is-invalid': submitted 
-        && f['category'].errors }">
-            <div *ngIf="submitted && f['category'].errors" class="invalid-feedback">Invalid category name</div>
-            <div *ngIf="f['category'].errors?.['required']" style="color: red;font-size: small;">Category is required
-            </div>
+            <select formControlName="category" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['category'].errors }">
+                <option value="">Select a category</option>
+                <option value="Main course">Main course</option>
+                <option value="Appetizer">Appetizer</option>
+                <option value="Dessert">Dessert</option>
+                <option value="Beverage">Beverage</option>
+                <option value="Side dish">Side dish</option>
+                <option value="Entrees">Entrees</option>
+               
+            </select>
+            <div *ngIf="submitted && f['category'].errors" class="invalid-feedback">Invalid category selection</div>
+            <div *ngIf="f['category'].errors?.['required']" style="color: red;font-size: small;">Category is required</div>
         </div>
 
         <div class="form-group ">

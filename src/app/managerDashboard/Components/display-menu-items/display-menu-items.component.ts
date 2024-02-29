@@ -1,9 +1,9 @@
 
 import { Component, ViewChild } from '@angular/core';
-import { MenuItem } from '../MenuItem';
+import { MenuItem } from '../../Model/MenuItem';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { AdminService } from 'src/app/adminDashboard/admin.service';
-import { ManagerService } from '../manager.service';
+import { ManagerService } from '../../manager.service';
 
 @Component({
   selector: 'app-display-menu-items',

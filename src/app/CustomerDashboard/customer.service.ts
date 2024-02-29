@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Customer } from './adminDashboard/Customer';
+import { Customer } from '../adminDashboard/Model/Customer';
 import { Observable } from 'rxjs';
-import { Restaurant } from './adminDashboard/Restaurant';
-import { MenuItem } from './managerDashboard/MenuItem';
+import { Restaurant } from '../adminDashboard/Model/Restaurant';
+import { MenuItem } from '../managerDashboard/Model/MenuItem';
 
 @Injectable({
   providedIn: 'root'
@@ -63,5 +63,10 @@ export class CustomerService {
   placeOrder(customerId: number,requestBody:any): Observable<any> {
    
     return this.http.post<any>("http://localhost:8080/api/v1/order/placeOrder"+`/${customerId}`, requestBody,{ headers: this.getHeaders() });
+  }
+
+  searchMenuByCategory( restaurantId: number,category: string): Observable<MenuItem[]> {
+    return this.http.get<MenuItem[]>("http://localhost:8080/api/v1/menuItem/getByCategory" + `/${restaurantId}` + `/${category}`, { headers: this.getHeaders() });
+
   }
 }

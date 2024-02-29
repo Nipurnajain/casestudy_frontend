@@ -1,4 +1,4 @@
-import { MenuItem } from "../managerDashboard/MenuItem";
+import { MenuItem } from "../../managerDashboard/Model/MenuItem";
 
 export interface Restaurant{
     imageUrl: string;

@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { ManagerService } from '../manager.service';
+import { ManagerService } from '../../manager.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { Discount } from 'src/app/adminDashboard/Discount';
+import { Discount } from 'src/app/adminDashboard/Model/Discount';
 
 @Component({
   selector: 'app-display-discount-manager',

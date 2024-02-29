@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Discount } from 'src/app/adminDashboard/Discount';
+import { Discount } from 'src/app/adminDashboard/Model/Discount';
 import { AdminService } from 'src/app/adminDashboard/admin.service';
-import { ManagerService } from '../manager.service';
+import { ManagerService } from '../../manager.service';
 
 @Component({
   selector: 'app-add-discount-by-manager',

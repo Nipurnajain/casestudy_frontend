@@ -45,12 +45,34 @@
 <!--card-->
 <div class="container">
   <h2>Menu Items</h2>
+<br>
+<div class="row">
+  <!-- Toggle -->
+  <div class="col-md-3">
+    <label class="switch" style="margin-bottom: 0;">
+      <input type="checkbox" [(ngModel)]="showOnlyVegetarian" (change)="toggleVegNonVeg()">          
+      <span class="slider round"></span>
+    </label>
+    <span style="margin-left: 5px;">{{ showOnlyVegetarian ? 'Veg' : '' }}</span>
+  </div>
 
-  <label class="switch mr-3">
-    <input type="checkbox" [(ngModel)]="showOnlyVegetarian" (change)="toggleVegNonVeg()">          
-    <span class="slider round"></span>
-  </label>
-  <span>{{ showOnlyVegetarian ? 'Veg' : '' }}</span>
+  <!-- Dropdown -->
+  <div class="col-md-3" style="margin-top: 5px;">
+    <div class="form-group" style="margin-bottom: 3px;">
+      <label for="categoryDropdown"></label>
+      <select class="form-control" id="categoryDropdown" [(ngModel)]="selectedCategory" (change)="filterByCategory()">
+        <option value="">Categories</option>
+        <option value="appetizer">Appetizers</option>
+        <option value="desserts">Desserts</option>
+        <option value="main course">Main Course</option>
+        <option value="beverages">Beverages</option>
+        <option value="side_dishes">Side Dishes</option>
+        <option value="entrees">Entrees</option>
+      </select>
+    </div>
+  </div>
+</div>
+
 
 
   <div *ngIf="menuItems.length > 0; else noItems">
@@ -83,4 +105,3 @@
     <p *ngIf="!searchMenu">No menu items available.</p>
     <p *ngIf="searchMenu && menuItems.length === 0">No such menu item available.</p>
   </ng-template>
-</div>

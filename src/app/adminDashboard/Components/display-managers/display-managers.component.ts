@@ -1,20 +1,18 @@
 import { Component, ViewChild } from '@angular/core';
 
-
-import { Customer } from '../Customer';
-import { AdminService } from '../admin.service';
+import { Manager } from '../../Model/Manager';
+import { AdminService } from '../../admin.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
-
 @Component({
-  selector: 'app-display-customers',
-  templateUrl: './display-customers.component.html',
-  styleUrls: ['./display-customers.component.css']
+  selector: 'app-display-managers',
+  templateUrl: './display-managers.component.html',
+  styleUrls: ['./display-managers.component.css']
 })
-export class DisplayCustomersComponent {
+export class DisplayManagersComponent {
 
-  customerList: Customer[] = [];
-  pagedCustomerList: Customer[] = [];
+  managerList: Manager[] = [];
+  pagedManagerList: Manager[] = [];
   pageSize: number = 5; // Number of items per page
   currentPage: number = 0; // Current page index
   totalItems: number = 0; // Total number of items
@@ -24,13 +22,13 @@ export class DisplayCustomersComponent {
   constructor(private adminService: AdminService) {}
 
   ngOnInit(): void {
-    this.getAllCustomers();
+    this.getAllManagers();
   }
 
-  getAllCustomers() {
-    this.adminService.getCustomers().subscribe((list) => {
-      this.customerList = list;
-      this.totalItems = this.customerList.length;
+  getAllManagers() {
+    this.adminService.getManagers().subscribe((list) => {
+      this.managerList = list;
+      this.totalItems = this.managerList.length;
       this.onPageChange({
         pageIndex: this.currentPage, pageSize: this.pageSize,
         length: 0
@@ -41,17 +39,14 @@ export class DisplayCustomersComponent {
   onPageChange(event: PageEvent) {
     const startIndex = event.pageIndex * event.pageSize;
     const endIndex = startIndex + event.pageSize;
-    this.pagedCustomerList = this.customerList.slice(startIndex, endIndex);
+    this.pagedManagerList = this.managerList.slice(startIndex, endIndex);
   }
 
-  removeCustomer(custId: number) {
-    this.adminService.deleteCustomer(custId).subscribe((msg) => {
+  removeManager(adminId: number) {
+    this.adminService.deleteManager(adminId).subscribe((msg) => {
       console.log("Deleted " + msg);
-      this.getAllCustomers(); // Reload data after deletion
+      this.getAllManagers(); // Reload data after deletion
     });
   }
-
-
-
 
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Restaurant } from '../../adminDashboard/Restaurant';
+import { Restaurant } from '../../adminDashboard/Model/Restaurant';
 import { AdminService } from '../../adminDashboard/admin.service';
-import { CustomerService } from '../../customer.service';
+import { CustomerService } from '../customer.service';
 import { Router } from '@angular/router';
 import { JwtClientService } from '../../jwt-client.service';
 

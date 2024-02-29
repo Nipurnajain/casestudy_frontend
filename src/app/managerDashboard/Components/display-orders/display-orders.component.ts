@@ -1,8 +1,8 @@
 
 import { Component, ViewChild } from '@angular/core';
-import { ManagerService } from '../manager.service';
+import { ManagerService } from '../../manager.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { Order } from '../Order';
+import { Order } from '../../Model/Order';
 
 @Component({
   selector: 'app-display-orders',

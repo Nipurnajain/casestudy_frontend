@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { Restaurant } from '../Restaurant';
-import { AdminService } from '../admin.service';
+import { Restaurant } from '../../Model/Restaurant';
+import { AdminService } from '../../admin.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({

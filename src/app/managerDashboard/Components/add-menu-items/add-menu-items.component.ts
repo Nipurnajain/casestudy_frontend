@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ManagerService } from '../manager.service';
+import { ManagerService } from '../../manager.service';
 import { Router } from '@angular/router';
-import { Restaurant } from 'src/app/adminDashboard/Restaurant';
-import { MenuItem } from '../MenuItem';
+import { Restaurant } from 'src/app/adminDashboard/Model/Restaurant';
+import { MenuItem } from '../../Model/MenuItem';
 
 import { AdminService } from 'src/app/adminDashboard/admin.service';
 

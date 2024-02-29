@@ -1,11 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Restaurant } from '../adminDashboard/Restaurant';
-import { MenuItem } from './MenuItem';
+import { Restaurant } from '../adminDashboard/Model/Restaurant';
+import { MenuItem } from './Model/MenuItem';
 
-import { Order } from './Order';
-import { Discount } from '../adminDashboard/Discount';
+import { Order } from './Model/Order';
+import { Discount } from '../adminDashboard/Model/Discount';
 
 @Injectable({
   providedIn: 'root'
