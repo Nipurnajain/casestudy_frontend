@@ -47,6 +47,15 @@
       <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">Invalid password</div>
       <div *ngIf="f['password'].errors?.['required']" style="color: red;font-size: small;">password is required</div>
   </div>
+
+  <div class="form-group">
+    <label for="restaurantId">Restaurant</label>
+    <select formControlName="restaurantId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['restaurantId'].errors }">
+        <option *ngFor="let restaurant of restaurants" [value]="restaurant.restaurantId">{{ restaurant.name }}</option>
+    </select>
+    <div *ngIf="submitted && f['restaurantId'].errors" class="invalid-feedback">Invalid restaurant selection</div>
+    <div *ngIf="f['restaurantId'].errors?.['required']" style="color: red; font-size: small;">Restaurant selection is required</div>
+</div>
   
     <br>
 

@@ -54,16 +54,17 @@ constructor(private jwtServiceAdmin: JwtClientAdminService,private router: Route
   
       const role = decodedToken.role;
       const customerId = decodedToken.customerId;
-    
+    // Store customerId in local storage
+    localStorage.setItem('adminId', customerId);
       console.log(role);
       console.log(customerId);
       if (role === 'admin') {
         console.log('Navigating to admin-dashboard...');
-        this.router.navigate(['/admin-dashboard']);
+        this.router.navigate(['/admin-dashboard/display-restaurant']);
       } 
       else if(role === 'manager'){
         console.log('Navigating to manager-dashboard...');
-        this.router.navigate(['/manager-dashboard']);
+        this.router.navigate(['/manager-dashboard/display-menuitems']);
 
 
       }

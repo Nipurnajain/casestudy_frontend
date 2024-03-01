@@ -41,14 +41,16 @@ export class AddMenuItemsComponent {
   
 
 
-    this.adminService.getRestaurants().subscribe(
-      (restaurants: Restaurant[]) => {
-        this.restaurants = restaurants;
-      },
-      (error) => {
-        console.error('Error fetching restaurants:', error);
-      }
-    );
+    const storedCustomerId = localStorage.getItem('adminId');
+    const adminId = storedCustomerId !== null ? +storedCustomerId : 0;
+    this.managerService.getRestaurantsForManager(adminId).subscribe(
+    (restaurants: Restaurant[]) => {
+      this.restaurants = restaurants;
+    },
+    (error) => {
+      console.error('Error fetching restaurants:', error);
+    }
+  );
   }
   
 

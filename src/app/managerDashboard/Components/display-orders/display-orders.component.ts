@@ -27,16 +27,25 @@ export class DisplayOrdersComponent {
   }
 
   getAllOrders() {
-    this.managerService.getOrders().subscribe((list) => {
-      this.OrderList = list;
-      this.totalItems = this.OrderList.length;
-      this.onPageChange({
-        pageIndex: this.currentPage, pageSize: this.pageSize,
-        length: 0
-        
-      }); // Trigger pagination
-      console.log(this.OrderList);
-    });
+    // Fetch adminId from localStorage
+    const adminId = localStorage.getItem('adminId');
+
+    // Check if adminId is available
+    if (adminId) {
+      // Parse adminId to a number
+      const parsedAdminId = parseInt(adminId, 10);
+
+      // Call getOrders with adminId
+      this.managerService.getOrders(parsedAdminId).subscribe((list) => {
+        this.OrderList = list;
+        console.log(this.OrderList);
+        this.totalItems = this.OrderList.length;
+        this.onPageChange({
+          pageIndex: this.currentPage, pageSize: this.pageSize,
+          length: 0
+        });
+      });
+    }
   }
 
   onPageChange(event: PageEvent) {

@@ -4,6 +4,7 @@ import { FormBuilder,FormGroup, Validators } from '@angular/forms';
 import { AdminService } from '../../admin.service';
 import { Manager } from '../../Model/Manager';
 import { Router } from '@angular/router';
+import { Restaurant } from '../../Model/Restaurant';
 
 @Component({
   selector: 'app-register-manager',
@@ -14,6 +15,8 @@ export class RegisterManagerComponent {
 
   registerManagerForm!:FormGroup;
   submitted = false;
+  restaurants: Restaurant[] = []; // Array to hold the list of restaurants
+
   constructor(private formBuilder:FormBuilder,private adminService: AdminService,private router:Router) { 
 
   }
@@ -24,8 +27,19 @@ export class RegisterManagerComponent {
       name : ['',[Validators.required,Validators.pattern('^[a-zA-Z\\s]+$')]],
       email : ['',[Validators.required,Validators.email]],
       userName : ['',[Validators.required,Validators.pattern('^[a-zA-Z0-9_]+$')]],
-      password :['',[Validators.required,Validators.minLength(6)]]
+      password :['',[Validators.required,Validators.minLength(6)]],
+      restaurantId: ['', [Validators.required]],
+
     });
+
+    this.adminService.getRestaurants().subscribe(
+      (restaurants: Restaurant[]) => {
+        this.restaurants = restaurants;
+      },
+      (error) => {
+        console.error('Error fetching restaurants:', error);
+      }
+    );
   }
 
   get f(){

@@ -27,14 +27,24 @@ export class DisplayMenuItemsComponent {
   }
 
   getAllMenuItems() {
-    this.managerService.getMenuItems().subscribe((list) => {
-      this.MenuItemList = list;
-      this.totalItems = this.MenuItemList.length;
-      this.onPageChange({
-        pageIndex: this.currentPage, pageSize: this.pageSize,
-        length: 0
-      }); // Trigger pagination
-    });
+    // Get adminId from local storage
+    const adminId = localStorage.getItem('adminId');
+
+    if (adminId) {
+      // Parse the adminId to a number if needed
+      const parsedAdminId = parseInt(adminId, 10);
+
+      this.managerService.getMenuItems(parsedAdminId).subscribe((list) => {
+        this.MenuItemList = list;
+        this.totalItems = this.MenuItemList.length;
+        this.onPageChange({
+          pageIndex: this.currentPage, pageSize: this.pageSize,
+          length: 0
+        }); // Trigger pagination
+      });
+    } else {
+      console.error('Admin ID not found in local storage.');
+    }
   }
 
   onPageChange(event: PageEvent) {

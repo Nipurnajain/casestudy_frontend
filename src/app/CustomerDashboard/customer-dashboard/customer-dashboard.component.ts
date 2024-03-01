@@ -13,6 +13,7 @@ import { JwtClientService } from '../../Security/jwt-client.service';
 export class CustomerDashboardComponent {
   restaurantList: Restaurant[] = [];
   searchLocation: string = '';
+  filteredRestaurantList: Restaurant[] = [];
   
 
   constructor(private adminService: AdminService,private customerService:CustomerService,private router:Router
@@ -23,10 +24,12 @@ export class CustomerDashboardComponent {
   }
 
   getAllRestaurants() {
-    this.adminService.getRestaurants().subscribe((list) => {
+    this.adminService.getRestaurants().subscribe(
+      (list) => {
       this.restaurantList = list;
-      console.log(list);
-      }); // Trigger pagination
+      this.filteredRestaurantList = this.restaurantList.filter(restaurant => restaurant.restaurantId !== 601);
+      console.log('Retrieved all restaurants:', list);
+          }); // Trigger pagination
     }
 
     searchByLocation() {

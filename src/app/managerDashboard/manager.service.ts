@@ -35,22 +35,21 @@ export class ManagerService {
 
     return this.http.post<MenuItem>("http://localhost:8080/api/v1/restaurant/addMenu", formData, {
       headers: this.getHeaders(),
-      // Note: responseType is not necessary unless you have specific requirements
-      // responseType: 'text' as 'json',
+      responseType: 'text' as 'json'
     });
   }
 
 
-  getMenuItems(): Observable<MenuItem[]> {
-    return this.http.get<MenuItem[]>("http://localhost:8080/api/v1/admin/getAllMenus",{ headers: this.getHeaders() });
+  getMenuItems(adminId: number): Observable<MenuItem[]> {
+    return this.http.get<MenuItem[]>("http://localhost:8080/api/v1/admin/getAllMenusForManager"+ `/${adminId}`,{ headers: this.getHeaders() });
   }
 
   deleteMenuItem(menuid: number): Observable<string> {
     return this.http.delete<string>("http://localhost:8080/api/v1/menuItem/deleteMenu" + `/${menuid}`,{ headers: this.getHeaders(), responseType: 'text' as 'json' });
   }
 
-  getOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>("http://localhost:8080/api/v1/admin/getAllOrders",{ headers: this.getHeaders() });
+  getOrders(adminId: number): Observable<Order[]> {
+    return this.http.get<Order[]>("http://localhost:8080/api/v1/admin/getAllOrders"+ `/${adminId}`,{ headers: this.getHeaders() });
   }
 
   addDiscount(body: Discount): Observable<Discount> {
@@ -66,4 +65,8 @@ export class ManagerService {
     return this.http.get<Discount[]>("http://localhost:8080/api/v1/admin/getAllDiscounts",{ headers: this.getHeaders() });
   }
 
+
+  getRestaurantsForManager(adminId: number): Observable<Restaurant[]> {
+    return this.http.get<Restaurant[]>("http://localhost:8080/api/v1/admin/getAllRestaurants"+ `/${adminId}`,{ headers: this.getHeaders() });
+  }
 }

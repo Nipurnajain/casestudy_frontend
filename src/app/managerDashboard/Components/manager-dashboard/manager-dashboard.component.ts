@@ -14,7 +14,7 @@ export class ManagerDashboardComponent {
   logout(): void {
 
     this.jwtAdminService.clearStoredToken();
-    // Redirect to the login page
+    localStorage.clear();
     this.router.navigate(['/admin-login']);
   }
 

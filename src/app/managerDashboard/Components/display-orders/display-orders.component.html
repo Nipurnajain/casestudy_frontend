@@ -12,21 +12,19 @@
                 <th>Status</th>
                 <th>Total cost</th>
                 <th>Customer Name</th>
-
-
+                <th>Full Address</th>
+                <th>Restaurant Name</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let order of OrderList">
-                <td>{{order[0]}}</td>
-                <td>{{ order[1]}}</td>
-                <td>{{ order[2]}}</td>
-                <td>{{ order[3]}}</td>
-
-                <td>{{ order[6] }}</td>
-
-
-
+                <td>{{ order[0] }}</td>
+                <td>{{ order[1] }}</td>
+                <td>{{ order[2] }}</td>
+                <td>{{ order[3] }}</td>
+                <td>{{ order[6] }}</td> <!-- Assuming order[4] is customerName -->
+                <td>{{ order[7] }}</td> <!-- Assuming order[5] is fullAddress -->
+                <td>{{ order[8] }}</td> <!-- Assuming order[6] is Restaurant Name -->
             </tr>
         </tbody>
     </table>
