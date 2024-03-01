@@ -33,6 +33,8 @@ import { CartComponent } from './CustomerDashboard/cart/cart.component';
 import { CheckoutComponent } from './CustomerDashboard/checkout/checkout.component';
 import { DisplayMenuItemsListComponent } from './CustomerDashboard/display-menu-items-list/display-menu-items-list.component';
 import { OrderHistoryComponent } from './CustomerDashboard/order-history/order-history.component';
+import { AddCategoryComponent } from './managerDashboard/Components/add-category/add-category.component';
+import { DisplayCategoryComponent } from './managerDashboard/Components/display-category/display-category.component';
 
 
 @NgModule({
@@ -62,7 +64,9 @@ import { OrderHistoryComponent } from './CustomerDashboard/order-history/order-h
     CartComponent,
     CheckoutComponent,
     DisplayMenuItemsListComponent,
-    OrderHistoryComponent
+    OrderHistoryComponent,
+    AddCategoryComponent,
+    DisplayCategoryComponent
   ],
   imports: [
     BrowserModule,

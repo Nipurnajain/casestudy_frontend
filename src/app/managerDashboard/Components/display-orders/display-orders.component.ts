@@ -48,6 +48,18 @@ export class DisplayOrdersComponent {
     }
   }
 
+  onStatusChange(orderId: number, newStatus: string) {
+    this.managerService.onStatusChange(orderId, newStatus)
+      .subscribe(updatedOrders => {
+        this.OrderList = updatedOrders;
+        // Optionally, perform any additional logic upon successful status change
+      }, error => {
+        console.error('Error occurred while updating status:', error);
+        // Optionally, handle error gracefully
+      });
+  }
+
+
   onPageChange(event: PageEvent) {
     const startIndex = event.pageIndex * event.pageSize;
     const endIndex = startIndex + event.pageSize;

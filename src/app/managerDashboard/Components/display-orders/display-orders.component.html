@@ -20,7 +20,13 @@
             <tr *ngFor="let order of OrderList">
                 <td>{{ order[0] }}</td>
                 <td>{{ order[1] }}</td>
-                <td>{{ order[2] }}</td>
+                <td>
+                    <select [(ngModel)]="order[2]" (change)="onStatusChange(order[0], order[2])">
+                        <option value="Pending">Pending</option>
+                        <option value="Processing">Processing</option>
+                        <option value="Placed">Placed</option>
+                        
+                    </select>
                 <td>{{ order[3] }}</td>
                 <td>{{ order[6] }}</td> <!-- Assuming order[4] is customerName -->
                 <td>{{ order[7] }}</td> <!-- Assuming order[5] is fullAddress -->

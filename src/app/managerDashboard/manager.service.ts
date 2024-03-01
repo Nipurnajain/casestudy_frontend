@@ -6,6 +6,7 @@ import { MenuItem } from './Model/MenuItem';
 
 import { Order } from './Model/Order';
 import { Discount } from '../adminDashboard/Model/Discount';
+import { Category } from './Model/Category';
 
 @Injectable({
   providedIn: 'root'
@@ -68,5 +69,23 @@ export class ManagerService {
 
   getRestaurantsForManager(adminId: number): Observable<Restaurant[]> {
     return this.http.get<Restaurant[]>("http://localhost:8080/api/v1/admin/getAllRestaurants"+ `/${adminId}`,{ headers: this.getHeaders() });
+  }
+  onStatusChange(orderId: number, newStatus: string): Observable<Order[]> {
+    const url = "http://localhost:8080/api/v1/order/update-status"+`/${orderId}`+`/${newStatus}`;
+    const headers = this.getHeaders();
+    return this.http.put<Order[]>(url, null, { headers });
+  }
+
+  addCategory(body: Category): Observable<Category> {
+    console.log(body);
+    return this.http.post<Category>("http://localhost:8080/api/v1/menuCategory/create-category", body,{ headers: this.getHeaders() , responseType: 'text' as 'json'});
+  }
+
+  getAllMenuCategory(adminId: number): Observable<Category[]> {
+    return this.http.get<Category[]>("http://localhost:8080/api/v1/admin/getAllCategoriesForManager"+`/${adminId}`,{ headers: this.getHeaders() });
+  }
+
+  deleteMenuCategory(categoryid: number): Observable<string> {
+    return this.http.delete<string>("http://localhost:8080/api/v1/menuCategory/delete-category" + `/${categoryid}`,{ headers: this.getHeaders(), responseType: 'text' as 'json' });
   }
 }

@@ -11,11 +11,10 @@
 <body>
     <div class="topnav" id="myTopnav">
         <a style="margin-left: 4; font-size:x-large;"><strong>HOTBYTE</strong></a>
-        <a  class="login" [routerLink]="'/customer-login'"><strong>Login</strong></a>
-        <a href="#footer" class="about" ><strong>About</strong></a>
-        <!-- <a href="#cart" class="cart-icon">
-            <i class="fa fa-shopping-cart" style="font-size: 20px;"></i>
-        </a> -->
+        <a class="login" [routerLink]="'/customer-login'"><strong>Customer Login</strong></a>
+        <a class="login" [routerLink]="'/admin-login'"><strong>Admin/Manager Login</strong></a>
+        <a href="#footer" class="about"><strong>About</strong></a>
+
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i>
         </a>
@@ -28,11 +27,12 @@
 
         <div>
             <h1>Welcome to HOTBYTE</h1>
-            <h3 style="color: white; text-align: justify;">Indulge in Culinary Delights from Around the World At Hotbyte, we're passionate about bringing you the finest flavors from across the globe,
+            <h3 style="color: white; text-align: justify;">Indulge in Culinary Delights from Around the World At
+                Hotbyte, we're passionate about bringing you the finest flavors from across the globe,
                 right to your doorstep. From sizzling street food to elegant gourmet dishes, our menu is a journey
                 through culinary excellence.</h3>
-                <h2 style="color: white;">Order Now and Elevate Your Dining Experience </h2>
-                <button style="border-radius: 20px; " [routerLink]="'/customer-register'">Place order</button>
+            <h2 style="color: white;">Order Now and Elevate Your Dining Experience </h2>
+            <button style="border-radius: 20px; " [routerLink]="'/customer-register'">Place order</button>
 
 
         </div>

@@ -6,6 +6,7 @@ import { Restaurant } from 'src/app/adminDashboard/Model/Restaurant';
 import { MenuItem } from '../../Model/MenuItem';
 
 import { AdminService } from 'src/app/adminDashboard/admin.service';
+import { Category } from '../../Model/Category';
 
 @Component({
   selector: 'app-add-menu-items',
@@ -16,6 +17,7 @@ export class AddMenuItemsComponent {
   registerMenuItemForm!: FormGroup;
   selectedFile!: File;
   submitted = false;
+  categories: Category[] = [];
 
   restaurants: Restaurant[] = []; // Array to hold the list of restaurants
   constructor(private formBuilder: FormBuilder, private managerService: ManagerService, private router: Router,private adminService: AdminService) {
@@ -23,7 +25,7 @@ export class AddMenuItemsComponent {
   }
 
   ngOnInit() {
-    this.registerMenuItemForm= this.formBuilder.group({
+    this.registerMenuItemForm = this.formBuilder.group({
       itemName: ['', [Validators.required, Validators.pattern('^[a-zA-Z\\s]+$')]],
       description: ['', [Validators.required, Validators.pattern('^[a-zA-Z\\s]+$')]],
       category: ['', [Validators.required]],
@@ -34,25 +36,31 @@ export class AddMenuItemsComponent {
       nutritionalInfo: ['', [Validators.required]],
       cookingTime: ['', [Validators.required]],
       restaurantId: ['', [Validators.required]],
-      // Add a new form control for the file
-      image: [null, [Validators.required]],
+      image: [null, [Validators.required]], // Add a new form control for the file
     });
 
-  
+    const storedAdminId = localStorage.getItem('adminId');
+    const adminId = storedAdminId !== null ? +storedAdminId : 0;
 
+    this.managerService.getAllMenuCategory(adminId).subscribe(
+      (categories: Category[]) => {
+        this.categories = categories;
+      },
+      (error) => {
+        console.error('Error fetching categories:', error);
+      }
+    );
 
-    const storedCustomerId = localStorage.getItem('adminId');
-    const adminId = storedCustomerId !== null ? +storedCustomerId : 0;
     this.managerService.getRestaurantsForManager(adminId).subscribe(
-    (restaurants: Restaurant[]) => {
-      this.restaurants = restaurants;
-    },
-    (error) => {
-      console.error('Error fetching restaurants:', error);
-    }
-  );
+      (restaurants: Restaurant[]) => {
+        this.restaurants = restaurants;
+      },
+      (error) => {
+        console.error('Error fetching restaurants:', error);
+      }
+    );
   }
-  
+
 
   
 

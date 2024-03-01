@@ -26,6 +26,8 @@ import { CartComponent } from './CustomerDashboard/cart/cart.component';
 import { CheckoutComponent } from './CustomerDashboard/checkout/checkout.component';
 import { DisplayMenuItemsListComponent } from './CustomerDashboard/display-menu-items-list/display-menu-items-list.component';
 import { OrderHistoryComponent } from './CustomerDashboard/order-history/order-history.component';
+import { DisplayCategoryComponent } from './managerDashboard/Components/display-category/display-category.component';
+import { AddCategoryComponent } from './managerDashboard/Components/add-category/add-category.component';
 
 
 const routes: Routes = [
@@ -57,7 +59,8 @@ const routes: Routes = [
       { path: 'display-discount', component: DisplayDiscountManagerComponent },
 
        { path: 'add-discount-bymanager', component: AddDiscountByManagerComponent },
-
+       {path:'display-category',component:DisplayCategoryComponent},
+       {path:'add-category',component:AddCategoryComponent}
      
     ],
   }, 
