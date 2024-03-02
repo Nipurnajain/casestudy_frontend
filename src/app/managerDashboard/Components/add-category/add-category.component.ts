@@ -32,18 +32,17 @@ export class AddCategoryComponent {
       categoryName: ['', [Validators.required, Validators.pattern('^[a-zA-Z\\s]+$')]],
       
       restaurantId: ['', [Validators.required]],
-      // Add a new form control for the file
       
-    });
-
-  
+    }); 
 
 
-    const storedCustomerId = localStorage.getItem('adminId');
-    const adminId = storedCustomerId !== null ? +storedCustomerId : 0;
+    const storedAdminId = localStorage.getItem('adminId');
+    const adminId = storedAdminId !== null ? +storedAdminId : 0;
     this.managerService.getRestaurantsForManager(adminId).subscribe(
     (restaurants: Restaurant[]) => {
       this.restaurants = restaurants;
+      console.log(this.restaurants);
+      
     },
     (error) => {
       console.error('Error fetching restaurants:', error);
@@ -59,16 +58,7 @@ export class AddCategoryComponent {
   }
 
 
-  
-  // onFileSelected(event: Event) {
-  //   const inputElement = event.target as HTMLInputElement;
-  //   if (inputElement.files) {
-  //     this.selectedFile = inputElement.files[0];
-  //     this.registerCategoryForm.patchValue({
-  //       image: this.selectedFile,
-  //     });
-  //   }
-  // }
+
 
   insertCategory() {
     this.submitted = true;
@@ -76,19 +66,22 @@ export class AddCategoryComponent {
     if (this.registerCategoryForm.invalid) {
       return;
     }
+    const selectedRestaurantId: number = this.f['restaurantId'].value;
+    console.log('Selected Restaurant ID:', selectedRestaurantId);
+
+
+   
 
     const categoryDTO: Category = {
-      categoryId: 0, // You may need to provide a value for categoryId if required
-      categoryName: this.f['categoryName'].value,
-      restaurant: this.f['restaurantId'].value,
-      // Add other properties if necessary
+        categoryId: 0,
+        categoryName: this.f['categoryName'].value,
+        restaurantId: selectedRestaurantId,
     };
 
-    this.managerService.addCategory(categoryDTO).subscribe(
-      (menu) => {
-        console.log('Added category is: ', menu);
+    this.managerService.addCategory(categoryDTO,selectedRestaurantId).subscribe(
+      (menucategory) => {
+        console.log('Added category is: ', menucategory);
         this.router.navigate(['/manager-dashboard/display-category']);
-        // Fetch the updated list of categories after adding a new one
         this.fetchCategories();
       },
       (error) => {

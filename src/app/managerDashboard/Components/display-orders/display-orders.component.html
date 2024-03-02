@@ -22,8 +22,8 @@
                 <td>{{ order[1] }}</td>
                 <td>
                     <select [(ngModel)]="order[2]" (change)="onStatusChange(order[0], order[2])">
-                        <option value="Pending">Pending</option>
-                        <option value="Processing">Processing</option>
+                        <option value="delivered">delivered</option>
+                        <option value="preparing">preparing</option>
                         <option value="Placed">Placed</option>
                         
                     </select>

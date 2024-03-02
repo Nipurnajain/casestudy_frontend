@@ -76,9 +76,9 @@ export class ManagerService {
     return this.http.put<Order[]>(url, null, { headers });
   }
 
-  addCategory(body: Category): Observable<Category> {
+  addCategory(body: Category, restaurantId: number): Observable<Category> {
     console.log(body);
-    return this.http.post<Category>("http://localhost:8080/api/v1/menuCategory/create-category", body,{ headers: this.getHeaders() , responseType: 'text' as 'json'});
+    return this.http.post<Category>("http://localhost:8080/api/v1/menuCategory/create-category"+`/${restaurantId}`, body,{ headers: this.getHeaders() , responseType: 'text' as 'json'});
   }
 
   getAllMenuCategory(adminId: number): Observable<Category[]> {

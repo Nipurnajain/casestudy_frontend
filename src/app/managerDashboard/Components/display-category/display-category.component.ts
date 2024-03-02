@@ -28,9 +28,12 @@ export class DisplayCategoryComponent {
 
     if (adminId) {
       const parsedAdminId = parseInt(adminId, 10);
-
+      console.log(parsedAdminId);
+      
       this.managerService.getAllMenuCategory(parsedAdminId).subscribe((list) => {
         this.CategoryList = list;
+        console.log( this.CategoryList);
+        
         this.totalItems = this.CategoryList.length;
         this.onPageChange({
           pageIndex: this.currentPage, pageSize: this.pageSize,

@@ -8,16 +8,14 @@
         <thead>
             <tr>
                 <th>Category Id</th>
-                <th>Category Name</th>
-                <th>Restaurant </th>
+                <th>Category Name</th>                
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let category of pagedCategoryList">
                 <td>{{category.categoryId}}</td>
-                <td>{{ category.categoryName }}</td>
-                <td>{{ category.restaurant }}</td>
+                <td>{{ category.categoryName }}</td>                
                 <td>
                     <button type="button"  class="btn btn-primary"  (click)="removeMenuCategory(category.categoryId)" ><i
                             class="fa fa-trash"></i></button>
