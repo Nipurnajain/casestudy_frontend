@@ -13,45 +13,25 @@ export class AddDiscountComponent implements OnInit {
   registerDiscountForm!: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private adminService: AdminService,private router:Router) {}
+  constructor(private formBuilder: FormBuilder, private adminService: AdminService, private router: Router) {}
 
   ngOnInit() {
     this.registerDiscountForm = this.formBuilder.group({
-      discountPercentage: ['', [Validators.required]],
-      startDate: ['', [Validators.required,this.startDateValidator]],
+      discountPercentage: ['', [Validators.required, Validators.min(0), Validators.max(100)]],
+      startDate: ['', [Validators.required]],
       endDate: ['', [Validators.required]]
-    }, {
-      validator: this.dateValidator
     });
   }
-  
-  dateValidator(group: FormGroup) {
-    const startDate = group.get('startDate')?.value;
-    const endDate = group.get('endDate')?.value;
 
-    if (startDate && endDate && startDate > endDate) {
-      return { endDateBeforeStartDate: true };
+  insertDiscount() {
+    this.submitted = true;
+
+    if (this.registerDiscountForm.invalid) {
+      return;
     }
 
-    return null;
-  }
+    const data: Discount = this.registerDiscountForm.value;
 
-  startDateValidator(control: AbstractControl) {
-    const startDate = new Date(control.value);
-    const currentDate = new Date();
-
-    if (startDate < currentDate) {
-      return { startDateBeforeCurrentDate: true };
-    }
-
-    return null;
-  }
-
-  get f() {
-    return this.registerDiscountForm.controls;
-  }
-
-  insertDiscount(data: Discount) {
     this.adminService.addDiscount(data)
       .subscribe(
         (discount) => {
@@ -60,4 +40,27 @@ export class AddDiscountComponent implements OnInit {
         }
       );
   }
+
+  validateStartDate(control: { value: string | number | Date; }) {
+    const selectedDate = new Date(control.value);
+    const currentDate = new Date();
+    if (selectedDate >= currentDate) {
+      return { minDate: true };
+    }
+    return null;
+  }
+
+  validateEndDate(control: { value: string | number | Date; }) {
+    const startDateControl = this.registerDiscountForm.get('startDate');
+    if (!startDateControl) {
+      return null;
+    }
+    const startDate = new Date(startDateControl.value);
+    const endDate = new Date(control.value);
+    if (endDate >= startDate) {
+      return { minStartDate: true };
+    }
+    return null;
+  }
+
 }

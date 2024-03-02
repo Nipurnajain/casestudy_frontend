@@ -38,6 +38,7 @@ export class CustomerDashboardComponent {
         (response) => {
           this.restaurantList = response; // Update the restaurantList with search results by location
           console.log(response);
+          this.filteredRestaurantList = this.restaurantList.filter(restaurant => restaurant.restaurantId !== 601);
         },
         (error) => {
           console.error('Error fetching search results by location:', error);

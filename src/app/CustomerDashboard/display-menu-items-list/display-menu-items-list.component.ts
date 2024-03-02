@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from '../customer.service';
 import { JwtClientService } from '../../Security/jwt-client.service';
 import { MenuItem } from '../../managerDashboard/Model/MenuItem';
+import { Category } from 'src/app/managerDashboard/Model/Category';
+import { Observable, forkJoin, of } from 'rxjs';
 
 @Component({
   selector: 'app-display-menu-items-list',
@@ -10,6 +12,7 @@ import { MenuItem } from '../../managerDashboard/Model/MenuItem';
   styleUrls: ['./display-menu-items-list.component.css']
 })
 export class DisplayMenuItemsListComponent {
+[x: string]: any;
   restaurantId!: number;
   menuItems: any[] = [];
   searchMenu: string = '';
@@ -17,7 +20,8 @@ export class DisplayMenuItemsListComponent {
   showOnlyVegetarian: boolean = false; 
   selectedCategory: string = '';
   selectedPriceRange: string = ''; 
-
+  categories: Category[] = [];
+  selectedDietaryInfo!: string;
 
   constructor(private route: ActivatedRoute, private customerService: CustomerService,private jwtClientService :JwtClientService
     ,private router:Router) { }
@@ -27,20 +31,24 @@ export class DisplayMenuItemsListComponent {
       this.restaurantId = params['restaurantId'];
       this.fetchMenuItems();
     });
+    this.customerService.getCategoryByRestaurant(this.restaurantId).subscribe(
+      (categories: Category[]) => {
+        this.categories = categories;
+      },
+      (error) => {
+        console.error('Error fetching categories:', error);
+      }
+    );
   }
 
   fetchMenuItems() {
     // Fetch menu items based on the restaurantId
-    this.customerService.getMenuItemsByRestaurantId(this.restaurantId, this.showOnlyVegetarian).subscribe(
+    this.customerService.getMenuItemsByRestaurantId(this.restaurantId).subscribe(
       (response) => {
         // Filter menu items based on showOnlyVegetarian flag
-        if (this.showOnlyVegetarian) {
-          // Filter only vegetarian items
-          this.menuItems = response.filter(item => item.specialDietaryInfo && item.specialDietaryInfo.toLowerCase() === 'veg');
-        } else {
-          // Display all menu items
+        
           this.menuItems = response;
-        }
+       
         this.menuItems.forEach(item => {
           item.decodedImage = 'data:image/jpeg;base64,' + item.image; // Assuming default format is JPEG
         });
@@ -116,34 +124,28 @@ export class DisplayMenuItemsListComponent {
     return customerId ;
   }
 
-  // removeFromCart() {
-  //   // Your logic to remove the item from the cart
-  //   // ...
-
-  //   // Enable Add to Cart button and disable Remove button
-  //   this.isRemoveButtonDisabled = true;
-  // }
-
-
-
-  toggleVegNonVeg(): void {
-    // Fetch menu items based on the updated showOnlyVegetarian value
-    this.fetchMenuItems();
+  searchByDietaryInfo(): void {
+   
+    this.customerService.searchMenuByDietaryInfo(this.restaurantId, this.selectedDietaryInfo)
+    .subscribe(
+      (response) => {
+        this.menuItems = response;
+        console.log(this.menuItems);
+        this.menuItems.forEach(item => {
+          item.decodedImage = 'data:image/jpeg;base64,' + item.image;
+        
+        });
+      },
+      (error) => {
+        console.error('Error fetching menu items:', error);
+      });
   }
 
-  // filterByCategory() {
-  //   // Make a copy of the original menu items
-  //   const originalMenuItemsCopy = [...this.menuItems];
-  
-  //   // If no category is selected, reset the filtered menu items to all menu items
-  //   if (!this.selectedCategory) {
-  //     this.menuItems = originalMenuItemsCopy;
-  //   } else {
-  //     // Filter menu items by the selected category
-  //     this.menuItems = originalMenuItemsCopy.filter(item => item.category === this.selectedCategory);
-  //   }
-  // }
 
+
+  
+
+  
 
    
   filterByCategory() {
@@ -184,7 +186,9 @@ export class DisplayMenuItemsListComponent {
   }
 
   applyFilters() {
-    // Fetch menu items based on the updated filters
+    
     this.fetchMenuItems();
   }
+
+ 
 }

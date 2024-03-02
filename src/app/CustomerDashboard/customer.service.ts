@@ -4,6 +4,7 @@ import { Customer } from '../adminDashboard/Model/Customer';
 import { Observable } from 'rxjs';
 import { Restaurant } from '../adminDashboard/Model/Restaurant';
 import { MenuItem } from '../managerDashboard/Model/MenuItem';
+import { Category } from '../managerDashboard/Model/Category';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +35,7 @@ export class CustomerService {
 
   }
 
-  getMenuItemsByRestaurantId(restaurantId: number, showOnlyVegetarian: boolean): Observable<any[]> {
+  getMenuItemsByRestaurantId(restaurantId: number): Observable<any[]> {
     return this.http.get<any[]>("http://localhost:8080/api/v1/menuItem/getByRestaurant" + `/${restaurantId}`, { headers: this.getHeaders() });
   }
 
@@ -85,6 +86,16 @@ getMenuByPriceRange( restaurantId: number,minPrice:number,maxPrice:number): Obse
 makePaymentRequest(customerId: number,requestBody:any): Observable<any>{
   return this.http.post<any>("http://localhost:8080/api/v1/payment/processPayment"+`/${customerId}`, requestBody,{ headers: this.getHeaders(),responseType: 'text' as 'json'  });
 
+
+}
+
+getCategoryByRestaurant( restaurantId: number): Observable<Category[]> {
+  return this.http.get<Category[]>("http://localhost:8080/api/v1/menuCategory/get-category" + `/${restaurantId}` , { headers: this.getHeaders() });
+
+}
+
+searchMenuByDietaryInfo( restaurantId: number,dietaryInfo: string): Observable<MenuItem[]> {
+  return this.http.get<MenuItem[]>("http://localhost:8080/api/v1/menuItem/getBySpecialDietaryInfo" + `/${restaurantId}` + `/${dietaryInfo}`, { headers: this.getHeaders() });
 
 }
 }

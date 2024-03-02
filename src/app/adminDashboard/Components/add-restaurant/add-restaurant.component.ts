@@ -19,10 +19,10 @@ export class AddRestaurantComponent {
 
   ngOnInit() {
     this.registerRestaurantForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.pattern('^[a-zA-Z\\s]+$')]],
-      location: ['', [Validators.required, Validators.pattern('^[a-zA-Z\\s]+$')]],
+      name: ['', Validators.required, Validators.pattern('[a-zA-Z ]')],
+      location: ['', Validators.required, Validators.pattern('[a-zA-Z ]')],
       contactNumber: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
-      rating: ['', [Validators.required, Validators.pattern('[0-5]')]]
+      rating: ['', [Validators.required, Validators.min(1), Validators.max(5)]]
     });
   }
 

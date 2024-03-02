@@ -35,6 +35,7 @@ import { DisplayMenuItemsListComponent } from './CustomerDashboard/display-menu-
 import { OrderHistoryComponent } from './CustomerDashboard/order-history/order-history.component';
 import { AddCategoryComponent } from './managerDashboard/Components/add-category/add-category.component';
 import { DisplayCategoryComponent } from './managerDashboard/Components/display-category/display-category.component';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
 
 @NgModule({

@@ -46,28 +46,19 @@
 <div class="container">
   <h2>Menu Items</h2>
   <br>
+  
   <div class="row">
-    <!-- Toggle -->
-    <div class="col-md-3">
-      <label class="switch" style="margin-bottom: 0;">
-        <input type="checkbox" [(ngModel)]="showOnlyVegetarian" (change)="toggleVegNonVeg()">
-        <span class="slider round"></span>
-      </label>
-      <span style="margin-left: 5px;">{{ showOnlyVegetarian ? 'Veg' : '' }}</span>
-    </div>
+
 
     <!-- Dropdown -->
     <div class="col-md-3" style="margin-top: 5px;">
       <div class="form-group" style="margin-bottom: 3px;">
         <label for="categoryDropdown"></label>
-        <select class="form-control" id="categoryDropdown" [(ngModel)]="selectedCategory" (change)="filterByCategory()" style="width: 150px;">
-          <option value="">Categories</option>
-          <option value="appetizer">Appetizers</option>
-          <option value="desserts">Desserts</option>
-          <option value="main course">Main Course</option>
-          <option value="beverages">Beverages</option>
-          <option value="side_dishes">Side Dishes</option>
-          <option value="entrees">Entrees</option>
+        <select class="form-control" id="categoryDropdown" [(ngModel)]="selectedCategory" (change)="filterByCategory()"
+          style="width: 150px;">
+          <option value="">Menu Category</option>
+          <option *ngFor="let category of categories" [value]="category.categoryId">{{ category.categoryName}}</option>
+
         </select>
       </div>
     </div>
@@ -77,7 +68,7 @@
       <div class="form-group" style="margin-bottom: 3px;">
         <label for="priceRangeDropdown"></label>
         <select class="form-control" id="priceRangeDropdown" [(ngModel)]="selectedPriceRange"
-          (change)="sortByPriceRange()"  style="width: 150px;">
+          (change)="sortByPriceRange()" style="width: 150px;">
           <option value="">Price Range</option>
           <option value="0-99">0 - 99</option>
           <option value="100 - 299">100 - 299</option>
@@ -86,7 +77,19 @@
         </select>
       </div>
     </div>
+
+    <div class="col-md-4" style="margin-top: 5px;">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="dietaryInfo" id="vegRadio" value="veg" [(ngModel)]="selectedDietaryInfo"  (click)="selectedDietaryInfo = 'veg'; searchByDietaryInfo()">
+        <label class="form-check-label" for="vegRadio">Vegetarian</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="dietaryInfo" id="nonVegRadio" value="nonveg" [(ngModel)]="selectedDietaryInfo" (click)="selectedDietaryInfo = 'nonveg'; searchByDietaryInfo()">
+        <label class="form-check-label" for="nonVegRadio">Non-Vegetarian</label>
+      </div>
+    </div>
   </div>
+  <br>
 
 
 
@@ -99,7 +102,7 @@
               <div class="card-body">
                 <h2 class="card-title">{{ menuItem.itemName }}</h2>
                 <p class="card-text">Description: {{ menuItem.description }}</p>
-                <p class="card-text">Category: {{ menuItem.category }}</p>
+                <!-- <p class="card-text">Category: {{ menuItem.category }}</p> -->
                 <p class="card-text">Price: {{ menuItem.price | currency:'INR'}}</p>
                 <button class="btn btn-primary" (click)="addToCart(menuItem.menuItemId, menuItem.price)">Add to
                   Cart</button>

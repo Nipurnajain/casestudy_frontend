@@ -24,12 +24,14 @@ export class RegisterManagerComponent {
   ngOnInit(){
 
     this.registerManagerForm= this.formBuilder.group({
-      name : ['',[Validators.required,Validators.pattern('^[a-zA-Z\\s]+$')]],
-      email : ['',[Validators.required,Validators.email]],
-      userName : ['',[Validators.required,Validators.pattern('^[a-zA-Z0-9_]+$')]],
+      name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]], // Only alphabets and space allowed
+      email: ['', [Validators.required, Validators.email]],
+      userName: ['', [Validators.required,  Validators.email]], // Alphanumeric characters only
       password :['',[Validators.required,Validators.minLength(6)]],
       restaurantId: ['', [Validators.required]],
 
+
+     
     });
 
     this.adminService.getRestaurants().subscribe(
