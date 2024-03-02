@@ -10,6 +10,8 @@ import { JwtClientService } from '../../Security/jwt-client.service';
 })
 export class CheckoutComponent {
 
+  discountApplied: boolean = false;
+
   cardPaymentDetails = {
     cardNumber: '',
     expiryDate: '',
@@ -30,16 +32,38 @@ export class CheckoutComponent {
   constructor(private route: ActivatedRoute, private customerService: CustomerService, private jwtClientService: JwtClientService,
     private router: Router) { }
 
+ 
+
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      if (params['cartItems']) {
-        this.cartItems = JSON.parse(params['cartItems']);
-      }
-      if (params['totalCost']) {
-        this.totalCost = +params['totalCost']; // Convert to number
-      }
-    });
+    this.fetchCartDetails();
+    // Retrieve discountApplied state from localStorage on page load
+    const storedDiscountApplied = localStorage.getItem('discountApplied');
+    this.discountApplied = storedDiscountApplied === 'true';
+    
   }
+
+  private fetchCartDetails(): void{
+    const customerId = this.getCustomerIdFromLocalStorage();
+  
+    // Call the service method to get cart details
+    this.customerService.getCartDetails(customerId).subscribe(
+      (data) => {
+        this.cartItems = data;
+        console.log(this.cartItems);
+  
+        // Assign totalCost from the 'total' property of the first item in cartItems
+        if (this.cartItems.length > 0 && 'total' in this.cartItems[0]) {
+          this.totalCost = this.cartItems[0].total;
+          console.log(this.totalCost);
+        }
+      },
+      (error) => {
+        console.error('Error fetching cart details:', error);
+      }
+    );
+
+  }
+  
 
   getCustomerIdFromLocalStorage(): number {
     // Retrieve customer ID from localStorage
@@ -51,6 +75,7 @@ export class CheckoutComponent {
   logout(): void {
 
     this.jwtClientService.clearStoredToken();
+    localStorage.clear();
     // Redirect to the login page
     this.router.navigate(['/landing-page']);
   }
@@ -87,6 +112,8 @@ export class CheckoutComponent {
         console.error('Error placing order:', error);
       }
     );
+
+    localStorage.setItem('discountApplied', 'false');
     }
     
     else if (this.selectedPaymentOption === 'card-payment') {
@@ -126,11 +153,37 @@ export class CheckoutComponent {
           console.log('After navigation');
         }
       );
+
+      localStorage.setItem('discountApplied', 'false');
     }
     
   }
 
 
+  applyDiscount() {
+    const customerId = this.getCustomerIdFromLocalStorage();
+  
+    // Call the service method
+    this.customerService.applyDiscount(customerId).subscribe(
+      (response) => {
+        // Handle the successful response, if needed
+        console.log('Discount applied successfully:', response);
+  
+        // Your additional logic after applying the discount
+        this.discountApplied = true;
+
+        // Store discountApplied state in localStorage
+        localStorage.setItem('discountApplied', 'true');
+
+        this.fetchCartDetails();
+      },
+      (error) => {
+        // Handle the error, if needed
+        console.error('Error applying discount:', error);
+      }
+    );
+  }
+  
 
   
 

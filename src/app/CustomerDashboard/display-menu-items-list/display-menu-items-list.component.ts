@@ -12,19 +12,19 @@ import { Observable, forkJoin, of } from 'rxjs';
   styleUrls: ['./display-menu-items-list.component.css']
 })
 export class DisplayMenuItemsListComponent {
-[x: string]: any;
+  [x: string]: any;
   restaurantId!: number;
   menuItems: any[] = [];
   searchMenu: string = '';
   isRemoveButtonDisabled = true;
-  showOnlyVegetarian: boolean = false; 
+  showOnlyVegetarian: boolean = false;
   selectedCategory: string = '';
-  selectedPriceRange: string = ''; 
+  selectedPriceRange: string = '';
   categories: Category[] = [];
   selectedDietaryInfo!: string;
 
-  constructor(private route: ActivatedRoute, private customerService: CustomerService,private jwtClientService :JwtClientService
-    ,private router:Router) { }
+  constructor(private route: ActivatedRoute, private customerService: CustomerService, private jwtClientService: JwtClientService
+    , private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -46,9 +46,9 @@ export class DisplayMenuItemsListComponent {
     this.customerService.getMenuItemsByRestaurantId(this.restaurantId).subscribe(
       (response) => {
         // Filter menu items based on showOnlyVegetarian flag
-        
-          this.menuItems = response;
-       
+
+        this.menuItems = response;
+
         this.menuItems.forEach(item => {
           item.decodedImage = 'data:image/jpeg;base64,' + item.image; // Assuming default format is JPEG
         });
@@ -58,30 +58,31 @@ export class DisplayMenuItemsListComponent {
       }
     );
   }
-  
-  
 
 
 
 
 
 
-  getMenuByKeyword(){
+
+
+  getMenuByKeyword() {
     const keyword = this.searchMenu;
-    this.customerService.searchMenuByKeyword(this.restaurantId,keyword)
-    .subscribe((list) => {
-      this.menuItems= list;
+    this.customerService.searchMenuByKeyword(this.restaurantId, keyword)
+      .subscribe((list) => {
+        this.menuItems = list;
 
-      this.menuItems.forEach(item => {
-        item.decodedImage = 'data:image/jpeg;base64,' + item.image; // Assuming default format is JPEG
-      });
-      console.log(list);
+        this.menuItems.forEach(item => {
+          item.decodedImage = 'data:image/jpeg;base64,' + item.image; // Assuming default format is JPEG
+        });
+        console.log(list);
       });
   }
 
   logout(): void {
 
     this.jwtClientService.clearStoredToken();
+    localStorage.clear();
     // Redirect to the login page
     this.router.navigate(['/landing-page']);
   }
@@ -107,8 +108,12 @@ export class DisplayMenuItemsListComponent {
           console.log(response);
         },
         error => {
-          // Handle error (if needed)
-          console.error(error);
+
+          // Check if the status code indicates a restaurant conflict (403 Forbidden)
+          if (error.status === 403) {
+            // Display an alert to the user
+            alert("To add item from another restaurant first clear your cart");
+          }
         }
       );
     } else {
@@ -121,33 +126,33 @@ export class DisplayMenuItemsListComponent {
     const customerId = localStorage.getItem('customerId');
 
     // Return the customer ID or a default value if not found
-    return customerId ;
+    return customerId;
   }
 
   searchByDietaryInfo(): void {
-   
+
     this.customerService.searchMenuByDietaryInfo(this.restaurantId, this.selectedDietaryInfo)
-    .subscribe(
-      (response) => {
-        this.menuItems = response;
-        console.log(this.menuItems);
-        this.menuItems.forEach(item => {
-          item.decodedImage = 'data:image/jpeg;base64,' + item.image;
-        
+      .subscribe(
+        (response) => {
+          this.menuItems = response;
+          console.log(this.menuItems);
+          this.menuItems.forEach(item => {
+            item.decodedImage = 'data:image/jpeg;base64,' + item.image;
+
+          });
+        },
+        (error) => {
+          console.error('Error fetching menu items:', error);
         });
-      },
-      (error) => {
-        console.error('Error fetching menu items:', error);
-      });
   }
 
 
 
-  
 
-  
 
-   
+
+
+
   filterByCategory() {
     this.customerService.searchMenuByCategory(this.restaurantId, this.selectedCategory)
       .subscribe(
@@ -167,28 +172,28 @@ export class DisplayMenuItemsListComponent {
   sortByPriceRange() {
     console.log('Sorting by price range...');
     const [minPrice, maxPrice] = this.selectedPriceRange.split('-').map(Number);
-    
+
     // Call the service method to get menu items by price range
     this.customerService.getMenuByPriceRange(this.restaurantId, minPrice, maxPrice)
-    .subscribe(
-      (response) => {
-        this.menuItems = response;
-       
-        this.menuItems.forEach(item => {
-          item.decodedImage = 'data:image/jpeg;base64,' + item.image;
-          console.log('Response from getMenuByPriceRange:', response);
-        });
-      },
-      (error) => {
-        console.error('Error fetching menu items:', error);
-      }
-    );
+      .subscribe(
+        (response) => {
+          this.menuItems = response;
+
+          this.menuItems.forEach(item => {
+            item.decodedImage = 'data:image/jpeg;base64,' + item.image;
+            console.log('Response from getMenuByPriceRange:', response);
+          });
+        },
+        (error) => {
+          console.error('Error fetching menu items:', error);
+        }
+      );
   }
 
   applyFilters() {
-    
+
     this.fetchMenuItems();
   }
 
- 
+
 }

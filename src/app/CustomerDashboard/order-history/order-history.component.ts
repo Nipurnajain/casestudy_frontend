@@ -61,6 +61,7 @@ export class OrderHistoryComponent {
   logout(): void {
 
     this.jwtClientService.clearStoredToken();
+    localStorage.clear();
     // Redirect to the login page
     this.router.navigate(['/landing-page']);
   }

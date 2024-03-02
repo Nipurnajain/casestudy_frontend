@@ -14,13 +14,7 @@
                     <a class="nav-link" [routerLink]="'/orders/'+getCustomerIdFromLocalStorage()">My Orders </a>
                 </li>
 
-                <li class="nav-item">
-                    <!-- <i class="fa fa-shopping-cart" style="font-size: 20px; color: white;"></i> -->
-                    <a class="nav-link" [routerLink]="'/cart/'+getCustomerIdFromLocalStorage()">Cart</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Offers</a>
-                </li>
+                
                 <li class="nav-item">
                     <a class="nav-link" (click)="logout()">Log out</a>
                 </li>
@@ -32,66 +26,57 @@
     </nav>
 </div>
 
-<!-- 
-<div class="container mt-4">
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="paymentOption" id="codOption" (change)="togglePlaceOrderButton()" value="cod">
+<div class="container mt-5 ">
+  <h1 class="mb-4">Add Payment Method </h1>
+
+  <div class="col-md-8 mx-auto border p-4 d-inline-block">
+    <!-- Heading above the Apply Discount button -->
+    <!-- <h2 class="mb-4">Discounts</h2> -->
+
+    <button class="btn btn-primary ml-2" (click)="applyDiscount()" [disabled]="discountApplied">Apply Discount</button>
+
+    <div class="container mt-4">
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="paymentOption" id="codOption" [(ngModel)]="selectedPaymentOption" (change)="togglePlaceOrderButton()" value="cod">
         <label class="form-check-label" for="codOption">
-            Cash on Delivery
+          Cash on Delivery
         </label>
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="paymentOption" id="netbankingOption" (change)="togglePlaceOrderButton()" value="netbanking">
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="paymentOption" id="netbankingOption" [(ngModel)]="selectedPaymentOption" (change)="togglePlaceOrderButton()" value="card-payment">
         <label class="form-check-label" for="netbankingOption">
-            Card Payment
+          Card Payment
         </label>
+      </div>
     </div>
-</div>
 
-<div class="container mt-2">
-    <button class="btn btn-primary ml-2" (click)="placeOrder()" [disabled]="!isPlaceOrderEnabled">Place Order</button>
-</div>
- -->
+    <div class="container mt-2">
+      <button class="btn btn-primary ml-2" (click)="placeOrder()" [disabled]="!isPlaceOrderEnabled">Place Order</button>
+    </div>
 
- <div class="container mt-4">
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="paymentOption" id="codOption" [(ngModel)]="selectedPaymentOption" (change)="togglePlaceOrderButton()" value="cod">
-      <label class="form-check-label" for="codOption">
-        Cash on Delivery
-      </label>
+    <div class="container mt-2" *ngIf="selectedPaymentOption === 'card-payment'">
+      <h2 class="mb-4">Add Payment Method</h2>
+      <form>
+        <div class="form-group">
+          <label for="cardNumber">Card Number</label>
+          <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="Enter card number" [(ngModel)]="cardPaymentDetails.cardNumber">
+        </div>
+        <div class="form-group">
+          <label for="expiryDate">Expiry Date</label>
+          <input type="text" class="form-control" id="expiryDate" name="expiryDate" placeholder="MM/YYYY" [(ngModel)]="cardPaymentDetails.expiryDate">
+        </div>
+        <div class="form-group">
+          <label for="cvv">CVV</label>
+          <input type="text" class="form-control" id="cvv" name="cvv" placeholder="Enter CVV" [(ngModel)]="cardPaymentDetails.cvv">
+        </div>
+        <div class="form-group">
+          <label for="customerName">Customer Name</label>
+          <input type="text" class="form-control" id="customerName" name="cardHolder" placeholder="Enter customer name" [(ngModel)]="cardPaymentDetails.cardHolder">
+        </div>
+       
+    
+        <button type="button" class="btn btn-primary" (click)="placeOrder()">Submit</button>
+      </form>
     </div>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="paymentOption" id="netbankingOption" [(ngModel)]="selectedPaymentOption" (change)="togglePlaceOrderButton()" value="card-payment">
-      <label class="form-check-label" for="netbankingOption">
-        Card Payment
-      </label>
-    </div>
   </div>
-  
-  <div class="container mt-2">
-    <button class="btn btn-primary ml-2" (click)="placeOrder()" [disabled]="!isPlaceOrderEnabled">Place Order</button>
-  </div>
-  <div class="container mt-2" *ngIf="selectedPaymentOption === 'card-payment'">
-    <form>
-      <div class="form-group">
-        <label for="cardNumber">Card Number</label>
-        <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="Enter card number" [(ngModel)]="cardPaymentDetails.cardNumber">
-      </div>
-      <div class="form-group">
-        <label for="expiryDate">Expiry Date</label>
-        <input type="text" class="form-control" id="expiryDate" name="expiryDate" placeholder="MM/YYYY" [(ngModel)]="cardPaymentDetails.expiryDate">
-      </div>
-      <div class="form-group">
-        <label for="cvv">CVV</label>
-        <input type="text" class="form-control" id="cvv" name="cvv" placeholder="Enter CVV" [(ngModel)]="cardPaymentDetails.cvv">
-      </div>
-      <div class="form-group">
-        <label for="customerName">Customer Name</label>
-        <input type="text" class="form-control" id="customerName" name="cardHolder" placeholder="Enter customer name" [(ngModel)]="cardPaymentDetails.cardHolder">
-      </div>
-      <!-- You can add more fields as needed -->
-  
-      <!-- Button to submit the form (you may adjust this as needed) -->
-      <button type="button" class="btn btn-primary" (click)="placeOrder()">Submit</button>
-    </form>
-  </div>
+</div>

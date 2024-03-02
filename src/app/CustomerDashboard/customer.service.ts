@@ -98,6 +98,12 @@ searchMenuByDietaryInfo( restaurantId: number,dietaryInfo: string): Observable<M
   return this.http.get<MenuItem[]>("http://localhost:8080/api/v1/menuItem/getBySpecialDietaryInfo" + `/${restaurantId}` + `/${dietaryInfo}`, { headers: this.getHeaders() });
 
 }
+
+
+applyDiscount(customerId: number): Observable<any> {
+   
+  return this.http.get<any>("http://localhost:8080/api/v1/cart/applyDiscount"+`/${customerId}`, { headers: this.getHeaders() ,responseType: 'text' as 'json'});
+}
 }
 
 
