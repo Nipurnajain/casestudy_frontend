@@ -20,14 +20,14 @@ import { CustomerLoginComponent } from './customer-login/customer-login.componen
 import { CustomerRegisterationComponent } from './customer-registeration/customer-registeration.component';
 import { CustomerDashboardComponent } from './CustomerDashboard/customer-dashboard/customer-dashboard.component';
 
-import { AddDiscountByManagerComponent } from './managerDashboard/Components/add-discount-by-manager/add-discount-by-manager.component';
-import { DisplayDiscountManagerComponent } from './managerDashboard/Components/display-discount-manager/display-discount-manager.component';
+
 import { CartComponent } from './CustomerDashboard/cart/cart.component';
 import { CheckoutComponent } from './CustomerDashboard/checkout/checkout.component';
 import { DisplayMenuItemsListComponent } from './CustomerDashboard/display-menu-items-list/display-menu-items-list.component';
 import { OrderHistoryComponent } from './CustomerDashboard/order-history/order-history.component';
 import { DisplayCategoryComponent } from './managerDashboard/Components/display-category/display-category.component';
 import { AddCategoryComponent } from './managerDashboard/Components/add-category/add-category.component';
+import { PaymentSuccessComponent } from './CustomerDashboard/payment-success/payment-success.component';
 
 
 const routes: Routes = [
@@ -53,30 +53,28 @@ const routes: Routes = [
     data: { expectedRole: 'manager' },
     children: [
       { path: 'add-menu', component: AddMenuItemsComponent },
-      {path:'display-menuitems',component:DisplayMenuItemsComponent},
-      {path:'display-orders',component:DisplayOrdersComponent},
-      { path: 'add-discounts', component: AddDiscountComponent },
-      { path: 'display-discount', component: DisplayDiscountManagerComponent },
+      { path: 'display-menuitems', component: DisplayMenuItemsComponent },
+      { path: 'display-orders', component: DisplayOrdersComponent },
 
-       { path: 'add-discount-bymanager', component: AddDiscountByManagerComponent },
-       {path:'display-category',component:DisplayCategoryComponent},
-       {path:'add-category',component:AddCategoryComponent}
-     
+      { path: 'display-category', component: DisplayCategoryComponent },
+      { path: 'add-category', component: AddCategoryComponent }
+
     ],
-  }, 
+  },
 
 
   { path: '', pathMatch: 'full', redirectTo: 'landing-page' }, // Redirect to landing-page by default
 
-  {path:'admin-login',component:AdminLoginComponent},
-  {path:'landing-page',component:LandingComponent},
-  {path:'customer-login',component:CustomerLoginComponent},
-  {path:'customer-register',component:CustomerRegisterationComponent},
-  {path:'customer-dashboard',component:CustomerDashboardComponent},
-  { path: 'menu-items/:restaurantId', component: DisplayMenuItemsListComponent},
-  {path:'cart/:customerId',component:CartComponent},
+  { path: 'admin-login', component: AdminLoginComponent },
+  { path: 'landing-page', component: LandingComponent },
+  { path: 'customer-login', component: CustomerLoginComponent },
+  { path: 'customer-register', component: CustomerRegisterationComponent },
+  { path: 'customer-dashboard', component: CustomerDashboardComponent },
+  { path: 'menu-items/:restaurantId', component: DisplayMenuItemsListComponent },
+  { path: 'cart/:customerId', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
-  {path:'orders/:customerId', component:OrderHistoryComponent}
+  { path: 'orders/:customerId', component: OrderHistoryComponent },
+  { path: 'payment-success', component: PaymentSuccessComponent }
 ];
 
 @NgModule({

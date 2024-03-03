@@ -26,9 +26,9 @@ export class RegisterManagerComponent {
     this.registerManagerForm= this.formBuilder.group({
       name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]], // Only alphabets and space allowed
       email: ['', [Validators.required, Validators.email]],
-      userName: ['', [Validators.required,  Validators.email]], // Alphanumeric characters only
+      userName: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_]+$')]], // Alphanumeric characters only
       password :['',[Validators.required,Validators.minLength(6)]],
-      restaurantId: ['', [Validators.required]],
+      restaurantId: ['', [Validators.required]],    
 
 
      

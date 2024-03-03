@@ -25,9 +25,9 @@ import { CustomerLoginComponent } from './customer-login/customer-login.componen
 import { CustomerRegisterationComponent } from './customer-registeration/customer-registeration.component';
 import { CustomerDashboardComponent } from './CustomerDashboard/customer-dashboard/customer-dashboard.component';
 
-import { AddDiscountByManagerComponent } from './managerDashboard/Components/add-discount-by-manager/add-discount-by-manager.component';
+
 import { RouterModule } from '@angular/router';
-import { DisplayDiscountManagerComponent } from './managerDashboard/Components/display-discount-manager/display-discount-manager.component';
+
 import { UpdateMenuItemsComponent } from './managerDashboard/Components/update-menu-items/update-menu-items.component';
 import { CartComponent } from './CustomerDashboard/cart/cart.component';
 import { CheckoutComponent } from './CustomerDashboard/checkout/checkout.component';
@@ -36,6 +36,7 @@ import { OrderHistoryComponent } from './CustomerDashboard/order-history/order-h
 import { AddCategoryComponent } from './managerDashboard/Components/add-category/add-category.component';
 import { DisplayCategoryComponent } from './managerDashboard/Components/display-category/display-category.component';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { PaymentSuccessComponent } from './CustomerDashboard/payment-success/payment-success.component';
 
 
 @NgModule({
@@ -59,15 +60,15 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
     CustomerRegisterationComponent,
     CustomerDashboardComponent,
     
-    AddDiscountByManagerComponent,
-    DisplayDiscountManagerComponent,
+   
     UpdateMenuItemsComponent,
     CartComponent,
     CheckoutComponent,
     DisplayMenuItemsListComponent,
     OrderHistoryComponent,
     AddCategoryComponent,
-    DisplayCategoryComponent
+    DisplayCategoryComponent,
+    PaymentSuccessComponent
   ],
   imports: [
     BrowserModule,

@@ -104,6 +104,10 @@ applyDiscount(customerId: number): Observable<any> {
    
   return this.http.get<any>("http://localhost:8080/api/v1/cart/applyDiscount"+`/${customerId}`, { headers: this.getHeaders() ,responseType: 'text' as 'json'});
 }
+
+clearCart(customerid:number): Observable<any> {
+  return this.http.delete<any>("http://localhost:8080/api/v1/cart/clearAll"+`/${customerid}`, { headers: this.getHeaders(),responseType: 'text' as 'json'});
 }
 
 
+}

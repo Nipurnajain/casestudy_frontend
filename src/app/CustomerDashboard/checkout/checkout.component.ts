@@ -23,6 +23,7 @@ export class CheckoutComponent {
   cartItems: any[] = [];
   selectedPaymentOption!: string; // Property to track the selected payment option
   isPlaceOrderEnabled: boolean = false; // Property to control the visibility of the "Place Order" button
+  
 
   togglePlaceOrderButton() {
     // Logic to determine if the "Place Order" button should be enabled
@@ -184,7 +185,29 @@ export class CheckoutComponent {
     );
   }
   
+  cancelOrder(){
+   
+    const customerId = this.getCustomerIdFromLocalStorage();
+  
+    // Call the service method
+    this.customerService.clearCart(customerId).subscribe(
+      (response) => {
+       
+        console.log('cart cleared :', response);
 
+       
+        localStorage.setItem('discountApplied', 'true');
+
+        
+      },
+      (error) => {
+        
+        console.error('Error applying discount:', error);
+      }
+    );
+    this.router.navigate(['/customer-dashboard']);
+    
+  }
   
 
 }

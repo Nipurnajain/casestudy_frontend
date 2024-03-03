@@ -28,8 +28,8 @@
             
             <form   #formData=ngForm  (ngSubmit)="readFormData(formData)" >
                 <div >
-                  <label for="exampleInputEmail1">Email</label>
-                  <input type="username"  name="username"  required  #username="ngModel" placeholder="Enter your email" ngModel       >
+                  <label for="exampleInputEmail1">Username</label>
+                  <input type="username"  name="username"  required  #username="ngModel" placeholder="Enter your username" ngModel       >
                  
                   <span style="color:red"  *ngIf="username.touched && username.invalid" >email is required</span>
                 </div>
