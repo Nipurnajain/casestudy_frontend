@@ -21,13 +21,14 @@ import { CustomerRegisterationComponent } from './customer-registeration/custome
 import { CustomerDashboardComponent } from './CustomerDashboard/customer-dashboard/customer-dashboard.component';
 
 
-import { CartComponent } from './CustomerDashboard/cart/cart.component';
+
 import { CheckoutComponent } from './CustomerDashboard/checkout/checkout.component';
 import { DisplayMenuItemsListComponent } from './CustomerDashboard/display-menu-items-list/display-menu-items-list.component';
 import { OrderHistoryComponent } from './CustomerDashboard/order-history/order-history.component';
 import { DisplayCategoryComponent } from './managerDashboard/Components/display-category/display-category.component';
 import { AddCategoryComponent } from './managerDashboard/Components/add-category/add-category.component';
 import { PaymentSuccessComponent } from './CustomerDashboard/payment-success/payment-success.component';
+import { CartComponent } from './CustomerDashboard/cart/cart.component';
 
 
 const routes: Routes = [

@@ -1,3 +1,5 @@
+import { MenuItem } from "./MenuItem";
+
 export interface Order{
     orderId:number;
     orderDate:string;
@@ -7,4 +9,6 @@ export interface Order{
     customerName :string ;
     restaurantId:number;
     restaurantName:string;
+    
+
 }

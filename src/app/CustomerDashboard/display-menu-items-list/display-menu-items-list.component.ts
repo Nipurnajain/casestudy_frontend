@@ -22,7 +22,7 @@ export class DisplayMenuItemsListComponent {
   selectedPriceRange: string = '';
   categories: Category[] = [];
   selectedDietaryInfo!: string;
-
+ 
   constructor(private route: ActivatedRoute, private customerService: CustomerService, private jwtClientService: JwtClientService
     , private router: Router) { }
 
@@ -87,6 +87,7 @@ export class DisplayMenuItemsListComponent {
     this.router.navigate(['/landing-page']);
   }
 
+  
 
   addToCart(menuItemId: number, price: number) {
     const customerId = Number(localStorage.getItem('customerId'));
@@ -118,7 +119,9 @@ export class DisplayMenuItemsListComponent {
       );
     } else {
       console.error('customerId is not available in localStorage');
+
     }
+    
   }
 
   getCustomerIdFromLocalStorage(): string | null {

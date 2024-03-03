@@ -22,7 +22,7 @@ export class AuthGuardService implements CanActivate {
     if (userRole === expectedRole) {
       return true;
     } else {
-      // Navigate to the login page or a forbidden page
+     localStorage.clear();
       this.router.navigate(['/admin-login']); // navigate back to the admin login page
       return false;
     }

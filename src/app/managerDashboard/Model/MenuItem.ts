@@ -20,4 +20,5 @@ export interface MenuItem {
 
     restaurantId: number;
     image:string;
+    
 }

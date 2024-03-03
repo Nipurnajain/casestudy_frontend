@@ -29,14 +29,15 @@ import { CustomerDashboardComponent } from './CustomerDashboard/customer-dashboa
 import { RouterModule } from '@angular/router';
 
 import { UpdateMenuItemsComponent } from './managerDashboard/Components/update-menu-items/update-menu-items.component';
-import { CartComponent } from './CustomerDashboard/cart/cart.component';
-import { CheckoutComponent } from './CustomerDashboard/checkout/checkout.component';
+
 import { DisplayMenuItemsListComponent } from './CustomerDashboard/display-menu-items-list/display-menu-items-list.component';
 import { OrderHistoryComponent } from './CustomerDashboard/order-history/order-history.component';
 import { AddCategoryComponent } from './managerDashboard/Components/add-category/add-category.component';
 import { DisplayCategoryComponent } from './managerDashboard/Components/display-category/display-category.component';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { PaymentSuccessComponent } from './CustomerDashboard/payment-success/payment-success.component';
+import { CheckoutComponent } from './CustomerDashboard/checkout/checkout.component';
+import { CartComponent } from './CustomerDashboard/cart/cart.component';
 
 
 @NgModule({
@@ -59,11 +60,13 @@ import { PaymentSuccessComponent } from './CustomerDashboard/payment-success/pay
     CustomerLoginComponent,
     CustomerRegisterationComponent,
     CustomerDashboardComponent,
+    CartComponent,
+    CheckoutComponent,
     
    
     UpdateMenuItemsComponent,
-    CartComponent,
-    CheckoutComponent,
+    
+    
     DisplayMenuItemsListComponent,
     OrderHistoryComponent,
     AddCategoryComponent,

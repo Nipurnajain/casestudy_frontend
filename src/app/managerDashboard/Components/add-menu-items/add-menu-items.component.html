@@ -29,7 +29,7 @@
                 [ngClass]="{ 'is-invalid': submitted 
         && f['description'].errors }">
             <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">Invalid data</div>
-            <!-- <div *ngIf="f['description'].errors?.['required']" style="color: red;font-size: small;">description is required</div> -->
+            <div *ngIf="f['description'].errors?.['required']" style="color: red;font-size: small;">description is required</div> 
         </div>
 
 
@@ -54,10 +54,10 @@
         <div class="form-group ">
             <label for="availabilityTime">availability Time</label>
             <input type="text" formControlName="availabilityTime" class="form-control"
-                placeholder="Enter restaurant name here" [ngClass]="{ 'is-invalid': submitted 
+                placeholder="Enter availability time here" [ngClass]="{ 'is-invalid': submitted 
     && f['availabilityTime'].errors }">
             <div *ngIf="submitted && f['availabilityTime'].errors" class="invalid-feedback">Invalid data</div>
-            <!-- <div *ngIf="f['availabilityTime'].errors?.['required']" style="color: red; font-size: small;">time is required</div> -->
+            <div *ngIf="f['availabilityTime'].errors?.['required']" style="color: red; font-size: small;">time is required</div>
         </div>
 
         <div class="form-group ">
@@ -66,7 +66,7 @@
                 placeholder="Enter dietary information here(veg/nonveg)" [ngClass]="{ 'is-invalid': submitted 
     && f['specialDietaryInfo'].errors }">
             <div *ngIf="submitted && f['specialDietaryInfo'].errors" class="invalid-feedback">Invalid data</div>
-            <!-- <div *ngIf="f['specialDietaryInfo'].errors?.['required']" style="color: red; font-size: small;">dietary information is required</div> -->
+            <div *ngIf="f['specialDietaryInfo'].errors?.['required']" style="color: red; font-size: small;">dietary information is required</div> 
         </div>
 
         <div class="form-group ">
@@ -75,7 +75,7 @@
                 [ngClass]="{ 'is-invalid': submitted 
     && f['tasteInfo'].errors }">
             <div *ngIf="submitted && f['tasteInfo'].errors" class="invalid-feedback">Invalid data</div>
-            <!-- <div *ngIf="f['tasteInfo'].errors?.['required']" style="color: red; font-size: small;">Taste info is required</div> -->
+             <div *ngIf="f['tasteInfo'].errors?.['required']" style="color: red; font-size: small;">Taste info is required</div>
         </div>
 
         <div class="form-group ">
@@ -84,16 +84,16 @@
                 placeholder="Enter nutritional Info here" [ngClass]="{ 'is-invalid': submitted 
     && f['nutritionalInfo'].errors }">
             <div *ngIf="submitted && f['nutritionalInfo'].errors" class="invalid-feedback">Invalid data</div>
-            <!-- <div *ngIf="f['nutritionalInfo'].errors?.['required']" style="color: red; font-size: small;">nutritional Info is required</div> -->
+             <div *ngIf="f['nutritionalInfo'].errors?.['required']" style="color: red; font-size: small;">nutritional Info is required</div> 
         </div>
 
         <div class="form-group ">
             <label for="name">Cooking Time</label>
             <input type="number" formControlName="cookingTime" class="form-control"
-                placeholder="Enter restaurant name here" [ngClass]="{ 'is-invalid': submitted 
+                placeholder="Enter cooking time in minutes" [ngClass]="{ 'is-invalid': submitted 
     && f['cookingTime'].errors }">
             <div *ngIf="submitted && f['cookingTime'].errors" class="invalid-feedback">Invalid restaurant name</div>
-            <!-- <div *ngIf="f['cookingTime'].errors?.['required']" style="color: red; font-size: small;">Restaurant name is required</div> -->
+           
         </div>
 
 
