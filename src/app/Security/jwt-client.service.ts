@@ -40,6 +40,7 @@ export class JwtClientService {
       };
     } else {
       console.error('Error decoding JWT token');
+      alert("Invalid credentials / access denied");
       return null;
     }
 

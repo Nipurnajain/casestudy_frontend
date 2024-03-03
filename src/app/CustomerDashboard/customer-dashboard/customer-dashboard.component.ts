@@ -42,6 +42,8 @@ export class CustomerDashboardComponent {
         },
         (error) => {
           console.error('Error fetching search results by location:', error);
+          alert('No restaurant available for this location');
+
         }
       );
     }

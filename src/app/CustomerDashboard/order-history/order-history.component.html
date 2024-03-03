@@ -49,7 +49,6 @@
                                 <th>Menu Item</th>
                                 <th>Quantity</th>
                                 <th>Order Date</th>
-                                <th>Status</th>
                                 
                             </tr>
                         </thead>
@@ -60,7 +59,6 @@
                                 <td>{{ item.menuName }}</td>
                                 <td>{{ item.quantity }}</td>
                                 <td>{{ item.orderDate | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
-                                <td>{{ item.status }}</td>
                                
                             </tr>
                         </tbody>
@@ -69,6 +67,7 @@
                 
                 <!-- Display Total Cost for the current orderId -->
                 <p class="card-text"><strong>Total Cost:</strong> {{ getTotalCostForOrderId(orderId) | currency:'INR' }}</p>
+                <p class="card-text"><strong> Order Status: </strong>{{ getOrderStatusForOrderId(orderId) }}</p>
             </div>
         </div>
         

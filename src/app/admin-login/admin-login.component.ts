@@ -42,7 +42,14 @@ constructor(private jwtServiceAdmin: JwtClientAdminService,private router: Route
        // Store the token in local storage
        this.jwtServiceAdmin.storeToken(this.token);
       this.accessApi(this.token)
-    });
+    },(error) => {
+      
+      console.error('Error generating token:', error);
+      alert("Invalid credentials. Error generating token ");
+  
+      
+    }
+   );
 
   }
 
@@ -70,6 +77,7 @@ constructor(private jwtServiceAdmin: JwtClientAdminService,private router: Route
       }
       else {
         console.log('Permission denied. No navigation.');
+        alert("Permission denied. No navigation.");
       }
   
     } else {

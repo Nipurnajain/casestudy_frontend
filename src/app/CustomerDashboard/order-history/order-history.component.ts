@@ -47,6 +47,17 @@ export class OrderHistoryComponent {
     return order ? order.totalCost : 0;
   }
 
+  getOrderStatusForOrderId(orderId: number): string {
+    
+    const order = this.orderDetails.find(item => item.orderId === orderId);
+
+    if (order) {
+      return order.status;
+    }
+
+    return 'Status not available';
+  }
+
   getSortedOrderIds(): number[] {
     return this.uniqueOrderIds.slice().sort((a, b) => b - a);
   }

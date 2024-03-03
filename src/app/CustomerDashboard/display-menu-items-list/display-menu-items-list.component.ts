@@ -76,6 +76,12 @@ export class DisplayMenuItemsListComponent {
           item.decodedImage = 'data:image/jpeg;base64,' + item.image; // Assuming default format is JPEG
         });
         console.log(list);
+      },
+      (error) => {
+        console.error('Error fetching menu items by keyword:', error);
+
+        
+        alert('No any matching items found ');
       });
   }
 
@@ -93,10 +99,8 @@ export class DisplayMenuItemsListComponent {
     const customerId = Number(localStorage.getItem('customerId'));
 
     if (customerId) {
-      // Set default quantity to 1
       const defaultQuantity = 1;
 
-      // Create an object with the required properties
       const cartItem = {
         menuItemId,
         quantity: defaultQuantity,
@@ -105,14 +109,12 @@ export class DisplayMenuItemsListComponent {
 
       this.customerService.addToCart(cartItem, customerId).subscribe(
         response => {
-          // Handle successful response (if needed)
           console.log(response);
+          alert(response);
         },
         error => {
 
-          // Check if the status code indicates a restaurant conflict (403 Forbidden)
           if (error.status === 403) {
-            // Display an alert to the user
             alert("To add item from another restaurant first clear your cart");
           }
         }
@@ -125,10 +127,8 @@ export class DisplayMenuItemsListComponent {
   }
 
   getCustomerIdFromLocalStorage(): string | null {
-    // Retrieve customer ID from localStorage
     const customerId = localStorage.getItem('customerId');
 
-    // Return the customer ID or a default value if not found
     return customerId;
   }
 
@@ -146,6 +146,7 @@ export class DisplayMenuItemsListComponent {
         },
         (error) => {
           console.error('Error fetching menu items:', error);
+          alert("no items available for this category");
         });
   }
 
@@ -168,6 +169,7 @@ export class DisplayMenuItemsListComponent {
         },
         (error) => {
           console.error('Error fetching menu items:', error);
+          alert("no items available for this category");
         }
       );
   }

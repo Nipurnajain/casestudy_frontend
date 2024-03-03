@@ -37,9 +37,16 @@ constructor(private jwtService: JwtClientService,private router: Router ) { }
     response.subscribe((genToken) => {
       this.token = genToken; 
       console.log(genToken);
-       // Store the token in local storage
+       // Storing the token in local storage
        this.jwtService.storeToken(this.token);
       this.accessApi(this.token)
+    },
+    (error) => {
+      
+      console.error('Error generating token:', error);
+      alert("Invalid credentials. Error generating token ");
+  
+      
     });
 
   }
@@ -62,6 +69,7 @@ constructor(private jwtService: JwtClientService,private router: Router ) { }
       
       else {
         console.log('Permission denied. No navigation.');
+        alert("Invalid credentials.  ");
       }
   
     } else {
