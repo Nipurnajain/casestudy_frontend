@@ -21,12 +21,11 @@ export class CheckoutComponent {
 
   totalCost: number = 0;
   cartItems: any[] = [];
-  selectedPaymentOption!: string; // Property to track the selected payment option
-  isPlaceOrderEnabled: boolean = false; // Property to control the visibility of the "Place Order" button
-  
+  selectedPaymentOption!: string;
+  isPlaceOrderEnabled: boolean = false;
 
   togglePlaceOrderButton() {
-    // Logic to determine if the "Place Order" button should be enabled
+    
     this.isPlaceOrderEnabled = this.selectedPaymentOption === 'cod';
   }
 
@@ -46,7 +45,7 @@ export class CheckoutComponent {
   private fetchCartDetails(): void{
     const customerId = this.getCustomerIdFromLocalStorage();
   
-    // Call the service method to get cart details
+   
     this.customerService.getCartDetails(customerId).subscribe(
       (data) => {
         this.cartItems = data;
@@ -181,6 +180,7 @@ export class CheckoutComponent {
       (error) => {
         // Handle the error, if needed
         console.error('Error applying discount:', error);
+        alert("No discount available for today");
       }
     );
   }
