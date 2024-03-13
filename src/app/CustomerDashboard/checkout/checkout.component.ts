@@ -126,7 +126,7 @@ export class CheckoutComponent {
         };
       });
   
-      const cardPaymentDetails = this.cardPaymentDetails; // Get card payment details
+      const cardPaymentDetails = this.cardPaymentDetails; 
   
       const requestBody = {
         amount: totalCostDouble,
@@ -163,13 +163,13 @@ export class CheckoutComponent {
   applyDiscount() {
     const customerId = this.getCustomerIdFromLocalStorage();
   
-    // Call the service method
+    
     this.customerService.applyDiscount(customerId).subscribe(
       (response) => {
-        // Handle the successful response, if needed
+        
         console.log('Discount applied successfully:', response);
   
-        // Your additional logic after applying the discount
+       
         this.discountApplied = true;
 
         // Store discountApplied state in localStorage
@@ -178,7 +178,7 @@ export class CheckoutComponent {
         this.fetchCartDetails();
       },
       (error) => {
-        // Handle the error, if needed
+       
         console.error('Error applying discount:', error);
         alert("No discount available for today");
       }
@@ -189,7 +189,7 @@ export class CheckoutComponent {
    
     const customerId = this.getCustomerIdFromLocalStorage();
   
-    // Call the service method
+    
     this.customerService.clearCart(customerId).subscribe(
       (response) => {
        

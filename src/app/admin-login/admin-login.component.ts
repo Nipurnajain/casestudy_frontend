@@ -82,6 +82,7 @@ constructor(private jwtServiceAdmin: JwtClientAdminService,private router: Route
   
     } else {
       console.error('Error accessing API');
+      alert("Invalid credentials. Error accessing API ");//alert for invalid credentials
     }
   }
 

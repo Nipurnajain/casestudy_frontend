@@ -36,7 +36,7 @@ export class AddMenuItemsComponent {
       nutritionalInfo: ['', [Validators.required]],
       cookingTime: ['', [Validators.required]],
       restaurantId: ['', [Validators.required]],
-      image: [null, [Validators.required]], // Add a new form control for the file
+      image: [null, [Validators.required]], 
     });
 
     const storedAdminId = localStorage.getItem('adminId');

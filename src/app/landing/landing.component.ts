@@ -41,14 +41,7 @@ export class LandingComponent {
 
   }
 
-  // public accessApi(token:any){
-
-  //   let responseBody =    this.jwtService.authorizationTest(token);
   
-  //       console.log(responseBody )
-    
-       
-  //   }
 
   public accessApi(token: any): void {
     const decodedToken = this.jwtService.authorizationTest(token);
@@ -62,7 +55,7 @@ export class LandingComponent {
       console.log(role);
       console.log(customerId);
   
-      // Now you can use 'role' and 'customerId' as needed in your component
+      
     } else {
       console.error('Error accessing API');
     }

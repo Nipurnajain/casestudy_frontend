@@ -36,7 +36,7 @@ export class CustomerDashboardComponent {
       const location = this.searchLocation;
       this.customerService.getRestaurantByLocation(location).subscribe(
         (response) => {
-          this.restaurantList = response; // Update the restaurantList with search results by location
+          this.restaurantList = response; 
           console.log(response);
           this.filteredRestaurantList = this.restaurantList.filter(restaurant => restaurant.restaurantId !== 601);
         },
@@ -49,7 +49,7 @@ export class CustomerDashboardComponent {
     }
 
     showMenuItems(restaurantId: number) {
-      // Navigate to the MenuItemsComponent with the restaurantId as a parameter
+     
       this.router.navigate(['/menu-items', restaurantId]);
     }
 
@@ -57,7 +57,7 @@ export class CustomerDashboardComponent {
 
       this.jwtClientService.clearStoredToken();
       localStorage.clear();
-      // Redirect to the login page
+      
       this.router.navigate(['/landing-page']);
     }
 
@@ -73,10 +73,10 @@ export class CustomerDashboardComponent {
     }
     
     getCustomerIdFromLocalStorage(): string | null {
-      // Retrieve customer ID from localStorage
+      
       const customerId = localStorage.getItem('customerId');
   
-      // Return the customer ID or a default value if not found
+     
       return customerId ;
     }
   

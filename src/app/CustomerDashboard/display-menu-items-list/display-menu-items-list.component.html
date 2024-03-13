@@ -48,7 +48,7 @@
   <div class="row">
 
 
-    <!-- Dropdown -->
+    <!-- Dropdown for category-->
     <div class="col-md-3" style="margin-top: 5px;">
       <div class="form-group" style="margin-bottom: 3px;">
         <label for="categoryDropdown"></label>
@@ -100,7 +100,7 @@
               <div class="card-body">
                 <h2 class="card-title">{{ menuItem.itemName }}</h2>
                 <p class="card-text">Description: {{ menuItem.description }}</p>
-                <!-- <p class="card-text">Category: {{ menuItem.category }}</p> -->
+                
                 <p class="card-text">Price: {{ menuItem.price | currency:'INR'}}</p>
                 <button class="btn btn-primary" (click)="addToCart(menuItem.menuItemId, menuItem.price)">Add to
                   Cart</button>

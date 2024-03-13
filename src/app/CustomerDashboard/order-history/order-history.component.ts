@@ -63,7 +63,7 @@ export class OrderHistoryComponent {
   }
   
   getCustomerIdFromLocalStorage(): number {
-    // Retrieve customer ID from localStorage
+    
     const customerId = localStorage.getItem('customerId');
 
     return customerId ? parseInt(customerId, 10) : 0;
@@ -73,7 +73,7 @@ export class OrderHistoryComponent {
 
     this.jwtClientService.clearStoredToken();
     localStorage.clear();
-    // Redirect to the login page
+    
     this.router.navigate(['/landing-page']);
   }
 

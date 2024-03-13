@@ -31,10 +31,7 @@ body {
 
 
 
-/* .sideBar.widthChange {
-    width: 8%;
-    text-align: center;
-} */
+
 
 .sideBar a {
     text-decoration: none;
@@ -43,7 +40,7 @@ body {
 
 
 .sideBar a:hover {
-    color: white; /* Set the hover color if needed */
+    color: white; 
 }
 
 .sideBar img {
@@ -62,7 +59,7 @@ body {
 
 .sideBar li {
     padding: 20px 20px 20px 10px;
-    /* transition: 0.3s ease-in-out; */
+   
 }
 
 li label.hideMenuList {
@@ -79,7 +76,7 @@ li label.hideMenuList {
 }
 
 .selected {
-    /* background-color: #d26ed6; */
+   
 
     background-color: #fcfeff;
 }
@@ -114,20 +111,7 @@ header {
     align-items: center;
 }
 
-/* #mobile {
-    display: none;
-} */
 
-
-
-/* header img {
-    height: 40px;
-    border-radius: 100%;
-}
-
-header h1 {
-    color: #0092ff;
-} */
 
 .content-data {
     background-color: #ffffff;

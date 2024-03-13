@@ -8,9 +8,9 @@ import { Router } from '@angular/router';
 })
 export class PaymentSuccessComponent {
 
-  constructor(private route:Router){}
+  constructor(private route: Router) { }
 
   continueOrdering() {
     this.route.navigate(['/customer-dashboard']);
-}
+  }
 }

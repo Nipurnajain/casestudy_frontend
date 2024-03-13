@@ -70,20 +70,18 @@
 
 
 
-/* Add your existing CSS styles here */
 
-/* Container for layout */
 .container {
     display: flex;
 }
 
-/* Left content */
+
 .left-content {
     flex: 1;
     padding: 20px;
 }
 
-/* Style for the heading */
+
 h3 {
     text-align: center;
 }
@@ -156,7 +154,7 @@ footer { padding: 20px; text-align: center; }
 
 
 .form-box {
-    /* background-color: rgba(0, 0, 0, 0.7); */
+    
     margin: auto auto;
     padding: 40px;
     border-radius: 5px;
@@ -164,8 +162,8 @@ footer { padding: 20px; text-align: center; }
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 0; /* Set left to 0 */
-    right: auto; /* Set right to auto */
+    left: 0; 
+    right: auto; 
     width: 500px;
     height: 430px;
 }
@@ -175,8 +173,8 @@ footer { padding: 20px; text-align: center; }
 }
 .form-box button:hover{
 
-background-color: rgb(23,147,188); /* Lighter shade of beige */
-            opacity: 0.8; /* Reduced opacity on hover */
+background-color: rgb(23,147,188); 
+            opacity: 0.8; 
 }
 
 .form-box button {

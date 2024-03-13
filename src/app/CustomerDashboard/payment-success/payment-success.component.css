@@ -5,7 +5,7 @@ body {
     max-width: 380px;
     margin: 50px auto;
     overflow: hidden;
-    position: relative; /* Added position relative */
+    position: relative; 
 }
 
 .printer-top {
@@ -135,7 +135,20 @@ body {
     color: #32a852;
 }
 
+button {
+    background-color: #359d00;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
+button:hover {
+    background-color: #287f00;
+}
 
 @keyframes print {
     0% {
@@ -177,18 +190,4 @@ body {
     }
 
     
-}
-button {
-    background-color: #359d00;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #287f00;
 }

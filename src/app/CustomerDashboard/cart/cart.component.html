@@ -49,7 +49,7 @@
                 <th>Menu Item </th>
                 <th>Quantity</th>
                 <th>Price</th>
-                <!-- <th>Total</th> -->
+                
                 <th>Individual Total</th>
             </tr>
         </thead>
@@ -62,7 +62,7 @@
                     <button (click)="decrementQuantity(item)" class="btn btn-sm btn-danger">-</button>
                 </td>
                 <td>{{ item.price |  currency:'INR' }}</td>
-                <!-- <td>{{ item.total | currency }}</td> -->
+                
                 <td>{{ item.individualTotal |  currency:'INR' }}</td>
             </tr>
         </tbody>

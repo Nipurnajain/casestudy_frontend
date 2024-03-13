@@ -145,7 +145,7 @@
 .signup a:hover {
 	color: #d4291d;
 	text-decoration: none;
-     /* background-color: #fff; */
+     
 }
 
 footer {
@@ -182,7 +182,7 @@ img {
 }
 
 .address-row div {
-    margin-right: 20px; /* Adjust the margin as needed */
+    margin-right: 20px; 
 }
 
 .address-row div:last-child {
@@ -194,7 +194,7 @@ img {
 }
 
 .input-row div {
-    margin-right: 20px; /* Adjust the margin as needed */
+    margin-right: 20px; 
 }
 
 .input-row div:last-child {

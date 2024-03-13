@@ -52,10 +52,10 @@ export class DisplayOrdersComponent {
     this.managerService.onStatusChange(orderId, newStatus)
       .subscribe(updatedOrders => {
         this.OrderList = updatedOrders;
-        // Optionally, perform any additional logic upon successful status change
+       
       }, error => {
         console.error('Error occurred while updating status:', error);
-        // Optionally, handle error gracefully
+        
       });
   }
 

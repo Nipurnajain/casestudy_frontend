@@ -89,7 +89,7 @@ export class DisplayMenuItemsListComponent {
 
     this.jwtClientService.clearStoredToken();
     localStorage.clear();
-    // Redirect to the login page
+    
     this.router.navigate(['/landing-page']);
   }
 
@@ -162,7 +162,7 @@ export class DisplayMenuItemsListComponent {
       .subscribe(
         (response) => {
           this.menuItems = response;
-          // Assuming you need to decode image data here
+          //  decode image data here
           this.menuItems.forEach(item => {
             item.decodedImage = 'data:image/jpeg;base64,' + item.image;
           });
@@ -178,7 +178,7 @@ export class DisplayMenuItemsListComponent {
     console.log('Sorting by price range...');
     const [minPrice, maxPrice] = this.selectedPriceRange.split('-').map(Number);
 
-    // Call the service method to get menu items by price range
+    
     this.customerService.getMenuByPriceRange(this.restaurantId, minPrice, maxPrice)
       .subscribe(
         (response) => {

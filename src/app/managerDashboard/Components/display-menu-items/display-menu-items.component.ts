@@ -56,7 +56,7 @@ export class DisplayMenuItemsComponent {
   removeMenuItem(menuid: number) {
     this.managerService.deleteMenuItem(menuid).subscribe((msg) => {
       console.log("Deleted " + msg);
-      this.getAllMenuItems(); // Reload data after deletion
+      this.getAllMenuItems(); 
     });
   }
 }
